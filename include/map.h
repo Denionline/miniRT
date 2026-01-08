@@ -3,6 +3,12 @@
 
 #include "head.h"
 
+enum object_type {
+	SPHERE,
+	PLANE,
+	CYLINDER
+};
+
 typedef struct s_cylinder
 {
 	float	diameter;
@@ -16,15 +22,14 @@ typedef struct s_sphere
 
 typedef struct s_object
 {
-	size_t		type;
-	t_vector	position;
-	t_vector	color;
-	void		*options;
+	unsigned int	type;
+	t_vector		position;
+	t_vector		color;
+	void			*options;
 }	t_object;
 
 typedef struct s_amblight
 {
-	t_vector	position;
 	float		ratio;
 	t_vector	color;
 }	t_amblight;
@@ -46,10 +51,12 @@ typedef struct s_light
 
 typedef struct s_map
 {
-	t_object	*object;
 	t_amblight	amblight;
 	t_camera	camera;
 	t_light		*light;
+	t_object	*object;
 }	t_map;
+
+t_map	get_map(void);
 
 #endif
