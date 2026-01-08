@@ -19,6 +19,7 @@ C_WHITE = \033[0;97m
 
 NAME			= miniRT
 LIBFT			= $(LIBFT_PATH)libft.a
+MLX				= $(MLX_PATH)libmlx.a
 
 # **************************************************************************** #
 #                                   Path's                                     #
@@ -31,6 +32,7 @@ VPATH			+= ./
 VPATH			+= src/
 
 LIBFT_PATH		= $(INC_PATH)/libft/
+MLX_PATH		= $(INC_PATH)/minilibx-linux/
 
 # **************************************************************************** #
 #                                   Files                                      #
@@ -46,6 +48,7 @@ OBJS			= $(addprefix $(BUILD_PATH), $(addsuffix .o, $(FILES)))
 # **************************************************************************** #
 
 LIBFT_URL		= https://github.com/Denionline/libft.git
+MLX_URL			= https://github.com/42paris/minilibx-linux.git
 
 # **************************************************************************** #
 #                                  Compiler                                    #
@@ -53,6 +56,7 @@ LIBFT_URL		= https://github.com/Denionline/libft.git
 
 CC				= cc
 CFLAGS			= -Werror -Wextra -Wall -g
+MLXFLAGS		= -L$(MLX_PATH) -lmlx_Linux -L/usr/lib -I$(MLX_PATH) -lXext -lX11 -lm -lz
 MAKE			= make --no-print-directory
 MAKERE			= make re --no-print-directory
 RM				= rm -rf
@@ -62,7 +66,7 @@ LIBS			= $(LIBFT)
 #                                  Commands                                    #
 # **************************************************************************** #
 
-all: start verify_libft $(VALGRINDRC) $(NAME)
+all: start verify_libft verify_mlx $(VALGRINDRC) $(NAME)
 	@printf "$(C_MAGENTA)===========End [$(NAME)]===========$(C_STD)\n"
 
 start:
@@ -98,3 +102,13 @@ get_libft:
 
 make_libft:
 	@$(MAKERE) -C $(LIBFT_PATH)
+
+verify_mlx:
+	@if test ! -d "$(MLX_PATH)"; then $(MAKE) get_mlx; \
+		else printf "minilibx: $(C_GREEN)✅$(C_STD)\n"; fi
+	@$(MAKE) -C $(MLX_PATH)
+
+get_mlx:
+	@printf "Cloning get_next_line\n"
+	@git clone $(MLX_URL) $(MLX_PATH)
+	@printf "\n$(C_GREEN)minilibx$(C_STD) successfully downloaded\n"
