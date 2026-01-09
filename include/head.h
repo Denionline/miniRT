@@ -6,6 +6,7 @@
 #include "minilibx-linux/mlx.h"
 #include "libft/include/libft.h"
 #include "canvas.h"
+#include <math.h>
 
 typedef struct s_head
 {
