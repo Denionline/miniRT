@@ -30,6 +30,10 @@ BUILD_PATH		= .build/
 
 VPATH			+= ./
 VPATH			+= src/
+VPATH			+= src/aux/
+VPATH			+= src/canvas/
+VPATH			+= src/math/
+VPATH			+= src/parse/
 
 LIBFT_PATH		= $(INC_PATH)/libft/
 MLX_PATH		= $(INC_PATH)/minilibx-linux/
@@ -40,6 +44,11 @@ MLX_PATH		= $(INC_PATH)/minilibx-linux/
 
 FILES			+= main
 
+CANVAS_FILES	+= canvas
+MATH_FILES		+= math
+
+MATH_SRCS		= $(addprefix ./, $(addsuffix .c, $(CANVAS_FILES)))
+CANVAS_SRCS		= $(addprefix ./, $(addsuffix .c, $(CANVAS_FILES)))
 SRCS			= $(addprefix ./, $(addsuffix .c, $(FILES)))
 OBJS			= $(addprefix $(BUILD_PATH), $(addsuffix .o, $(FILES)))
 
@@ -112,3 +121,9 @@ get_mlx:
 	@printf "Cloning get_next_line\n"
 	@git clone $(MLX_URL) $(MLX_PATH)
 	@printf "\n$(C_GREEN)minilibx$(C_STD) successfully downloaded\n"
+
+test_math:
+	@$(CC) $(CFLAGS) $(MLXFLAGS) test_math.c $(MATH_SRCS)
+
+test_canvas:
+	@$(CC) $(CFLAGS) $(MLXFLAGS) test_canvas.c $(CANVAS_SRCS)

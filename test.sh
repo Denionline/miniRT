@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# Get executable files in current directory
+FILES=()
+for f in tests/*; do
+    FILES+=($(basename "$f" ".c") "")
+done
+
+# Check if any executables exist
+if [ ${#FILES[@]} -eq 0 ]; then
+  whiptail --msgbox "No executable files found." 10 40
+  exit 1
+fi
+
+# Show menu
+CHOICE=$(whiptail \
+  --title "Select a file to execute" \
+  --menu "Choose:" 20 60 10 \
+  "${FILES[@]}" \
+  3>&1 1>&2 2>&3)
+
+# If user pressed Cancel
+if [ $? -ne 0 ]; then
+  exit 0
+fi
+
+# Execute selected file
+whiptail --yesno "Execute '$CHOICE'?" 10 40
+if [ $? -eq 0 ]; then
+  make "$CHOICE"
+fi
