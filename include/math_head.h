@@ -1,7 +1,8 @@
-#ifndef MATH_H
-# define MATH_H
+#ifndef MATH_HEAD_H
+# define MATH_HEAD_H
 
 #include "head.h"
+#include <math.h>
 
 enum TUPLE_TYPES {
 	VECTOR,
