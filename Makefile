@@ -33,6 +33,7 @@ VPATH			+= src/
 VPATH			+= src/aux/
 VPATH			+= src/canvas/
 VPATH			+= src/math/
+VPATH			+= src/math/aux
 VPATH			+= src/parse/
 
 LIBFT_PATH		= $(INC_PATH)/libft/
@@ -42,12 +43,13 @@ MLX_PATH		= $(INC_PATH)/minilibx-linux/
 #                                   Files                                      #
 # **************************************************************************** #
 
-FILES			+= main
-
 CANVAS_FILES	+= canvas
-MATH_FILES		+= math
+MATH_FILES		+= constructors
+MATH_FILES		+= is_equals
 
-MATH_SRCS		= $(addprefix ./src/math, $(addsuffix .c, $(CANVAS_FILES)))
+FILES			+= $(CANVAS_FILES) $(MATH_FILES)
+
+MATH_SRCS		= $(addprefix ./src/math/, $(addsuffix .c, $(MATH_FILES)))
 CANVAS_SRCS		= $(addprefix ./src/canvas/, $(addsuffix .c, $(CANVAS_FILES)))
 SRCS			= $(addprefix ./, $(addsuffix .c, $(FILES)))
 OBJS			= $(addprefix $(BUILD_PATH), $(addsuffix .o, $(FILES)))
@@ -82,10 +84,10 @@ start:
 	@printf "$(C_MAGENTA)===========Program [$(NAME)]===========$(C_STD)\n"
 
 $(NAME): $(BUILD_PATH) $(OBJS)
-	@$(CC) $(CFLAGS) $(OBJS) -lreadline $(LIBS) -o $(NAME)
+	@$(CC) $(CFLAGS) -I$(INC_PATH) main.c $(OBJS) -lreadline $(LIBS) -o $(NAME)
 
 $(BUILD_PATH)%.o: %.c
-	@$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -I$(INC_PATH) -c $< -o $@
 	@printf "$(C_YELLOW)Compiling $< -> $@$(C_STD)\n";
 
 $(BUILD_PATH):
@@ -123,7 +125,7 @@ get_mlx:
 	@printf "\n$(C_GREEN)minilibx$(C_STD) successfully downloaded\n"
 
 test_math:
-	@$(CC) $(CFLAGS) $(MLXFLAGS) tests/test_math.c $(MATH_SRCS)
+	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/test_math.c $(OBJS) -o test_math; ./test_math && rm -rf test_math
 
 test_canvas:
-	@clang $(CFLAGS) -I$(INC_PATH) tests/test_canvas.c $(CANVAS_SRCS) $(MLXFLAGS) -o test_canvas; ./test_canvas && rm -rf test_canvas
+	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/test_canvas.c $(OBJS) $(MLXFLAGS) -o test_canvas; ./test_canvas && rm -rf test_canvas

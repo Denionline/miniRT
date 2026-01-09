@@ -5,6 +5,7 @@
 #include "map.h"
 #include "minilibx-linux/mlx.h"
 #include "libft/include/libft.h"
+#include <math.h>
 
 typedef struct s_head
 {

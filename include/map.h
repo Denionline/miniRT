@@ -23,29 +23,29 @@ typedef struct s_sphere
 typedef struct s_object
 {
 	unsigned int	type;
-	t_vector		position;
-	t_vector		color;
+	t_tuple		position;
+	t_tuple		color;
 	void			*options;
 }	t_object;
 
 typedef struct s_amblight
 {
 	float		ratio;
-	t_vector	color;
+	t_tuple	color;
 }	t_amblight;
 
 typedef struct s_camera
 {
-	t_vector	position;
-	t_vector	orientation;
+	t_tuple	position;
+	t_tuple	orientation;
 	float		fov;
 }	t_camera;
 
 typedef struct s_light
 {
-	t_vector	position;
+	t_tuple	position;
 	float		brightness;
-	t_vector	color;
+	t_tuple	color;
 }	t_light;
 
 
