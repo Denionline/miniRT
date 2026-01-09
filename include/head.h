@@ -3,6 +3,8 @@
 
 #include "math.h"
 #include "map.h"
+#include "minilibx-linux/mlx.h"
+#include "libft/include/libft.h"
 
 typedef struct s_head
 {
