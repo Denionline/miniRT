@@ -1,12 +1,12 @@
 #include "head.h"
+#include "canvas.h"
 
 int main(void)
 {
-	void	*mlx;
-	void	*mlx_win;
-
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 720, 440, "Arroba");
-	mlx_loop(mlx);
+	t_canvas	canvas;
+	init_canvas(&canvas);
+	pixel_put(&canvas, 150, 200, 11250145);
+	mlx_put_image_to_window(canvas.init_screen, canvas.win, canvas.init_img, 0, 0);
+	mlx_loop(canvas.init_screen);
 	return (0);
 }
