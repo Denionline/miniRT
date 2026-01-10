@@ -6,9 +6,9 @@
 
 typedef struct s_canvas
 {
-	void	*init_screen;
-	void	*init_img;
-	void	*win;
+	void	*mlx_ptr;
+	void	*img_ptr;
+	void	*win_ptr;
 	void	*address;
 	int		bpp;
 	int		sl;
@@ -17,5 +17,6 @@ typedef struct s_canvas
 
 int		init_canvas(t_canvas *canvas);
 void	pixel_put(t_canvas *canvas, int x, int y, int color);
+void	ft_destroy_canvas(t_canvas *canvas);
 
 #endif
