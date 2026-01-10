@@ -3,6 +3,8 @@
 
 # define WIDTH 800
 # define HEIGHT 560
+# define ESC_KEY 65307
+#
 
 typedef struct s_canvas
 {
@@ -16,7 +18,8 @@ typedef struct s_canvas
 }	t_canvas;
 
 int		init_canvas(t_canvas *canvas);
+int		ft_destroy_canvas(t_canvas *canvas);
 void	pixel_put(t_canvas *canvas, int x, int y, int color);
-void	ft_destroy_canvas(t_canvas *canvas);
+void	ft_init_hooks(t_canvas *canvas);
 
 #endif

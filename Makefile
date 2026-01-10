@@ -43,7 +43,7 @@ MLX_PATH		= $(INC_PATH)/minilibx-linux/
 #                                   Files                                      #
 # **************************************************************************** #
 
-CANVAS_FILES	+= canvas ft_pixel_put init_canvas ft_destroy_canvas
+CANVAS_FILES	+= canvas ft_pixel_put init_canvas ft_destroy_canvas ft_init_hooks
 MATH_FILES		+= constructors
 MATH_FILES		+= is_equals
 

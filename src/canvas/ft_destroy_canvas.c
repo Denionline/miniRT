@@ -1,9 +1,9 @@
 #include "head.h"
 
-void	ft_destroy_canvas(t_canvas *canvas)
+int	ft_destroy_canvas(t_canvas *canvas)
 {
 	if (!canvas || !canvas->mlx_ptr)
-		return ;
+		exit(0);
 	if (canvas->img_ptr)
 		mlx_destroy_image(canvas->mlx_ptr, canvas->img_ptr);
 	if (canvas->win_ptr)
@@ -13,4 +13,5 @@ void	ft_destroy_canvas(t_canvas *canvas)
 	canvas->mlx_ptr = NULL;
 	canvas->img_ptr = NULL;
 	canvas->win_ptr = NULL;
+	exit(0);
 }
