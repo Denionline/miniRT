@@ -19,7 +19,7 @@ typedef struct s_canvas
 
 int		init_canvas(t_canvas *canvas);
 int		ft_destroy_canvas(t_canvas *canvas);
-void	pixel_put(t_canvas *canvas, int x, int y, int color);
+void	pixel_put(t_canvas *canvas, int x, int y, t_tuple color);
 void	ft_init_hooks(t_canvas *canvas);
 
 #endif
