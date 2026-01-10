@@ -1,5 +1,4 @@
 #include "head.h"
-#include "canvas.h"
 
 int main(void)
 {

@@ -43,7 +43,7 @@ MLX_PATH		= $(INC_PATH)/minilibx-linux/
 #                                   Files                                      #
 # **************************************************************************** #
 
-CANVAS_FILES	+= canvas
+CANVAS_FILES	+= canvas ft_pixel_put init_canvas
 MATH_FILES		+= constructors
 MATH_FILES		+= is_equals
 
@@ -84,10 +84,10 @@ start:
 	@printf "$(C_MAGENTA)===========Program [$(NAME)]===========$(C_STD)\n"
 
 $(NAME): $(BUILD_PATH) $(OBJS)
-	@$(CC) $(CFLAGS) -I$(INC_PATH) main.c $(OBJS) -lreadline $(LIBS) -o $(NAME)
+	@$(CC) $(CFLAGS) -I$(INC_PATH) main.c  $(OBJS) -lreadline $(MLXFLAGS) $(LIBS) -o $(NAME)
 
 $(BUILD_PATH)%.o: %.c
-	@$(CC) $(CFLAGS) -I$(INC_PATH) -c $< -o $@
+	@$(CC) $(CFLAGS) -I$(INC_PATH) -c $(MLXFLAGS) $< -o $@
 	@printf "$(C_YELLOW)Compiling $< -> $@$(C_STD)\n";
 
 $(BUILD_PATH):
