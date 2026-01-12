@@ -1,6 +1,7 @@
 #ifndef HEAD_H
 # define HEAD_H
 
+#include <stdint.h>
 #include "math.h"
 #include "map.h"
 #include "minilibx-linux/mlx.h"

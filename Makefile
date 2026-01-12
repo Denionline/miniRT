@@ -87,7 +87,7 @@ $(NAME): $(BUILD_PATH) $(OBJS)
 	@$(CC) $(CFLAGS) -I$(INC_PATH) main.c  $(OBJS) -lreadline $(MLXFLAGS) $(LIBS) -o $(NAME)
 
 $(BUILD_PATH)%.o: %.c
-	@$(CC) $(CFLAGS) -I$(INC_PATH) -c $(MLXFLAGS) $< -o $@
+	@$(CC) $(CFLAGS) -I$(INC_PATH) -c $< -o $@
 	@printf "$(C_YELLOW)Compiling $< -> $@$(C_STD)\n";
 
 $(BUILD_PATH):
@@ -128,4 +128,4 @@ test_math:
 	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/test_math.c $(OBJS) -o test_math; ./test_math && rm -rf test_math
 
 test_canvas:
-	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/test_canvas.c $(OBJS) $(MLXFLAGS) -o test_canvas; ./test_canvas && rm -rf test_canvas
+	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/test_canvas.c $(OBJS) $(MLXFLAGS) -o test_canvas; valgrind ./test_canvas && rm -rf test_canvas

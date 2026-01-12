@@ -16,6 +16,6 @@ void	pixel_put(t_canvas *canvas, int x, int y, t_tuple color)
 static unsigned int	construct_color(t_tuple color, int endian)
 {
 	if (!endian)
-		return ((int) color.r << 16 | (int) color.g << 8 | (int) color.b);
-	return ((int) color.b << 16 | (int) color.g << 8 | (int) color.r);
+		return ( color.r << 16 | color.g << 8 |  color.b);
+	return ( color.b << 16 |  color.g << 8 |  color.r);
 }
