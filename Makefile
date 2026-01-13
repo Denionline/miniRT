@@ -35,6 +35,7 @@ VPATH			+= src/canvas/
 VPATH			+= src/math/
 VPATH			+= src/math/aux/
 VPATH			+= src/math/operations/
+VPATH			+= src/math/matrices/
 VPATH			+= src/parse/
 
 LIBFT_PATH		= $(INC_PATH)/libft/
@@ -57,7 +58,9 @@ MATH_FILES		+= normalize
 MATH_FILES		+= dot
 MATH_FILES		+= cross
 
-FILES			+= $(CANVAS_FILES) $(MATH_FILES)
+MATRIX_FILES	+= matrix
+
+FILES			+= $(CANVAS_FILES) $(MATH_FILES) $(MATRIX_FILES)
 
 SRCS			= $(addprefix ./, $(addsuffix .c, $(FILES)))
 OBJS			= $(addprefix $(BUILD_PATH), $(addsuffix .o, $(FILES)))
@@ -133,10 +136,13 @@ get_mlx:
 	@$(MAKE) -C $(MLX_PATH)
 
 test_math:
-	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/test_math.c $(OBJS) $(MLXFLAGS) -o test_math; ./test_math && rm -rf test_math
+	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/test_math.c $(OBJS) $(MLXFLAGS) -o t; ./t && rm -rf t
 
 test_canvas:
-	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/test_canvas.c $(OBJS) $(MLXFLAGS) -o test_canvas; valgrind ./test_canvas && rm -rf test_canvas
+	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/test_canvas.c $(OBJS) $(MLXFLAGS) -o t; valgrind ./t && rm -rf t
 
 PIT_Vector:
-	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/PIT_Vector.c $(OBJS) $(MLXFLAGS) -o test_canvas; valgrind ./test_canvas && rm -rf test_canvas
+	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/PIT_Vector.c $(OBJS) $(MLXFLAGS) -o t; valgrind ./t && rm -rf t
+
+test_matrices:
+	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/test_matrices.c $(OBJS) $(MLXFLAGS) -o t; valgrind ./t && rm -rf t

@@ -1,0 +1,14 @@
+#ifndef MATRIX_H
+# define MATRIX_H
+
+#include "head.h"
+
+typedef struct s_matrix
+{
+	float			matrix[4][4];
+	unsigned int	size;
+}	t_matrix;
+
+t_matrix	matrix(float *numbers, unsigned int size);
+
+#endif
