@@ -3,6 +3,8 @@
 
 # include "head.h"
 
+# define NARUTO 0.000001
+
 enum e_TUPLE_TYPES {
 	VECTOR,
 	POINT,
