@@ -121,6 +121,19 @@ static void dot_test(char *title) {
 	printf("Dot => %.2f\n", dot(t1, t2));
 }
 
+static void cross_test(char *title) {
+	printf("----------%s----------\n", title);
+	t_tuple	t1;
+	t_tuple	t2;
+
+	t1 = vector(1, 2, 3);
+	t2 = vector(2, 3, 4);
+	print_tuple(t1);
+	print_tuple(t2);
+	print_tuple(cross(t1, t2));
+	print_tuple(cross(t2, t1));
+}
+
 int	main(void) {
 	sum_test("Sum");
 	subtract_test("Subtract");
@@ -130,4 +143,5 @@ int	main(void) {
 	magnitude_test("Magnitude");
 	normalize_test("Normalize");
 	dot_test("Dot");
+	cross_test("Cross");
 }
