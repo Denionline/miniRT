@@ -1,8 +1,8 @@
 #ifndef CANVAS_H
 # define CANVAS_H
 
-# define WIDTH 510
-# define HEIGHT 510
+# define WIDTH 900
+# define HEIGHT 900
 # define ESC_KEY 65307
 
 typedef struct s_canvas

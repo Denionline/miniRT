@@ -137,3 +137,6 @@ test_math:
 
 test_canvas:
 	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/test_canvas.c $(OBJS) $(MLXFLAGS) -o test_canvas; valgrind ./test_canvas && rm -rf test_canvas
+
+PIT_Vector:
+	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/PIT_Vector.c $(OBJS) $(MLXFLAGS) -o test_canvas; valgrind ./test_canvas && rm -rf test_canvas
