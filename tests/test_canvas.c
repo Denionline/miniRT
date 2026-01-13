@@ -1,12 +1,21 @@
 #include "head.h"
+#include <stdio.h>
 
 int main(void)
 {
-	void	*mlx;
-	void	*mlx_win;
+	t_canvas	canvas;
+	t_tuple		new_color;
 
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 720, 440, "Arroba");
-	mlx_loop(mlx);
-	return (0);
+	new_color = color(0, 0, 255);
+	new_color = mult_color(color(0, 0, 255), new_color);
+
+	init_canvas(&canvas);
+	for (int i = 0; i < WIDTH; i += 1)
+	{
+		for (int j = 0; j < HEIGHT; j += 1)
+			pixel_put(&canvas, i, j, sum_color(new_color, color(0, 0, j)));
+	}
+	mlx_put_image_to_window(canvas.mlx_ptr, canvas.win_ptr, canvas.img_ptr, 0, 0);
+	ft_init_hooks(&canvas);
+	mlx_loop(canvas.mlx_ptr);
 }

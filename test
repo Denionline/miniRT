@@ -24,8 +24,4 @@ if [ $? -ne 0 ]; then
   exit 0
 fi
 
-# Execute selected file
-whiptail --yesno "Execute '$CHOICE'?" 10 40
-if [ $? -eq 0 ]; then
-  make "$CHOICE"
-fi
+make "$CHOICE"
