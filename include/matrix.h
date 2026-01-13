@@ -10,5 +10,6 @@ typedef struct s_matrix
 }	t_matrix;
 
 t_matrix	matrix(float *numbers, unsigned int size);
+t_matrix	transpose(t_matrix old_matrix);
 
 #endif

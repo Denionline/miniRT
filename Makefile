@@ -58,7 +58,7 @@ MATH_FILES		+= normalize
 MATH_FILES		+= dot
 MATH_FILES		+= cross
 
-MATRIX_FILES	+= matrix
+MATRIX_FILES	+= matrix transpose_matrix
 
 FILES			+= $(CANVAS_FILES) $(MATH_FILES) $(MATRIX_FILES)
 

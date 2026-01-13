@@ -10,4 +10,13 @@ int	main(void) {
 		}
 		printf("\n");
 	}
+	printf("\n=-=-=-= TRANSPOSE =-=-=-=\n");
+
+	m = transpose(m);
+	for (unsigned int i = 0; i < m.size; i++) {
+		for (unsigned int j = 0; j < m.size; j++) {
+			printf(" %.2f ", m.matrix[i][j]);
+		}
+		printf("\n");
+	}
 }
