@@ -5,6 +5,8 @@
 #include "libft/include/libft.h"
 
 #include <stdio.h>
+#include <math.h>
+#include <stdint.h>
 
 #include "math_head.h"
 #include "map.h"

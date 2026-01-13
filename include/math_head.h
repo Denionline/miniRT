@@ -1,10 +1,9 @@
 #ifndef MATH_HEAD_H
 # define MATH_HEAD_H
 
-#include "head.h"
-#include <math.h>
+# include "head.h"
 
-enum TUPLE_TYPES {
+enum e_TUPLE_TYPES {
 	VECTOR,
 	POINT,
 	COLOR,
@@ -12,22 +11,25 @@ enum TUPLE_TYPES {
 
 typedef struct s_tuple
 {
-	union {
-		float	x;
-		float	r;
+	union
+	{
+		struct
+		{
+			float	x;
+			float	y;
+			float	z;
+			float	w;
+		};
+		struct
+		{
+			uint8_t	r;
+			uint8_t	g;
+			uint8_t	b;
+		};
 	};
-	union {
-		float	y;
-		float	g;
-	};
-	union {
-		float	z;
-		float	b;
-	};
-	float	w;
 }	t_tuple;
 
-int	is_equals(float n1, float n2);
+int		is_equals(float n1, float n2);
 
 t_tuple	tuple(float x, float y, float z, float w);
 t_tuple	vector(float x, float y, float z);

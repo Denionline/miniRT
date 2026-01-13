@@ -95,7 +95,7 @@ $(NAME): $(BUILD_PATH) $(OBJS)
 	@$(CC) $(CFLAGS) -I$(INC_PATH) main.c $(OBJS) $(LIBS) $(MLXFLAGS) -o $(NAME)
 
 $(BUILD_PATH)%.o: %.c
-	@$(CC) $(CFLAGS) -I$(INC_PATH) -c $< -o $@ $(MLXFLAGS)
+	@$(CC) $(CFLAGS) -I$(INC_PATH) -c $< -o $@
 	@printf "$(C_YELLOW)Compiling $< -> $@$(C_STD)\n";
 
 $(BUILD_PATH):
@@ -125,12 +125,12 @@ make_libft:
 verify_mlx:
 	@if test ! -d "$(MLX_PATH)"; then $(MAKE) get_mlx; \
 		else printf "minilibx: $(C_GREEN)✅$(C_STD)\n"; fi
-	@$(MAKE) -C $(MLX_PATH)
 
 get_mlx:
 	@printf "Cloning get_next_line\n"
 	@git clone $(MLX_URL) $(MLX_PATH)
 	@printf "\n$(C_GREEN)minilibx$(C_STD) successfully downloaded\n"
+	@$(MAKE) -C $(MLX_PATH)
 
 test_math:
 	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/test_math.c $(OBJS) $(MLXFLAGS) -o test_math; ./test_math && rm -rf test_math
