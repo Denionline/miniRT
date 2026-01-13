@@ -44,8 +44,7 @@ MLX_PATH		= $(INC_PATH)/minilibx-linux/
 #                                   Files                                      #
 # **************************************************************************** #
 
-CANVAS_FILES	+= canvas
-
+CANVAS_FILES	+= canvas ft_pixel_put init_canvas ft_destroy_canvas ft_init_hooks color_operations
 MATH_FILES		+= constructors
 MATH_FILES		+= is_equals
 MATH_FILES		+= sum_tuples
@@ -136,4 +135,4 @@ test_math:
 	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/test_math.c $(OBJS) $(MLXFLAGS) -o test_math; ./test_math && rm -rf test_math
 
 test_canvas:
-	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/test_canvas.c $(OBJS) $(MLXFLAGS) -o test_canvas; ./test_canvas && rm -rf test_canvas
+	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/test_canvas.c $(OBJS) $(MLXFLAGS) -o test_canvas; valgrind ./test_canvas && rm -rf test_canvas

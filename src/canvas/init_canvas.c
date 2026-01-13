@@ -2,11 +2,11 @@
 
 int	init_canvas(t_canvas *canvas)
 {
-	canvas->init_screen = mlx_init();
-	if (canvas->init_img == (void *)0)
+	canvas->mlx_ptr = mlx_init();
+	if (canvas->mlx_ptr == (void *)0)
 		return (0);
-	canvas->win = mlx_new_window(canvas->init_screen, WIDTH, HEIGHT, "LA ELE");
-	canvas->init_img = mlx_new_image(canvas->init_screen, WIDTH, HEIGHT);
-	canvas->address = mlx_get_data_addr(canvas->init_img, &canvas->bpp, &canvas->sl, &canvas->endian);
+	canvas->win_ptr = mlx_new_window(canvas->mlx_ptr, WIDTH, HEIGHT, "LA ELE");
+	canvas->img_ptr = mlx_new_image(canvas->mlx_ptr, WIDTH, HEIGHT);
+	canvas->address = mlx_get_data_addr(canvas->img_ptr, &canvas->bpp, &canvas->sl, &canvas->endian);
 	return (1);
 }
