@@ -59,6 +59,7 @@ MATH_FILES		+= dot
 MATH_FILES		+= cross
 
 MATRIX_FILES	+= matrix
+MATRIX_FILES	+= multiply_matrix
 
 FILES			+= $(CANVAS_FILES) $(MATH_FILES) $(MATRIX_FILES)
 

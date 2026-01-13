@@ -10,5 +10,6 @@ typedef struct s_matrix
 }	t_matrix;
 
 t_matrix	matrix(float *numbers, unsigned int size);
+t_matrix	multiply_matrix(t_matrix m1, t_matrix m2);
 
 #endif
