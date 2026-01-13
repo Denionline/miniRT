@@ -55,6 +55,7 @@ MATH_FILES		+= divide_tuple
 MATH_FILES		+= magnitude
 MATH_FILES		+= normalize
 MATH_FILES		+= dot
+MATH_FILES		+= cross
 
 FILES			+= $(CANVAS_FILES) $(MATH_FILES)
 
