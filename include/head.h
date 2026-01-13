@@ -1,13 +1,16 @@
 #ifndef HEAD_H
 # define HEAD_H
 
-#include <stdint.h>
-#include "math.h"
-#include "map.h"
 #include "minilibx-linux/mlx.h"
 #include "libft/include/libft.h"
-#include "canvas.h"
+
+#include <stdio.h>
 #include <math.h>
+#include <stdint.h>
+
+#include "math_head.h"
+#include "map.h"
+#include "canvas.h"
 
 typedef struct s_head
 {

@@ -33,7 +33,8 @@ VPATH			+= src/
 VPATH			+= src/aux/
 VPATH			+= src/canvas/
 VPATH			+= src/math/
-VPATH			+= src/math/aux
+VPATH			+= src/math/aux/
+VPATH			+= src/math/operations/
 VPATH			+= src/parse/
 
 LIBFT_PATH		= $(INC_PATH)/libft/
@@ -46,11 +47,17 @@ MLX_PATH		= $(INC_PATH)/minilibx-linux/
 CANVAS_FILES	+= canvas ft_pixel_put init_canvas ft_destroy_canvas ft_init_hooks color_operations
 MATH_FILES		+= constructors
 MATH_FILES		+= is_equals
+MATH_FILES		+= sum_tuples
+MATH_FILES		+= subtract_tuples
+MATH_FILES		+= negate_tuple
+MATH_FILES		+= multiply_tuple
+MATH_FILES		+= divide_tuple
+MATH_FILES		+= magnitude
+MATH_FILES		+= normalize
+MATH_FILES		+= dot
 
 FILES			+= $(CANVAS_FILES) $(MATH_FILES)
 
-MATH_SRCS		= $(addprefix ./src/math/, $(addsuffix .c, $(MATH_FILES)))
-CANVAS_SRCS		= $(addprefix ./src/canvas/, $(addsuffix .c, $(CANVAS_FILES)))
 SRCS			= $(addprefix ./, $(addsuffix .c, $(FILES)))
 OBJS			= $(addprefix $(BUILD_PATH), $(addsuffix .o, $(FILES)))
 
@@ -77,14 +84,14 @@ LIBS			= $(LIBFT)
 #                                  Commands                                    #
 # **************************************************************************** #
 
-all: start verify_libft verify_mlx $(VALGRINDRC) $(NAME)
+all: start verify_libft verify_mlx $(NAME)
 	@printf "$(C_MAGENTA)===========End [$(NAME)]===========$(C_STD)\n"
 
 start:
 	@printf "$(C_MAGENTA)===========Program [$(NAME)]===========$(C_STD)\n"
 
 $(NAME): $(BUILD_PATH) $(OBJS)
-	@$(CC) $(CFLAGS) -I$(INC_PATH) main.c  $(OBJS) -lreadline $(MLXFLAGS) $(LIBS) -o $(NAME)
+	@$(CC) $(CFLAGS) -I$(INC_PATH) main.c $(OBJS) $(LIBS) $(MLXFLAGS) -o $(NAME)
 
 $(BUILD_PATH)%.o: %.c
 	@$(CC) $(CFLAGS) -I$(INC_PATH) -c $< -o $@
@@ -117,15 +124,15 @@ make_libft:
 verify_mlx:
 	@if test ! -d "$(MLX_PATH)"; then $(MAKE) get_mlx; \
 		else printf "minilibx: $(C_GREEN)✅$(C_STD)\n"; fi
-	@$(MAKE) -C $(MLX_PATH)
 
 get_mlx:
 	@printf "Cloning get_next_line\n"
 	@git clone $(MLX_URL) $(MLX_PATH)
 	@printf "\n$(C_GREEN)minilibx$(C_STD) successfully downloaded\n"
+	@$(MAKE) -C $(MLX_PATH)
 
 test_math:
-	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/test_math.c $(OBJS) -o test_math; ./test_math && rm -rf test_math
+	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/test_math.c $(OBJS) $(MLXFLAGS) -o test_math; ./test_math && rm -rf test_math
 
 test_canvas:
 	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/test_canvas.c $(OBJS) $(MLXFLAGS) -o test_canvas; valgrind ./test_canvas && rm -rf test_canvas
