@@ -4,7 +4,7 @@ void	print_matrix(t_matrix m)
 {
 	for (unsigned int i = 0; i < m.size; i++) {
 		for (unsigned int j = 0; j < m.size; j++) {
-			printf(" %.2f ", m.matrix[i][j]);
+			printf(" %.5f ", m.matrix[i][j]);
 		}
 		printf("\n");
 	}
@@ -75,4 +75,13 @@ int	main(void) {
 	printf("matrix:\n");
 	print_matrix(m8);
 	printf("Determinant: %.2f\n", determinant(m8));
+
+	printf("\n=-=-=-= inverse =-=-=-=\n");
+	t_matrix	m9 = matrix(
+		(float[]){-2, -8, 3, 5, -3, 1, 7, 3, 1, 2, -9, 6, -6, 7, 7, -9}
+		, 4);
+	printf("matrix:\n");
+	print_matrix(m9);
+	printf("Inverse matrix:\n");
+	print_matrix(inverse(m9));
 }
