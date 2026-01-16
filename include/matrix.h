@@ -15,6 +15,7 @@ t_matrix	multiply_matrix(t_matrix m1, t_matrix m2);
 t_matrix	identity_matrix(void);
 t_matrix	submatrix(t_matrix matrix_org, unsigned int row, unsigned int col);
 float		minor_3d(t_matrix matrix_3d, unsigned int row, unsigned int col);
+float		cofactor(t_matrix matrix_3d, unsigned int row, unsigned int col);
 float		determ_2d(t_matrix matrix2d);
 
 #endif
