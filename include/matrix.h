@@ -16,6 +16,7 @@ t_tuple		multiply_matrix_tuple(t_matrix matrix, t_tuple t);
 t_matrix	translation(float x, float y, float z);
 t_matrix	transpose(t_matrix old_matrix);
 t_matrix	submatrix(t_matrix matrix_org, unsigned int row, unsigned int col);
+float		minor_3d(t_matrix matrix_3d, unsigned int row, unsigned int col);
 float		determ_2d(t_matrix matrix2d);
 
 #endif

@@ -90,4 +90,12 @@ int	main(void) {
 	print_matrix(m5);
 	printf("submatrix:\n");
 	print_matrix(submatrix(m5, 2, 1));
+
+	printf("\n=-=-=-= Minor =-=-=-=\n");
+	t_matrix	m6 = matrix(
+		(float[]){3, 5, 0, 2, -1, -7, 6, -1, 5}
+		, 3);
+	printf("matrix:\n");
+	print_matrix(m6);
+	printf("Minor: %.3f\n", minor_3d(m6, 1, 0));
 }
