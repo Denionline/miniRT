@@ -64,6 +64,7 @@ MATRIX_FILES	+= identity_matrix
 MATRIX_FILES	+= transpose_matrix
 MATRIX_FILES	+= determinant
 MATRIX_FILES	+= submatrix
+MATRIX_FILES	+= minor
 
 FILES			+= $(CANVAS_FILES) $(MATH_FILES) $(MATRIX_FILES)
 
