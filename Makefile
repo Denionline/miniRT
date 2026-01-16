@@ -68,6 +68,7 @@ MATRIX_FILES	+= determinant
 MATRIX_FILES	+= submatrix
 MATRIX_FILES	+= minor
 MATRIX_FILES	+= cofactor
+MATRIX_FILES	+= inverse
 
 FILES			+= $(CANVAS_FILES) $(MATH_FILES) $(MATRIX_FILES)
 
