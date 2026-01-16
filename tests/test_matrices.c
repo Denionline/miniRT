@@ -32,4 +32,22 @@ int	main(void) {
 		, 2);
 	print_matrix(m3);
 	printf ("Determinant: %.3f\n", determ_2d(m3));
+
+	printf("\n=-=-=-= Submatrix =-=-=-=\n");
+	t_matrix	m4 = matrix(
+		(float[]){1, 5, 0, -3, 2, 7, 0, 6, -3}
+		, 3);
+	printf("matrix:\n");
+	print_matrix(m4);
+	printf("submatrix:\n");
+	print_matrix(submatrix(m4, 0, 2));
+
+	printf("\n=-=-=-= Submatrix 2 =-=-=-=\n");
+	t_matrix	m5 = matrix(
+		(float[]){-6, 1, 1, 6, -8, 5, 8, 6, -1, 0, 8, 2, -7, 1, -1, 1}
+		, 4);
+	printf("matrix:\n");
+	print_matrix(m5);
+	printf("submatrix:\n");
+	print_matrix(submatrix(m5, 2, 1));
 }
