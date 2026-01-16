@@ -15,5 +15,6 @@ t_matrix	identity_matrix(void);
 t_tuple		multiply_matrix_tuple(t_matrix matrix, t_tuple t);
 t_matrix	translation(float x, float y, float z);
 t_matrix	transpose(t_matrix old_matrix);
+float		determ_2d(t_matrix matrix2d);
 
 #endif

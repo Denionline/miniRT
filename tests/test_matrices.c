@@ -36,6 +36,18 @@ int	main(void) {
 	m = multiply_matrix(m1, m2);
 	printf("\n=-=-=-= TRANSPOSE =-=-=-=\n");
 
+	m1 = matrix(
+		(float[16]){1, 2, 3, 4, 5, 6, 7, 8, 9, 8, 7, 6, 5, 4, 3, 2}
+		, 4);
+	m2 = matrix(
+		(float[16]){-2, 1, 2, 3, 3, 2, 1, -1, 4, 3, 6, 5, 1, 2, 7, 8}
+		, 4);
+
+	m = multiply_matrix(m1, m2);
+	print_matrix(m);
+
+	printf("\n=-=-=-= TRANSPOSE =-=-=-=\n");
+	
 	m = transpose(m);
 	for (unsigned int i = 0; i < m.size; i++) {
 		for (unsigned int j = 0; j < m.size; j++) {
@@ -52,4 +64,12 @@ int	main(void) {
 	print_tuple(p);
 	r = multiply_matrix_tuple(m, p);
 	print_tuple(r);
+	print_matrix(m);
+
+	printf("\n=-=-=-= Determinat 2d =-=-=-=\n");
+	t_matrix	m3 = matrix(
+		(float[]){1, 5, -3, 2}
+		, 2);
+	print_matrix(m3);
+	printf ("Determinant: %.3f\n", determ_2d(m3));
 }
