@@ -155,3 +155,6 @@ PIT_Vector:
 
 test_matrices:
 	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/test_matrices.c $(OBJS) $(MLXFLAGS) -o t; valgrind ./t && rm -rf t
+
+test_matrices_gdb:
+	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/test_matrices.c $(OBJS) $(MLXFLAGS) -o t; gdb --tui ./t && rm -rf t

@@ -100,4 +100,19 @@ int	main(void) {
 	printf("Minor: %.3f\n", minor_3d(m6, 1, 0));
 	printf("Minor: %.3f\n", cofactor(m6, 1, 0));
 
+	printf("\n=-=-=-= determinant =-=-=-=\n");
+	t_matrix	m7 = matrix(
+		(float[]){1, 2, 6, -5, 8, -4, 2, 6, 4}
+		, 3);
+	printf("matrix:\n");
+	print_matrix(m7);
+	printf("Determinant: %.3f\n", determinant(m7));
+
+	printf("\n=-=-=-= determinant =-=-=-=\n");
+	t_matrix	m8 = matrix(
+		(float[]){-2, -8, 3, 5, -3, 1, 7, 3, 1, 2, -9, 6, -6, 7, 7, -9}
+		, 4);
+	printf("matrix:\n");
+	print_matrix(m8);
+	printf("Determinant: %.2f\n", determinant(m8));
 }
