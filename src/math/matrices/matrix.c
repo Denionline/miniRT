@@ -6,17 +6,17 @@ t_matrix	matrix(float *numbers, unsigned int size)
 	unsigned int	i;
 	unsigned int	j;
 
+	if (size > 4)
+		size = 4;
+	else if (size < 2)
+		size = 2;
 	m.size = size;
-	i = 0;
-	while (i < size)
+	i = -1;
+	while (++i < size)
 	{
-		j = 0;
-		while (j < size)
-		{
+		j = -1;
+		while (++j < size)
 			m.matrix[i][j] = numbers[i * size + j];
-			j++;
-		}
-		i++;
 	}
 	return (m);
 }

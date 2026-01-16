@@ -1,9 +1,14 @@
 #include "head.h"
 
 int	main(void) {
-	float		numbers[16] = {1, 2, 3, 4, 5.5, 6.5, 7.5, 8.5, 9, 10, 11, 12, 13.5, 14.5, 15.5, 16.5};
-	t_matrix	m = matrix(numbers, 4);
+	t_matrix	m1 = matrix(
+		(float[16]){1, 2, 3, 4, 5, 6, 7, 8, 9, 8, 7, 6, 5, 4, 3, 2}
+		, 4);
+	t_matrix	m2 = matrix(
+		(float[16]){-2, 1, 2, 3, 3, 2, 1, -1, 4, 3, 6, 5, 1, 2, 7, 8}
+		, 4);
 
+	t_matrix	m = multiply_matrix(m1, m2);
 	for (unsigned int i = 0; i < m.size; i++) {
 		for (unsigned int j = 0; j < m.size; j++) {
 			printf(" %.2f ", m.matrix[i][j]);

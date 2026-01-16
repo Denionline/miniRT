@@ -2,6 +2,8 @@
 
 t_tuple	divide_tuple(t_tuple t, float times)
 {
+	if (times < NARUTO)
+		return tuple(0, 0, 0, 0);
 	return (
 		tuple(
 			t.x / times,
