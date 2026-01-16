@@ -34,7 +34,7 @@ VPATH			+= src/aux/
 VPATH			+= src/canvas/
 VPATH			+= src/math/
 VPATH			+= src/math/aux/
-VPATH			+= src/math/operations/
+VPATH			+= src/math/tuples/
 VPATH			+= src/math/matrices/
 VPATH			+= src/parse/
 
@@ -61,7 +61,8 @@ MATH_FILES		+= cross
 MATRIX_FILES	+= matrix
 MATRIX_FILES	+= multiply_matrix
 MATRIX_FILES	+= identity_matrix
-MATRIX_FILES	+= matrix transpose_matrix
+MATRIX_FILES	+= transpose_matrix
+MATRIX_FILES	+= determinant
 
 FILES			+= $(CANVAS_FILES) $(MATH_FILES) $(MATRIX_FILES)
 
