@@ -1,18 +1,52 @@
 #include "head.h"
 
-int	main(void) {
-	t_matrix	m1 = matrix(
-		(float[16]){1, 2, 3, 4, 5, 6, 7, 8, 9, 8, 7, 6, 5, 4, 3, 2}
-		, 4);
-	t_matrix	m2 = matrix(
-		(float[16]){-2, 1, 2, 3, 3, 2, 1, -1, 4, 3, 6, 5, 1, 2, 7, 8}
-		, 4);
+static void	print_tuple(t_tuple t) {
+	if (t.w == VECTOR)
+		printf("%6s", "Vector");
+	else if (t.w == POINT)
+		printf("%6s", "Point");
+	else
+		printf("%6s", "Tuple");
+	printf(" | x: %6.2f | y: %6.2f | z: %6.2f | w: %6.2f\n", t.x, t.y, t.z, t.w);
+}
 
-	t_matrix	m = multiply_matrix(m1, m2);
+static void	print_matrix(t_matrix m) {
 	for (unsigned int i = 0; i < m.size; i++) {
 		for (unsigned int j = 0; j < m.size; j++) {
 			printf(" %.2f ", m.matrix[i][j]);
 		}
 		printf("\n");
 	}
+}
+
+int	main(void) {
+	t_matrix	m1;
+	t_matrix	m2;
+	t_matrix	m;
+	t_tuple		p;
+	t_tuple		r;
+
+	m1 = matrix(
+		(float[16]){1, 2, 3, 4, 5, 6, 7, 8, 9, 8, 7, 6, 5, 4, 3, 2}
+		, 4);
+	m2 = matrix(
+		(float[16]){-2, 1, 2, 3, 3, 2, 1, -1, 4, 3, 6, 5, 1, 2, 7, 8}
+		, 4);
+
+	m = multiply_matrix(m1, m2);
+	for (unsigned int i = 0; i < m.size; i++) {
+		for (unsigned int j = 0; j < m.size; j++) {
+			printf(" %.2f ", m.matrix[i][j]);
+		}
+		printf("\n");
+	}
+	printf("\n");
+
+	m = translation(5, -3, 2);
+	p = point(-3, 4, 5);
+
+	print_matrix(m);
+	print_tuple(p);
+	r = multiply_matrix_tuple(m, p);
+	print_tuple(r);
 }
