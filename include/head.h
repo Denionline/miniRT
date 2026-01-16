@@ -9,6 +9,7 @@
 #include <stdint.h>
 
 #include "math_head.h"
+#include "matrix.h"
 #include "map.h"
 #include "canvas.h"
 
