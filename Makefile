@@ -34,7 +34,7 @@ VPATH			+= src/aux/
 VPATH			+= src/canvas/
 VPATH			+= src/math/
 VPATH			+= src/math/aux/
-VPATH			+= src/math/operations/
+VPATH			+= src/math/tuples/
 VPATH			+= src/math/matrices/
 VPATH			+= src/parse/
 
