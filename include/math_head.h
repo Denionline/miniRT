@@ -4,6 +4,7 @@
 # include "head.h"
 
 # define NARUTO 0.000001
+# define PI 3.14159
 
 enum e_TUPLE_TYPES {
 	VECTOR,

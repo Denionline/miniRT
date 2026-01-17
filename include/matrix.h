@@ -22,4 +22,7 @@ float		minor_3d(t_matrix matrix_3d, unsigned int row, unsigned int col);
 float		cofactor(t_matrix matrix_3d, unsigned int row, unsigned int col);
 float		determinant(t_matrix m);
 
+//Transformations
+t_matrix	rotation_x(double radians);
+
 #endif

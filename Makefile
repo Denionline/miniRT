@@ -69,6 +69,7 @@ MATRIX_FILES	+= submatrix
 MATRIX_FILES	+= minor
 MATRIX_FILES	+= cofactor
 MATRIX_FILES	+= inverse
+MATRIX_FILES	+= rotation_x
 
 FILES			+= $(CANVAS_FILES) $(MATH_FILES) $(MATRIX_FILES)
 
@@ -159,3 +160,6 @@ test_matrices:
 
 test_matrices_gdb:
 	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/test_matrices.c $(OBJS) $(MLXFLAGS) -o t; gdb --tui ./t && rm -rf t
+
+transform_rotate:
+	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/transform_rotate.c $(OBJS) $(MLXFLAGS) -o t; valgrind ./t && rm -rf t
