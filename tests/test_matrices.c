@@ -71,7 +71,7 @@ int	main(void) {
 		(float[]){1, 5, -3, 2}
 		, 2);
 	print_matrix(m3);
-	printf ("Determinant: %.3f\n", determ_2d(m3));
+	printf ("Determinant: %.3f\n", determinant(m3));
 
 	printf("\n=-=-=-= Submatrix =-=-=-=\n");
 	t_matrix	m4 = matrix(
@@ -124,4 +124,29 @@ int	main(void) {
 	print_matrix(m9);
 	printf("Inverse matrix:\n");
 	print_matrix(inverse(m9));
+
+	printf("\n=-=-=-= inverse =-=-=-=\n");
+	t_matrix	m10 = matrix(
+		(float[]){8, -5, 9, 2, 7, 5, 6, 1, -6, 0, 9, 6, -3, 0, -9, -4}
+		, 4);
+	printf("matrix:\n");
+	print_matrix(m10);
+	printf("Inverse matrix:\n");
+	print_matrix(inverse(m10));
+
+	printf("\n=-=-=-= inverse Mult =-=-=-=\n");
+	printf("matrix A:\n");
+	t_matrix	m11 = matrix(
+		(float[]){3, -9, 7, 3, 3, -8, 2, -9, -4, 4, 4, 1, -6, 5, -1, 1}
+		, 4);
+	print_matrix(m11);
+	printf("matrix B:\n");
+	t_matrix	m12 = matrix(
+		(float[]){8, 2, 2, 2, 3, -1, 7, 0, 7, 0, 5, 4, 6, -2, 0, 5}
+		, 4);
+	print_matrix(m12);
+	printf("matrix mult:\n");
+	print_matrix(multiply_matrix(m11, m12));
+	printf("C * Inverse(b) = A:\n");
+	print_matrix(multiply_matrix(multiply_matrix(m11, m12), inverse(m12)));
 }
