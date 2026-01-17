@@ -34,7 +34,7 @@ VPATH			+= src/aux/
 VPATH			+= src/canvas/
 VPATH			+= src/math/
 VPATH			+= src/math/aux/
-VPATH			+= src/math/operations/
+VPATH			+= src/math/tuples/
 VPATH			+= src/math/matrices/
 VPATH			+= src/parse/
 
@@ -61,6 +61,12 @@ MATH_FILES		+= cross
 MATRIX_FILES	+= matrix
 MATRIX_FILES	+= multiply_matrix
 MATRIX_FILES	+= identity_matrix
+MATRIX_FILES	+= transpose_matrix
+MATRIX_FILES	+= determinant
+MATRIX_FILES	+= submatrix
+MATRIX_FILES	+= minor
+MATRIX_FILES	+= cofactor
+MATRIX_FILES	+= inverse
 
 FILES			+= $(CANVAS_FILES) $(MATH_FILES) $(MATRIX_FILES)
 
@@ -148,3 +154,6 @@ PIT_Vector:
 
 test_matrices:
 	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/test_matrices.c $(OBJS) $(MLXFLAGS) -o t; valgrind ./t && rm -rf t
+
+test_matrices_gdb:
+	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/test_matrices.c $(OBJS) $(MLXFLAGS) -o t; gdb --tui ./t && rm -rf t

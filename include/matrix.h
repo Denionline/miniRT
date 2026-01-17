@@ -10,7 +10,13 @@ typedef struct s_matrix
 }	t_matrix;
 
 t_matrix	matrix(float *numbers, unsigned int size);
+t_matrix	transpose(t_matrix old_matrix);
 t_matrix	multiply_matrix(t_matrix m1, t_matrix m2);
 t_matrix	identity_matrix(void);
+t_matrix	submatrix(t_matrix matrix_org, unsigned int row, unsigned int col);
+t_matrix	inverse(t_matrix m);
+float		minor_3d(t_matrix matrix_3d, unsigned int row, unsigned int col);
+float		cofactor(t_matrix matrix_3d, unsigned int row, unsigned int col);
+float		determinant(t_matrix m);
 
 #endif
