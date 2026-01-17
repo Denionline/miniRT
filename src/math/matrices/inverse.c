@@ -16,6 +16,7 @@ t_matrix	inverse(t_matrix m)
 	det = 1 / det;
 	while (i < m.size)
 	{
+		j = 0;
 		while (j < m.size)
 		{
 			inv_m.matrix[j][i] = cofactor(m, i, j) * det;
