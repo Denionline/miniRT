@@ -181,3 +181,6 @@ test_scaling:
 
 test_shearing:
 	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/test_shearing.c $(OBJS) $(MLXFLAGS) -o t; valgrind ./t && rm -rf t
+
+test_chaining:
+	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/test_chaining.c $(OBJS) $(MLXFLAGS) -o t; valgrind ./t && rm -rf t
