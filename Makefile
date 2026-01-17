@@ -79,8 +79,6 @@ MATRIX_FILES	+= rotation_y
 MATRIX_FILES	+= rotation_z
 MATRIX_FILES	+= scaling
 MATRIX_FILES	+= shearing
-MATRIX_FILES	+= scaling
-MATRIX_FILES	+= shearing
 
 FILES			+= $(TEST_FILES) $(CANVAS_FILES) $(MATH_FILES) $(MATRIX_FILES)
 
@@ -174,6 +172,9 @@ test_matrices_gdb:
 
 transform_rotate:
 	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/transform_rotate.c $(OBJS) $(MLXFLAGS) -o t; valgrind ./t && rm -rf t
+
+PIT_transformations:
+	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/PIT_transformations.c $(OBJS) $(MLXFLAGS) -o t; valgrind ./t && rm -rf t
 
 test_scaling:
 	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/test_scaling.c $(OBJS) $(MLXFLAGS) -o t; valgrind ./t && rm -rf t
