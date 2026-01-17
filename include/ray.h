@@ -10,5 +10,6 @@ typedef struct s_ray
 }	t_ray;
 
 t_ray	ray(t_tuple origin, t_tuple direction);
+t_tuple	position(t_ray r, float	t);
 
 #endif

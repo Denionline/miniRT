@@ -82,6 +82,7 @@ MATRIX_FILES	+= scaling
 MATRIX_FILES	+= shearing
 
 RAY_FILES		+= ray_constructor
+RAY_FILES		+= position
 
 FILES			+= $(TEST_FILES) $(CANVAS_FILES) $(MATH_FILES) $(MATRIX_FILES) $(RAY_FILES)
 
