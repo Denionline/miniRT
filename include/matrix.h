@@ -19,6 +19,7 @@ t_matrix	transpose(t_matrix old_matrix);
 t_matrix	submatrix(t_matrix matrix_org, unsigned int row, unsigned int col);
 t_matrix	inverse(t_matrix m);
 t_matrix	scaling(float x, float y, float z);
+t_matrix	shearing(t_tuple p1, t_tuple p2);
 float		minor_3d(t_matrix matrix_3d, unsigned int row, unsigned int col);
 float		cofactor(t_matrix matrix_3d, unsigned int row, unsigned int col);
 float		determinant(t_matrix m);

@@ -71,6 +71,7 @@ MATRIX_FILES	+= minor
 MATRIX_FILES	+= cofactor
 MATRIX_FILES	+= inverse
 MATRIX_FILES	+= scaling
+MATRIX_FILES	+= shearing
 
 FILES			+= $(CANVAS_FILES) $(MATH_FILES) $(MATRIX_FILES)
 
@@ -164,3 +165,6 @@ test_matrices_gdb:
 
 test_scaling:
 	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/test_scaling.c $(OBJS) $(MLXFLAGS) -o t; valgrind ./t && rm -rf t
+
+test_shearing:
+	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/test_shearing.c $(OBJS) $(MLXFLAGS) -o t; valgrind ./t && rm -rf t
