@@ -2,7 +2,7 @@
 
 # Get executable files in current directory
 FILES=()
-for f in tests/*; do
+for f in tests/*.c; do
     FILES+=($(basename "$f" ".c") "")
 done
 

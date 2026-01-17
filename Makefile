@@ -29,6 +29,7 @@ INC_PATH		= include
 BUILD_PATH		= .build/
 
 VPATH			+= ./
+VPATH			+= tests/aux/
 VPATH			+= src/
 VPATH			+= src/aux/
 VPATH			+= src/canvas/
@@ -45,6 +46,9 @@ MLX_PATH		= $(INC_PATH)/minilibx-linux/
 # **************************************************************************** #
 #                                   Files                                      #
 # **************************************************************************** #
+
+TEST_FILES		+= print_matrix
+TEST_FILES		+= print_tuple
 
 CANVAS_FILES	+= canvas ft_pixel_put init_canvas ft_destroy_canvas ft_init_hooks color_operations
 MATH_FILES		+= constructors
@@ -70,10 +74,15 @@ MATRIX_FILES	+= submatrix
 MATRIX_FILES	+= minor
 MATRIX_FILES	+= cofactor
 MATRIX_FILES	+= inverse
+MATRIX_FILES	+= rotation_x
+MATRIX_FILES	+= rotation_y
+MATRIX_FILES	+= rotation_z
+MATRIX_FILES	+= scaling
+MATRIX_FILES	+= shearing
 MATRIX_FILES	+= scaling
 MATRIX_FILES	+= shearing
 
-FILES			+= $(CANVAS_FILES) $(MATH_FILES) $(MATRIX_FILES)
+FILES			+= $(TEST_FILES) $(CANVAS_FILES) $(MATH_FILES) $(MATRIX_FILES)
 
 SRCS			= $(addprefix ./, $(addsuffix .c, $(FILES)))
 OBJS			= $(addprefix $(BUILD_PATH), $(addsuffix .o, $(FILES)))
@@ -162,6 +171,9 @@ test_matrices:
 
 test_matrices_gdb:
 	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/test_matrices.c $(OBJS) $(MLXFLAGS) -o t; gdb --tui ./t && rm -rf t
+
+transform_rotate:
+	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/transform_rotate.c $(OBJS) $(MLXFLAGS) -o t; valgrind ./t && rm -rf t
 
 test_scaling:
 	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/test_scaling.c $(OBJS) $(MLXFLAGS) -o t; valgrind ./t && rm -rf t
