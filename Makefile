@@ -79,8 +79,6 @@ MATRIX_FILES	+= rotation_y
 MATRIX_FILES	+= rotation_z
 MATRIX_FILES	+= scaling
 MATRIX_FILES	+= shearing
-MATRIX_FILES	+= scaling
-MATRIX_FILES	+= shearing
 
 FILES			+= $(TEST_FILES) $(CANVAS_FILES) $(MATH_FILES) $(MATRIX_FILES)
 
@@ -180,3 +178,6 @@ test_scaling:
 
 test_shearing:
 	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/test_shearing.c $(OBJS) $(MLXFLAGS) -o t; valgrind ./t && rm -rf t
+
+test_chaining:
+	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/test_chaining.c $(OBJS) $(MLXFLAGS) -o t; valgrind ./t && rm -rf t
