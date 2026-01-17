@@ -29,6 +29,7 @@ INC_PATH		= include
 BUILD_PATH		= .build/
 
 VPATH			+= ./
+VPATH			+= tests/aux/
 VPATH			+= src/
 VPATH			+= src/aux/
 VPATH			+= src/canvas/
@@ -44,6 +45,9 @@ MLX_PATH		= $(INC_PATH)/minilibx-linux/
 # **************************************************************************** #
 #                                   Files                                      #
 # **************************************************************************** #
+
+TEST_FILES		+= print_matrix
+TEST_FILES		+= print_tuple
 
 CANVAS_FILES	+= canvas ft_pixel_put init_canvas ft_destroy_canvas ft_init_hooks color_operations
 MATH_FILES		+= constructors
@@ -70,8 +74,10 @@ MATRIX_FILES	+= minor
 MATRIX_FILES	+= cofactor
 MATRIX_FILES	+= inverse
 MATRIX_FILES	+= rotation_x
+MATRIX_FILES	+= rotation_y
+MATRIX_FILES	+= rotation_z
 
-FILES			+= $(CANVAS_FILES) $(MATH_FILES) $(MATRIX_FILES)
+FILES			+= $(TEST_FILES) $(CANVAS_FILES) $(MATH_FILES) $(MATRIX_FILES)
 
 SRCS			= $(addprefix ./, $(addsuffix .c, $(FILES)))
 OBJS			= $(addprefix $(BUILD_PATH), $(addsuffix .o, $(FILES)))

@@ -24,5 +24,7 @@ float		determinant(t_matrix m);
 
 //Transformations
 t_matrix	rotation_x(double radians);
+t_matrix	rotation_y(double radians);
+t_matrix	rotation_z(double radians);
 
 #endif
