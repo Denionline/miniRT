@@ -1,6 +1,6 @@
 #include "head.h"
 
-static void	print_tuple(t_tuple t)
+void	print_tuple(t_tuple t)
 {
 	const char	*type;
 

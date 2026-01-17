@@ -18,4 +18,8 @@ typedef struct s_head
 	t_map	*map;
 }	t_head;
 
+//Test auxiliars
+void	print_matrix(t_matrix m);
+void	print_tuple(t_tuple t);
+
 #endif
