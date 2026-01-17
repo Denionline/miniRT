@@ -8,6 +8,6 @@ t_matrix	identity_matrix(void)
 			0, 1, 0, 0,
 			0, 0, 1, 0,
 			0, 0, 0, 1
-		}, 4)
-	);
+		}
+		, 4));
 }
