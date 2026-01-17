@@ -79,6 +79,7 @@ MATRIX_FILES	+= rotation_y
 MATRIX_FILES	+= rotation_z
 MATRIX_FILES	+= scaling
 MATRIX_FILES	+= shearing
+MATRIX_FILES	+= scaling
 
 FILES			+= $(TEST_FILES) $(CANVAS_FILES) $(MATH_FILES) $(MATRIX_FILES)
 
@@ -171,6 +172,7 @@ test_matrices_gdb:
 	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/test_matrices.c $(OBJS) $(MLXFLAGS) -o t; gdb --tui ./t && rm -rf t
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 transform_rotate:
 	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/transform_rotate.c $(OBJS) $(MLXFLAGS) -o t; valgrind ./t && rm -rf t
 =======
@@ -183,3 +185,7 @@ test_scaling:
 test_shearing:
 	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/test_shearing.c $(OBJS) $(MLXFLAGS) -o t; valgrind ./t && rm -rf t
 >>>>>>> 37fd8a1 (ADD: New function for shearing transformations)
+=======
+test_scaling:
+	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/test_scaling.c $(OBJS) $(MLXFLAGS) -o t; valgrind ./t && rm -rf t
+>>>>>>> 9c0f0d3 (FEAT: New function scaling, and realocating translation to the folder matrices/transformations)
