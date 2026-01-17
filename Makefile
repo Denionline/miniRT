@@ -36,6 +36,7 @@ VPATH			+= src/math/
 VPATH			+= src/math/aux/
 VPATH			+= src/math/tuples/
 VPATH			+= src/math/matrices/
+VPATH			+= src/math/matrices/transformations
 VPATH			+= src/parse/
 
 LIBFT_PATH		= $(INC_PATH)/libft/
@@ -69,6 +70,7 @@ MATRIX_FILES	+= submatrix
 MATRIX_FILES	+= minor
 MATRIX_FILES	+= cofactor
 MATRIX_FILES	+= inverse
+MATRIX_FILES	+= scaling
 
 FILES			+= $(CANVAS_FILES) $(MATH_FILES) $(MATRIX_FILES)
 
@@ -159,3 +161,6 @@ test_matrices:
 
 test_matrices_gdb:
 	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/test_matrices.c $(OBJS) $(MLXFLAGS) -o t; gdb --tui ./t && rm -rf t
+
+test_scaling:
+	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/test_scaling.c $(OBJS) $(MLXFLAGS) -o t; valgrind ./t && rm -rf t
