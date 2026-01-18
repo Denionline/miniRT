@@ -75,9 +75,9 @@ MATRIX_FILES	+= submatrix
 MATRIX_FILES	+= minor
 MATRIX_FILES	+= cofactor
 MATRIX_FILES	+= inverse
-MATRIX_FILES	+= rotation_x
-MATRIX_FILES	+= rotation_y
-MATRIX_FILES	+= rotation_z
+MATRIX_FILES	+= rotate_x
+MATRIX_FILES	+= rotate_y
+MATRIX_FILES	+= rotate_z
 MATRIX_FILES	+= scaling
 MATRIX_FILES	+= shearing
 
