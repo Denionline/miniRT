@@ -1,6 +1,6 @@
 #include "head.h"
 
-static t_intersect	intersect_values(t_intersect inter, t_tuple vec, float delta)
+static t_intersections	intersect_values(t_intersections inter, t_tuple vec, float delta, t_object *ob)
 {
 	float	sqr_root;
 	float	division;
@@ -15,23 +15,26 @@ static t_intersect	intersect_values(t_intersect inter, t_tuple vec, float delta)
 		inter.count = 2;
 		sqr_root = sqrtf(delta);
 	}
-	inter.pos[0] = (-vec.y + sqr_root) * division;
-	inter.pos[1] = (-vec.y - sqr_root) * division;
+	inter.array = calloc(2, sizeof(t_intersection));
+	if (!inter.array)
+		exit(404);
+	inter.array[0] = intersection((-vec.y + sqr_root) * division, ob);
+	inter.array[1] = intersection((-vec.y - sqr_root) * division, ob);
 	return (inter);
 }
 
-t_intersect	intersect(t_object sphere, t_ray r)
+t_intersections	intersect(t_object *object, t_ray r)
 {
-	t_intersect	inter;
-	t_tuple		vec;
-	float		delta;
+	t_intersections	inter;
+	t_tuple			vec;
+	float			delta;
 
-	inter = (t_intersect) {};
+	inter = (t_intersections) {};
 	vec = vector(dot(r.direction, r.direction), \
 	2 * dot(r.origin, r.direction), dot(r.origin, r.origin) - \
-	(((t_sphere *) sphere.options)->diameter * 0.5) * \
-	(((t_sphere *) sphere.options)->diameter * 0.5));
+	(((t_sphere *) object->options)->diameter * 0.5) * \
+	(((t_sphere *) object->options)->diameter * 0.5));
 	delta = vec.y * vec.y - 4.0f * vec.x * vec.z;
-	inter = intersect_values(inter, vec, delta);
+	inter = intersect_values(inter, vec, delta, object);
 	return (inter);
 }
