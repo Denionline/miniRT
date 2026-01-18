@@ -195,3 +195,6 @@ test_physical_ray:
 
 test_intersection:
 	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/test_intersection.c $(OBJS) $(MLXFLAGS) -o t; valgrind ./t && rm -rf t
+
+test_transform_ray:
+	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/test_transform_ray.c $(OBJS) $(MLXFLAGS) -o t; valgrind ./t && rm -rf t

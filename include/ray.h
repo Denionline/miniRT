@@ -18,6 +18,7 @@ typedef struct s_intersect
 
 
 t_ray		ray(t_tuple origin, t_tuple direction);
+t_ray		transform_ray(t_ray r, t_matrix m);
 t_tuple		position(t_ray r, float	t);
 t_intersect	intersect(t_object spere, t_ray r);
 
