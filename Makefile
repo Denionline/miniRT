@@ -84,6 +84,9 @@ MATRIX_FILES	+= shearing
 RAY_FILES		+= ray_constructor
 RAY_FILES		+= position
 RAY_FILES		+= intersect
+RAY_FILES		+= intersection
+RAY_FILES		+= intersections
+RAY_FILES		+= hit
 
 FILES			+= $(TEST_FILES) $(CANVAS_FILES) $(MATH_FILES) $(MATRIX_FILES) $(RAY_FILES)
 
@@ -195,3 +198,6 @@ test_physical_ray:
 
 test_intersection:
 	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/test_intersection.c $(OBJS) $(MLXFLAGS) -o t; valgrind ./t && rm -rf t
+
+test_data_tracker:
+	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/test_data_tracker.c $(OBJS) $(MLXFLAGS) -o t; valgrind ./t && rm -rf t
