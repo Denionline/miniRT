@@ -12,6 +12,7 @@
 #include "matrix.h"
 #include "map.h"
 #include "canvas.h"
+#include "ray.h"
 
 typedef struct s_head
 {

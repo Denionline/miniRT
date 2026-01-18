@@ -39,6 +39,7 @@ VPATH			+= src/math/tuples/
 VPATH			+= src/math/matrices/
 VPATH			+= src/math/matrices/transformations
 VPATH			+= src/parse/
+VPATH			+= src/ray
 
 LIBFT_PATH		= $(INC_PATH)/libft/
 MLX_PATH		= $(INC_PATH)/minilibx-linux/
@@ -80,7 +81,11 @@ MATRIX_FILES	+= rotation_z
 MATRIX_FILES	+= scaling
 MATRIX_FILES	+= shearing
 
-FILES			+= $(TEST_FILES) $(CANVAS_FILES) $(MATH_FILES) $(MATRIX_FILES)
+RAY_FILES		+= ray_constructor
+RAY_FILES		+= position
+RAY_FILES		+= intersect
+
+FILES			+= $(TEST_FILES) $(CANVAS_FILES) $(MATH_FILES) $(MATRIX_FILES) $(RAY_FILES)
 
 SRCS			= $(addprefix ./, $(addsuffix .c, $(FILES)))
 OBJS			= $(addprefix $(BUILD_PATH), $(addsuffix .o, $(FILES)))
@@ -184,3 +189,9 @@ test_shearing:
 
 test_chaining:
 	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/test_chaining.c $(OBJS) $(MLXFLAGS) -o t; valgrind ./t && rm -rf t
+
+test_physical_ray:
+	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/test_physical_ray.c $(OBJS) $(MLXFLAGS) -o t; valgrind ./t && rm -rf t
+
+test_intersection:
+	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/test_intersection.c $(OBJS) $(MLXFLAGS) -o t; valgrind ./t && rm -rf t
