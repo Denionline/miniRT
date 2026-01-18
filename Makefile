@@ -173,6 +173,9 @@ test_matrices_gdb:
 transform_rotate:
 	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/transform_rotate.c $(OBJS) $(MLXFLAGS) -o t; valgrind ./t && rm -rf t
 
+PIT_transformations:
+	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/PIT_transformations.c $(OBJS) $(MLXFLAGS) -o t; valgrind ./t && rm -rf t
+
 test_scaling:
 	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/test_scaling.c $(OBJS) $(MLXFLAGS) -o t; valgrind ./t && rm -rf t
 
