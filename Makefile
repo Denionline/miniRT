@@ -83,6 +83,7 @@ MATRIX_FILES	+= shearing
 
 RAY_FILES		+= ray_constructor
 RAY_FILES		+= position
+RAY_FILES		+= intersect
 
 FILES			+= $(TEST_FILES) $(CANVAS_FILES) $(MATH_FILES) $(MATRIX_FILES) $(RAY_FILES)
 
@@ -191,3 +192,6 @@ test_chaining:
 
 test_physical_ray:
 	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/test_physical_ray.c $(OBJS) $(MLXFLAGS) -o t; valgrind ./t && rm -rf t
+
+test_intersection:
+	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/test_intersection.c $(OBJS) $(MLXFLAGS) -o t; valgrind ./t && rm -rf t
