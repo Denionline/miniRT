@@ -75,15 +75,18 @@ MATRIX_FILES	+= submatrix
 MATRIX_FILES	+= minor
 MATRIX_FILES	+= cofactor
 MATRIX_FILES	+= inverse
-MATRIX_FILES	+= rotation_x
-MATRIX_FILES	+= rotation_y
-MATRIX_FILES	+= rotation_z
+MATRIX_FILES	+= rotate_x
+MATRIX_FILES	+= rotate_y
+MATRIX_FILES	+= rotate_z
 MATRIX_FILES	+= scaling
 MATRIX_FILES	+= shearing
 
 RAY_FILES		+= ray_constructor
 RAY_FILES		+= position
 RAY_FILES		+= intersect
+RAY_FILES		+= intersection
+RAY_FILES		+= intersections
+RAY_FILES		+= hit
 
 FILES			+= $(TEST_FILES) $(CANVAS_FILES) $(MATH_FILES) $(MATRIX_FILES) $(RAY_FILES)
 
@@ -195,3 +198,6 @@ test_physical_ray:
 
 test_intersection:
 	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/test_intersection.c $(OBJS) $(MLXFLAGS) -o t; valgrind ./t && rm -rf t
+
+test_data_tracker:
+	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/test_data_tracker.c $(OBJS) $(MLXFLAGS) -o t; valgrind ./t && rm -rf t

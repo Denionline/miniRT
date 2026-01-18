@@ -7,8 +7,8 @@ int	main(void) {
 
 	printf("\n-----Rotate X-----\n");
 	p = point(0, 1, 0);
-	m1 = rotation_x(PI / 4);
-	m2 = rotation_x(PI / 2);
+	m1 = rotate_x(PI / 4);
+	m2 = rotate_x(PI / 2);
 	print_tuple(p);
 	print_matrix(m1);
 	print_matrix(m2);
@@ -17,7 +17,7 @@ int	main(void) {
 
 	printf("\n-----Inverse Rotate X-----\n");
 	p = point(0, 1, 0);
-	m1 = rotation_x(PI / 4);
+	m1 = rotate_x(PI / 4);
 	m2 = inverse(m1);
 	print_tuple(p);
 	print_matrix(m1);
@@ -26,8 +26,8 @@ int	main(void) {
 
 	printf("\n-----Rotate Y-----\n");
 	p = point(0, 0, 1);
-	m1 = rotation_y(PI / 4);
-	m2 = rotation_y(PI / 2);
+	m1 = rotate_y(PI / 4);
+	m2 = rotate_y(PI / 2);
 	print_tuple(p);
 	print_matrix(m1);
 	print_matrix(m2);
@@ -36,8 +36,8 @@ int	main(void) {
 
 	printf("\n-----Rotate Z-----\n");
 	p = point(0, 1, 0);
-	m1 = rotation_z(PI / 4);
-	m2 = rotation_z(PI / 2);
+	m1 = rotate_z(PI / 4);
+	m2 = rotate_z(PI / 2);
 	print_tuple(p);
 	print_matrix(m1);
 	print_matrix(m2);
