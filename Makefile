@@ -40,6 +40,7 @@ VPATH			+= src/math/matrices/
 VPATH			+= src/math/matrices/transformations
 VPATH			+= src/parse/
 VPATH			+= src/ray
+VPATH			+= src/objects
 
 LIBFT_PATH		= $(INC_PATH)/libft/
 MLX_PATH		= $(INC_PATH)/minilibx-linux/
@@ -84,8 +85,12 @@ MATRIX_FILES	+= shearing
 RAY_FILES		+= ray_constructor
 RAY_FILES		+= position
 RAY_FILES		+= intersect
+RAY_FILES		+= transform_ray
 
-FILES			+= $(TEST_FILES) $(CANVAS_FILES) $(MATH_FILES) $(MATRIX_FILES) $(RAY_FILES)
+OBJ_FILES		+= construct_obj
+
+
+FILES			+= $(TEST_FILES) $(CANVAS_FILES) $(MATH_FILES) $(MATRIX_FILES) $(RAY_FILES) $(OBJ_FILES)
 
 SRCS			= $(addprefix ./, $(addsuffix .c, $(FILES)))
 OBJS			= $(addprefix $(BUILD_PATH), $(addsuffix .o, $(FILES)))
