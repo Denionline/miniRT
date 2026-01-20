@@ -40,6 +40,7 @@ VPATH			+= src/math/matrices/
 VPATH			+= src/math/matrices/transformations
 VPATH			+= src/parse/
 VPATH			+= src/ray
+VPATH			+= src/objects
 
 LIBFT_PATH		= $(INC_PATH)/libft/
 MLX_PATH		= $(INC_PATH)/minilibx-linux/
@@ -84,11 +85,15 @@ MATRIX_FILES	+= shearing
 RAY_FILES		+= ray_constructor
 RAY_FILES		+= position
 RAY_FILES		+= intersect
+RAY_FILES		+= transform_ray
 RAY_FILES		+= intersection
 RAY_FILES		+= intersections
 RAY_FILES		+= hit
 
-FILES			+= $(TEST_FILES) $(CANVAS_FILES) $(MATH_FILES) $(MATRIX_FILES) $(RAY_FILES)
+OBJ_FILES		+= set_transform
+
+
+FILES			+= $(TEST_FILES) $(CANVAS_FILES) $(MATH_FILES) $(MATRIX_FILES) $(RAY_FILES) $(OBJ_FILES)
 
 SRCS			= $(addprefix ./, $(addsuffix .c, $(FILES)))
 OBJS			= $(addprefix $(BUILD_PATH), $(addsuffix .o, $(FILES)))
@@ -198,6 +203,9 @@ test_physical_ray:
 
 test_intersection:
 	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/test_intersection.c $(OBJS) $(MLXFLAGS) -o t; valgrind ./t && rm -rf t
+
+test_transform_ray:
+	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/test_transform_ray.c $(OBJS) $(MLXFLAGS) -o t; valgrind --leak-check=full ./t && rm -rf t
 
 test_data_tracker:
 	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/test_data_tracker.c $(OBJS) $(MLXFLAGS) -o t; valgrind ./t && rm -rf t

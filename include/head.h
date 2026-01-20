@@ -13,6 +13,7 @@
 #include "map.h"
 #include "canvas.h"
 #include "ray.h"
+#include "obj.h"
 
 typedef struct s_head
 {

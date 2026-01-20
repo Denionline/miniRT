@@ -23,8 +23,9 @@ typedef struct s_sphere
 typedef struct s_object
 {
 	unsigned int	type;
-	t_tuple		position;
-	t_tuple		color;
+	t_tuple			position;
+	t_tuple			color;
+	t_matrix		transform;
 	void			*options;
 }	t_object;
 
