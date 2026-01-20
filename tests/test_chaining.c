@@ -8,13 +8,13 @@ int	main(void)
 	t_matrix 	C;
 
 	p = point(1	, 0, 1);
-	A = rotation_x(PI / 2);
+	A = rotate_x(PI / 2);
 	B = scaling(5, 5, 5);
 	C = translation(10, 5, 7);
 	printf("orginal tuple:\n");
 	print_tuple(p);
 	printf("transformations:\n \
-		And A ← rotation_x(π / 2)\n \
+		And A ← rotate_x(π / 2)\n \
 		And B ← scaling(5, 5, 5)\n \
 		And C ← translation(10, 5, 7)\n");
 	printf("A * p:\n");

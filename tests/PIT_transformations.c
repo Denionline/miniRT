@@ -13,7 +13,7 @@ int	main(void) {
 	
 	for (int i = 0; i < 12; i++)
 	{
-		t_matrix rotation = rotation_z(i * PI / 6);
+		t_matrix rotation = rotate_z(i * PI / 6);
 
 		t_tuple rotated = multiply_matrix_tuple(rotation, base);
 		t_tuple final_point = multiply_matrix_tuple(total_base, rotated);
