@@ -209,3 +209,6 @@ test_transform_ray:
 
 test_data_tracker:
 	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/test_data_tracker.c $(OBJS) $(MLXFLAGS) -o t; valgrind ./t && rm -rf t
+
+PIT_Ray_Sphere:
+	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/PIT_Ray_Sphere.c $(OBJS) $(MLXFLAGS) -o t; valgrind ./t && rm -rf t
