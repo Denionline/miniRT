@@ -9,24 +9,14 @@ enum object_type {
 	CYLINDER
 };
 
-typedef struct s_cylinder
-{
-	float	diameter;
-	float	height;
-}	t_cylinder;
-
-typedef struct s_sphere
-{
-	float	diameter;
-}	t_sphere;
-
 typedef struct s_object
 {
-	unsigned int	type;
-	t_tuple			position;
-	t_tuple			color;
-	t_matrix		transform;
-	void			*options;
+	enum object_type	type;
+	t_tuple				position;
+	t_tuple				color;
+	t_matrix			transform;
+	float				diameter;
+	float				height;
 }	t_object;
 
 typedef struct s_amblight
