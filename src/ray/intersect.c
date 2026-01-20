@@ -34,8 +34,8 @@ t_intersections	intersect(t_object *object, t_ray r)
 	inter = (t_intersections) {};
 	vec = vector(dot(r.direction, r.direction), \
 	2 * dot(r.origin, r.direction), dot(r.origin, r.origin) - \
-	(((t_sphere *) object->options)->diameter * 0.5) * \
-	(((t_sphere *) object->options)->diameter * 0.5));
+	(object->diameter * 0.5) * \
+	(object->diameter * 0.5));
 	delta = vec.y * vec.y - 4.0f * vec.x * vec.z;
 	inter = intersect_values(inter, vec, delta, object);
 	return (inter);

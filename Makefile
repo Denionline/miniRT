@@ -49,6 +49,8 @@ MLX_PATH		= $(INC_PATH)/minilibx-linux/
 #                                   Files                                      #
 # **************************************************************************** #
 
+MAIN_FILE		?= main.c
+
 TEST_FILES		+= print_matrix
 TEST_FILES		+= print_tuple
 
@@ -128,7 +130,7 @@ start:
 	@printf "$(C_MAGENTA)===========Program [$(NAME)]===========$(C_STD)\n"
 
 $(NAME): $(BUILD_PATH) $(OBJS)
-	@$(CC) $(CFLAGS) -I$(INC_PATH) main.c $(OBJS) $(LIBS) $(MLXFLAGS) -o $(NAME)
+	@$(CC) $(CFLAGS) -I$(INC_PATH) $(MAIN_FILE) $(OBJS) $(LIBS) $(MLXFLAGS) -o $(NAME)
 
 $(BUILD_PATH)%.o: %.c
 	@$(CC) $(CFLAGS) -I$(INC_PATH) -c $< -o $@
@@ -156,7 +158,7 @@ get_libft:
 	@printf "$(C_GREEN)libft$(C_STD) successfully downloaded\n"
 
 make_libft:
-	@$(MAKERE) -C $(LIBFT_PATH)
+	@$(MAKE) -C $(LIBFT_PATH)
 
 verify_mlx:
 	@if test ! -d "$(MLX_PATH)"; then $(MAKE) get_mlx; \
@@ -167,45 +169,3 @@ get_mlx:
 	@git clone $(MLX_URL) $(MLX_PATH)
 	@printf "\n$(C_GREEN)minilibx$(C_STD) successfully downloaded\n"
 	@$(MAKE) -C $(MLX_PATH)
-
-test_math:
-	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/test_math.c $(OBJS) $(MLXFLAGS) -o t; ./t && rm -rf t
-
-test_canvas:
-	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/test_canvas.c $(OBJS) $(MLXFLAGS) -o t; valgrind ./t && rm -rf t
-
-PIT_Vector:
-	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/PIT_Vector.c $(OBJS) $(MLXFLAGS) -o t; valgrind ./t && rm -rf t
-
-test_matrices:
-	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/test_matrices.c $(OBJS) $(MLXFLAGS) -o t; valgrind ./t && rm -rf t
-
-test_matrices_gdb:
-	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/test_matrices.c $(OBJS) $(MLXFLAGS) -o t; gdb --tui ./t && rm -rf t
-
-transform_rotate:
-	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/transform_rotate.c $(OBJS) $(MLXFLAGS) -o t; valgrind ./t && rm -rf t
-
-PIT_transformations:
-	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/PIT_transformations.c $(OBJS) $(MLXFLAGS) -o t; valgrind ./t && rm -rf t
-
-test_scaling:
-	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/test_scaling.c $(OBJS) $(MLXFLAGS) -o t; valgrind ./t && rm -rf t
-
-test_shearing:
-	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/test_shearing.c $(OBJS) $(MLXFLAGS) -o t; valgrind ./t && rm -rf t
-
-test_chaining:
-	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/test_chaining.c $(OBJS) $(MLXFLAGS) -o t; valgrind ./t && rm -rf t
-
-test_physical_ray:
-	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/test_physical_ray.c $(OBJS) $(MLXFLAGS) -o t; valgrind ./t && rm -rf t
-
-test_intersection:
-	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/test_intersection.c $(OBJS) $(MLXFLAGS) -o t; valgrind ./t && rm -rf t
-
-test_transform_ray:
-	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/test_transform_ray.c $(OBJS) $(MLXFLAGS) -o t; valgrind --leak-check=full ./t && rm -rf t
-
-test_data_tracker:
-	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/test_data_tracker.c $(OBJS) $(MLXFLAGS) -o t; valgrind ./t && rm -rf t
