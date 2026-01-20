@@ -90,7 +90,7 @@ RAY_FILES		+= intersection
 RAY_FILES		+= intersections
 RAY_FILES		+= hit
 
-OBJ_FILES		+= construct_obj
+OBJ_FILES		+= set_transform
 
 
 FILES			+= $(TEST_FILES) $(CANVAS_FILES) $(MATH_FILES) $(MATRIX_FILES) $(RAY_FILES) $(OBJ_FILES)
@@ -205,7 +205,7 @@ test_intersection:
 	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/test_intersection.c $(OBJS) $(MLXFLAGS) -o t; valgrind ./t && rm -rf t
 
 test_transform_ray:
-	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/test_transform_ray.c $(OBJS) $(MLXFLAGS) -o t; valgrind ./t && rm -rf t
+	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/test_transform_ray.c $(OBJS) $(MLXFLAGS) -o t; valgrind --leak-check=full ./t && rm -rf t
 
 test_data_tracker:
 	@$(CC) $(CFLAGS) -I$(INC_PATH) tests/test_data_tracker.c $(OBJS) $(MLXFLAGS) -o t; valgrind ./t && rm -rf t

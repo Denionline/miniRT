@@ -31,8 +31,29 @@ int	main()
 	print_ray(r2);
 	printf("r:");
 
+	t_object	s;
+	t_sphere	sphere;
+
 	printf("Transform Sphere\n");
-	t_object s = sphere(point(0, 0, 0), (t_sphere) {});
-	printf("%f", ((t_sphere *) (s.options))->diameter);
+	s.position = point(0, 0, 0);
+	s.type = SPHERE;
+	sphere.diameter = 2.0f;
+	s.options = &sphere;
+	s = set_transform(s, scaling(2, 2, 2));
+	t_intersections xs = intersect(&s, ray(point(0, 0, -5), vector(0, 0, 1)));
+	printf("xs.count = %d\n", xs.count);
+	printf("xs[0].t = %f\n", xs.array[0].t);
+	printf("xs[1].t = %f\n", xs.array[1].t);
+	free(xs.array);
+
+	printf("Transform Sphere\n");
+	s.position = point(0, 0, 0);
+	s.type = SPHERE;
+	sphere.diameter = 2.0f;
+	s.options = &sphere;
+	s = set_transform(s, translation(5, 0, 0));
+	xs = intersect(&s, ray(point(0, 0, -5), vector(0, 0, 1)));
+	printf("xs.count = %d\n", xs.count);
+	free(xs.array);
 	return (0);
 }

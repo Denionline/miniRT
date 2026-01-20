@@ -3,5 +3,5 @@
 
 #include "head.h"
 
-t_object	sphere(t_tuple pos, t_sphere s);
+t_object	set_transform(t_object obj, t_matrix transform);
 #endif
