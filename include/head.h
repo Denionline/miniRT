@@ -10,10 +10,11 @@
 
 #include "math_head.h"
 #include "matrix.h"
+#include "obj.h"
 #include "map.h"
 #include "canvas.h"
 #include "ray.h"
-#include "obj.h"
+#include "surface.h"
 
 typedef struct s_head
 {

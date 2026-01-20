@@ -41,6 +41,7 @@ VPATH			+= src/math/matrices/transformations
 VPATH			+= src/parse/
 VPATH			+= src/ray
 VPATH			+= src/objects
+VPATH			+= src/surface
 
 LIBFT_PATH		= $(INC_PATH)/libft/
 MLX_PATH		= $(INC_PATH)/minilibx-linux/
@@ -94,8 +95,10 @@ RAY_FILES		+= hit
 
 OBJ_FILES		+= set_transform
 
-
+SURFACE_FILES	+= normal_at
+SURFACE_FILES	+= reflect
 FILES			+= $(TEST_FILES) $(CANVAS_FILES) $(MATH_FILES) $(MATRIX_FILES) $(RAY_FILES) $(OBJ_FILES)
+FILES			+= $(SURFACE_FILES)
 
 SRCS			= $(addprefix ./, $(addsuffix .c, $(FILES)))
 OBJS			= $(addprefix $(BUILD_PATH), $(addsuffix .o, $(FILES)))
