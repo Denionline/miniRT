@@ -15,6 +15,7 @@ typedef struct s_object
 	t_tuple				position;
 	t_tuple				color;
 	t_matrix			transform;
+	t_material			material;
 	float				diameter;
 	float				height;
 }	t_object;
@@ -31,14 +32,6 @@ typedef struct s_camera
 	t_tuple	orientation;
 	float		fov;
 }	t_camera;
-
-typedef struct s_light
-{
-	t_tuple	position;
-	float		brightness;
-	t_tuple	color;
-}	t_light;
-
 
 typedef struct s_map
 {
