@@ -16,14 +16,6 @@ typedef struct s_camera
 	float		fov;
 }	t_camera;
 
-typedef struct s_light
-{
-	t_tuple	position;
-	float		brightness;
-	t_tuple	color;
-}	t_light;
-
-
 typedef struct s_map
 {
 	t_amblight	amblight;

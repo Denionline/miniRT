@@ -11,6 +11,7 @@
 #include "math_head.h"
 #include "matrix.h"
 #include "obj.h"
+#include "light.h"
 #include "map.h"
 #include "canvas.h"
 #include "ray.h"
@@ -24,5 +25,6 @@ typedef struct s_head
 //Test auxiliars
 void	print_matrix(t_matrix m);
 void	print_tuple(t_tuple t);
+void	print_color(t_tuple t);
 
 #endif
