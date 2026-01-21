@@ -37,7 +37,8 @@ int		is_equals(float n1, float n2);
 t_tuple	tuple(float x, float y, float z, float w);
 t_tuple	vector(float x, float y, float z);
 t_tuple	point(float x, float y, float z);
-t_tuple	color(uint8_t r, uint8_t g, uint8_t b);
+t_tuple	color(float r, float g, float b);
+t_tuple	color_float(float x, float y, float z);
 
 t_tuple	sum_tuples(t_tuple t1, t_tuple t2);
 t_tuple	subtract_tuples(t_tuple t1, t_tuple t2);
@@ -48,5 +49,6 @@ float	magnitude(t_tuple t);
 t_tuple	normalize(t_tuple t);
 float	dot(t_tuple t1, t_tuple t2);
 t_tuple	cross(t_tuple t1, t_tuple t2);
+t_tuple	multiply_tuple_tuple(t_tuple t1, t_tuple t2);
 
 #endif

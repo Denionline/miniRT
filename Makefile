@@ -69,6 +69,7 @@ MATH_FILES		+= magnitude
 MATH_FILES		+= normalize
 MATH_FILES		+= dot
 MATH_FILES		+= cross
+MATH_FILES		+= multiply_tuple_tuple
 
 MATRIX_FILES	+= matrix
 MATRIX_FILES	+= identity_matrix
@@ -96,8 +97,10 @@ RAY_FILES		+= intersections
 RAY_FILES		+= hit
 
 OBJ_FILES		+= set_transform
+OBJ_FILES		+= constructors_objs
 
 LIGHT_FILES		+= point_light
+LIGHT_FILES		+= lighting
 
 SURFACE_FILES	+= normal_at
 SURFACE_FILES	+= reflect

@@ -6,29 +6,54 @@ int	main()
 	t_light		l;
 	t_material	m;
 
-	l = point_light(point(0, 0, 0), color(255, 255, 255));
+	l = point_light(point(0, 0, -10), color(255, 255, 255));
 	printf("light in pos:\n");
 	print_tuple(l.position);
 	printf("light with intensity:\n");
 	print_color(l.intensity);
 
-	m = (t_material) 
-	{
-		.color = color(255, 0, 0),
-		.ambient = 0.1,
-		.difuse = 0.9,
-		.specular = 1.9,
-		.shininess = 200.0
-	};
-	obj = (t_object) {
-		.diameter = 2.0f,
-		.position = point(0, 0, 0),
-		.type = SPHERE,
-		.material = m
-	};
+	m = material();
+	obj = sphere();
+	obj.material = m;
 
-	t_tuple	eyev = vector(0, sqrt(2) / 2, -sqrt(2) / 2);
+	t_tuple	eyev = vector(0, 0, -1);
 	t_tuple	normalv = vector(0, 0, -1);
-	l = point_light(point(0, 0, -10), color(1, 1, 1));
-	
+	l = point_light(point(0, 0, -10), color_float(1, 1, 1));
+	t_phong_vec vec = (t_phong_vec) {.eyev = eyev, .normalv = normalv};
+	t_tuple	result = lighting(m, l, point(0, 0, 0), vec);
+	print_color(result);
+	print_tuple(result);
+
+	eyev = vector(0, sqrt(2)/2, -sqrt(2)/2);
+	normalv = vector(0, 0, -1);
+	l = point_light(point(0, 0, -10), color_float(1, 1, 1));
+	vec = (t_phong_vec) {.eyev = eyev, .normalv = normalv};
+	result = lighting(m, l, point(0, 0, 0), vec);
+	print_color(result);
+	print_tuple(result);
+
+	eyev = vector(0, 0, -1);
+	normalv = vector(0, 0, -1);
+	l = point_light(point(0, 10, -10), color_float(1, 1, 1));
+	vec = (t_phong_vec) {.eyev = eyev, .normalv = normalv};
+	result = lighting(m, l, point(0, 0, 0), vec);
+	print_color(result);
+	print_tuple(result);
+
+	eyev = vector(0, -sqrt(2)/2, -sqrt(2)/2);
+	normalv = vector(0, 0, -1);
+	l = point_light(point(0, 10, -10), color_float(1, 1, 1));
+	vec = (t_phong_vec) {.eyev = eyev, .normalv = normalv};
+	result = lighting(m, l, point(0, 0, 0), vec);
+	print_color(result);
+	print_tuple(result);
+
+	eyev = vector(0, 0, -1);
+	normalv = vector(0, 0, -1);
+	l = point_light(point(0, 0, 10), color_float(1, 1, 1));
+	vec = (t_phong_vec) {.eyev = eyev, .normalv = normalv};
+	result = lighting(m, l, point(0, 0, 0), vec);
+	print_color(result);
+	print_tuple(result);
+
 }
