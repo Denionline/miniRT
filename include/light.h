@@ -18,13 +18,21 @@ typedef	struct s_material
 	float	shininess;
 }	t_material;
 
-typedef	struct s_env_eye
+typedef	struct s_phong_vec
 {
-	t_tuple	point;
 	t_tuple	eyev;
 	t_tuple	normalv;
-}	t_env_eye;
+}	t_phong_vec;
+
+typedef	struct s_phong_colors
+{
+	t_tuple	effective;
+	t_tuple	ambient;
+	t_tuple	difuse;
+	t_tuple	specular;
+}	t_phong_colors;
 
 
 t_light	point_light(t_tuple pos, t_tuple color);
+t_tuple	lighting(t_material material, t_light l, t_tuple p,	t_phong_vec phong);
 #endif

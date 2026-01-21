@@ -10,8 +10,8 @@
 
 #include "math_head.h"
 #include "matrix.h"
-#include "obj.h"
 #include "light.h"
+#include "obj.h"
 #include "map.h"
 #include "canvas.h"
 #include "ray.h"

@@ -27,3 +27,14 @@ t_tuple	mult_color(t_tuple color1, t_tuple color2)
 	color1.b * color2.b));
 	return (new_color);
 }
+
+t_tuple	mult_color_float(t_tuple t, float times)
+{
+	return (
+		color(
+			t.r * times,
+			t.g * times,
+			t.b * times
+		)
+	);
+}

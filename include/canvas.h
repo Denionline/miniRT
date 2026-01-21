@@ -23,5 +23,6 @@ void	ft_init_hooks(t_canvas *canvas);
 t_tuple	sum_color(t_tuple color1, t_tuple color2);
 t_tuple	sub_color(t_tuple color1, t_tuple color2);
 t_tuple	mult_color(t_tuple color1, t_tuple color2);
+t_tuple	mult_color_float(t_tuple t, float times);
 
 #endif
