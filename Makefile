@@ -41,6 +41,8 @@ VPATH			+= src/math/matrices/transformations
 VPATH			+= src/parse/
 VPATH			+= src/ray
 VPATH			+= src/objects
+VPATH			+= src/surface
+VPATH			+= src/light
 
 LIBFT_PATH		= $(INC_PATH)/libft/
 MLX_PATH		= $(INC_PATH)/minilibx-linux/
@@ -53,6 +55,7 @@ MAIN_FILE		?= main.c
 
 TEST_FILES		+= print_matrix
 TEST_FILES		+= print_tuple
+TEST_FILES		+= print_color
 
 CANVAS_FILES	+= canvas ft_pixel_put init_canvas ft_destroy_canvas ft_init_hooks color_operations
 MATH_FILES		+= constructors
@@ -94,8 +97,20 @@ RAY_FILES		+= hit
 
 OBJ_FILES		+= set_transform
 
+LIGHT_FILES		+= point_light
 
-FILES			+= $(TEST_FILES) $(CANVAS_FILES) $(MATH_FILES) $(MATRIX_FILES) $(RAY_FILES) $(OBJ_FILES)
+SURFACE_FILES	+= normal_at
+SURFACE_FILES	+= reflect
+
+FILES			+= $(TEST_FILES)
+FILES			+= $(CANVAS_FILES)
+FILES			+= $(MATH_FILES)
+FILES			+= $(MATRIX_FILES)
+FILES			+= $(RAY_FILES)
+FILES			+= $(OBJ_FILES)
+FILES			+= $(LIGHT_FILES)
+FILES			+= $(SURFACE_FILES)
+
 
 SRCS			= $(addprefix ./, $(addsuffix .c, $(FILES)))
 OBJS			= $(addprefix $(BUILD_PATH), $(addsuffix .o, $(FILES)))
