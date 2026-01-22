@@ -43,6 +43,7 @@ VPATH			+= src/ray
 VPATH			+= src/objects
 VPATH			+= src/surface
 VPATH			+= src/light
+VPATH			+= src/world
 
 LIBFT_PATH		= $(INC_PATH)/libft/
 MLX_PATH		= $(INC_PATH)/minilibx-linux/
@@ -95,6 +96,7 @@ RAY_FILES		+= transform_ray
 RAY_FILES		+= intersection
 RAY_FILES		+= intersections
 RAY_FILES		+= hit
+RAY_FILES		+= sort_intersections
 
 OBJ_FILES		+= set_transform
 OBJ_FILES		+= constructors_objs
@@ -105,6 +107,9 @@ LIGHT_FILES		+= lighting
 SURFACE_FILES	+= normal_at
 SURFACE_FILES	+= reflect
 
+WORLD_FILES		+= world_constructors
+WORLD_FILES		+= intersect_world
+
 FILES			+= $(TEST_FILES)
 FILES			+= $(CANVAS_FILES)
 FILES			+= $(MATH_FILES)
@@ -113,6 +118,7 @@ FILES			+= $(RAY_FILES)
 FILES			+= $(OBJ_FILES)
 FILES			+= $(LIGHT_FILES)
 FILES			+= $(SURFACE_FILES)
+FILES			+= $(WORLD_FILES)
 
 
 SRCS			= $(addprefix ./, $(addsuffix .c, $(FILES)))
