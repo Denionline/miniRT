@@ -25,8 +25,9 @@ fi
 
 MODE=$(whiptail \
   --title "Run mode" \
-  --menu "Select execution mode:" 15 50 2 \
+  --menu "Select execution mode:" 15 50 3 \
   normal "./miniRT" \
+  valgrind "valgrind ./miniRT" \
   debug  "gdb ./miniRT" \
   3>&1 1>&2 2>&3)
 
@@ -36,8 +37,10 @@ fi
 
 rm -rf ./miniRT && make MAIN_FILE="tests/$CHOICE.c"
 
-if [ "$MODE" = "debug" ]; then
-  gdb --tui ./miniRT
-else
+if [ "$MODE" = "normal" ]; then
   ./miniRT
+elif [ "$MODE" = "valgrind" ]; then
+  valgrind ./miniRT
+elif [ "$MODE" = "debug" ]; then
+  gdb --tui ./miniRT
 fi
