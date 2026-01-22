@@ -16,6 +16,7 @@
 #include "canvas.h"
 #include "ray.h"
 #include "surface.h"
+#include "world.h"
 
 typedef struct s_head
 {
