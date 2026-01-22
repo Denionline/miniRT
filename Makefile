@@ -109,6 +109,7 @@ SURFACE_FILES	+= reflect
 
 WORLD_FILES		+= world_constructors
 WORLD_FILES		+= intersect_world
+WORLD_FILES		+= prepare_computations
 
 FILES			+= $(TEST_FILES)
 FILES			+= $(CANVAS_FILES)
