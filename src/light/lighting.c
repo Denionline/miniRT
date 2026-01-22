@@ -12,8 +12,8 @@ t_tuple	lighting(t_material material, t_light l, t_tuple p,	t_phong_vec phong)
 	AB_cos = dot(vetor_light, phong.normalv);
 	if (AB_cos < 0)
 	{
-		colors.difuse = tuple(0, 0, 0, -1);
-		colors.specular = tuple(0, 0, 0, -1);
+		colors.difuse = color_float(0, 0, 0);
+		colors.specular = color_float(0, 0, 0);
 	}
 	else
 	{
@@ -21,7 +21,7 @@ t_tuple	lighting(t_material material, t_light l, t_tuple p,	t_phong_vec phong)
 		AB_cos = dot(reflect(negate_tuple(vetor_light), \
 phong.normalv), phong.eyev);
 		if (AB_cos <= 0)
-			colors.specular = color(0, 0, 0);
+			colors.specular = color_float(0, 0, 0);
 		else
 			colors.specular = multiply_tuple(l.intensity, material.specular * pow(AB_cos, material.shininess));
 	}
