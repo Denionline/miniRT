@@ -1,14 +1,14 @@
 #!/bin/bash
 
-# Get executable files in current directory
+# Get .c files in tests directory
 FILES=()
 for f in tests/*.c; do
-    FILES+=($(basename "$f" ".c") "")
+    FILES+=("$(basename "$f" ".c")" "")
 done
 
-# Check if any executables exist
+# Check if any files exist
 if [ ${#FILES[@]} -eq 0 ]; then
-  whiptail --msgbox "No executable files found." 10 40
+  whiptail --msgbox "No files found." 10 40
   exit 1
 fi
 
@@ -19,10 +19,28 @@ CHOICE=$(whiptail \
   "${FILES[@]}" \
   3>&1 1>&2 2>&3)
 
-# If user pressed Cancel
 if [ $? -ne 0 ]; then
   exit 0
 fi
 
-make re MAIN_FILE=tests/"$CHOICE".c
-./miniRT
+MODE=$(whiptail \
+  --title "Run mode" \
+  --menu "Select execution mode:" 15 50 3 \
+  normal "./miniRT" \
+  valgrind "valgrind ./miniRT" \
+  debug  "gdb ./miniRT" \
+  3>&1 1>&2 2>&3)
+
+if [ $? -ne 0 ]; then
+  exit 0
+fi
+
+rm -rf ./miniRT && make MAIN_FILE="tests/$CHOICE.c"
+
+if [ "$MODE" = "normal" ]; then
+  ./miniRT
+elif [ "$MODE" = "valgrind" ]; then
+  valgrind ./miniRT
+elif [ "$MODE" = "debug" ]; then
+  gdb --tui ./miniRT
+fi

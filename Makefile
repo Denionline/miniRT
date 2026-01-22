@@ -96,6 +96,7 @@ RAY_FILES		+= transform_ray
 RAY_FILES		+= intersection
 RAY_FILES		+= intersections
 RAY_FILES		+= hit
+RAY_FILES		+= sort_intersections
 
 OBJ_FILES		+= set_transform
 OBJ_FILES		+= constructors_objs
@@ -108,6 +109,8 @@ SURFACE_FILES	+= reflect
 
 WORLD_FILES		+= view_transform
 WORLD_FILES		+= camera
+WORLD_FILES		+= world_constructors
+WORLD_FILES		+= intersect_world
 
 FILES			+= $(TEST_FILES)
 FILES			+= $(CANVAS_FILES)

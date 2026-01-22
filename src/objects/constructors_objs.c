@@ -14,8 +14,10 @@ t_material	material(void)
 t_object	sphere(void)
 {
 	return ((t_object) {
+		.transform = identity_matrix(),
 		.diameter	= 2.0f,
 		.position =  point(0, 0, 0),
+		.material = material(),
 		.type = SPHERE
 	});
 }
