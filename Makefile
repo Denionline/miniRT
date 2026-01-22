@@ -107,6 +107,7 @@ SURFACE_FILES	+= normal_at
 SURFACE_FILES	+= reflect
 
 WORLD_FILES		+= view_transform
+WORLD_FILES		+= camera
 
 FILES			+= $(TEST_FILES)
 FILES			+= $(CANVAS_FILES)

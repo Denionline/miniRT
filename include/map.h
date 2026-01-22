@@ -9,13 +9,6 @@ typedef struct s_amblight
 	t_tuple	color;
 }	t_amblight;
 
-typedef struct s_camera
-{
-	t_tuple	position;
-	t_tuple	orientation;
-	float		fov;
-}	t_camera;
-
 typedef struct s_map
 {
 	t_amblight	amblight;
