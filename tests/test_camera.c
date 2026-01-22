@@ -10,5 +10,4 @@ int	main(void) {
 	printf("cam.fov=%f\n",cam.fov);
 	printf("cam.pixel_size=%f\n",cam.pixel_size);
 	printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
-
 }
