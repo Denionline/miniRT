@@ -112,6 +112,7 @@ WORLD_FILES		+= world_constructors
 WORLD_FILES		+= intersect_world
 WORLD_FILES		+= prepare_computations
 WORLD_FILES		+= shade_hit
+WORLD_FILES		+= color_at
 
 FILES			+= $(TEST_FILES)
 FILES			+= $(CANVAS_FILES)
