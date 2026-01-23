@@ -57,6 +57,7 @@ MAIN_FILE		?= main.c
 TEST_FILES		+= print_matrix
 TEST_FILES		+= print_tuple
 TEST_FILES		+= print_color
+TEST_FILES		+= prints
 
 CANVAS_FILES	+= canvas ft_pixel_put init_canvas ft_destroy_canvas ft_init_hooks color_operations
 MATH_FILES		+= constructors
@@ -110,6 +111,7 @@ SURFACE_FILES	+= reflect
 WORLD_FILES		+= world_constructors
 WORLD_FILES		+= intersect_world
 WORLD_FILES		+= prepare_computations
+WORLD_FILES		+= shade_hit
 
 FILES			+= $(TEST_FILES)
 FILES			+= $(CANVAS_FILES)
