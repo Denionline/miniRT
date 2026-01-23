@@ -10,5 +10,12 @@ t_computations	prepare_computations(t_intersection inter, t_ray r)
 	comps.point = position(r, comps.t);
 	comps.eyev = negate_tuple(r.direction);
 	comps.normalv = normal_at(comps.object, comps.point);
+	if (dot(comps.normalv, comps.eyev) < 0)
+	{
+		comps.inside = TRUE;
+		comps.normalv = negate_tuple(comps.normalv);
+	}
+	else
+		comps.inside = FALSE;
 	return (comps);
 }
