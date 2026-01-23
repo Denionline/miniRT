@@ -9,10 +9,10 @@ t_canvas	render(t_camera c, t_world w)
 	
 	j = -1;
 	init_canvas(&canvas, c.hsize, c.vsize);
-	while (j++ < c.hsize)
+	while (j++ < c.vsize)
 	{
 		i = -1;
-		while (i++ < c.vsize)
+		while (i++ < c.hsize)
 		{
 			r = ray_for_pixel(c, i, j);
 			pixel_put(&canvas, i, j, color(color_at(w, r)));
