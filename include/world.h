@@ -9,6 +9,7 @@ typedef struct s_computations
 	t_tuple		point;
 	t_tuple		eyev;
 	t_tuple		normalv;
+	int			inside;
 	float		t;
 }	t_computations;
 
@@ -25,5 +26,6 @@ t_world			default_world(void);
 
 t_intersections	intersect_world(t_world w, t_ray r);
 t_computations	prepare_computations(t_intersection inter, t_ray r);
+t_tuple			shade_hit(t_world w, t_computations comps);
 
 #endif
