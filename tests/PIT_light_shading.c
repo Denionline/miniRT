@@ -4,7 +4,7 @@ int	main(void)
 {
 	t_canvas		canvas;
 	t_tuple			new_color;
-	t_object		s;
+	t_object		*s;
 	t_ray			r;
 	t_tuple			pos;
 	float			world_x;
@@ -17,11 +17,8 @@ int	main(void)
 	
 	
 	s = sphere();
-	s.material = material();
-	s.material.color = color_float(1, 0.2, 1);
-
+	s->material.color = color_float(1, 0.2, 1);
 	l = point_light(point(-10, 10, -10), color_float(1, 1, 1));
-
 	r = ray(point(0, 0, -5), vector(0, 0, 1));
 	new_color = color(255, 0, 0);
 	init_canvas(&canvas);
@@ -34,7 +31,7 @@ int	main(void)
 			world_x = -wall_z / 2 + ps * j;
 			pos = point(world_y, world_x, wall_z);
 			r = ray(point(0, 0, -5), normalize(subtract_tuples(pos, r.origin)));
-			xs = intersect(&s, r);
+			xs = intersect(s, r);
 			rit = hit(xs);
 			if (!rit.object)
 				continue;

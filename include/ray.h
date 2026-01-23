@@ -30,6 +30,7 @@ t_tuple			position(t_ray r, float	t);
 t_intersections	intersect(t_object *object, t_ray r);
 t_intersection	intersection(float value_of, t_object *object);
 t_intersections	intersections(t_intersection values[], unsigned int count);
+t_intersection	*sort_intersections(t_intersection val[], size_t len);
 t_intersection	hit(t_intersections inters);
 
 #endif

@@ -4,7 +4,7 @@ int	main(void)
 {
 	t_canvas	canvas;
 	t_tuple		new_color;
-	t_object	s;
+	t_object	*s;
 	t_ray		r;
 	t_tuple		position;
 	float		world_x;
@@ -12,13 +12,8 @@ int	main(void)
 	float		wall_z = 10;
 	t_intersections	xs;
 	
-	s = (t_object){
-		.position = point(0, 0, 0),
-		.type = SPHERE,
-		.diameter = 2.0f,
-		.transform = inverse(scaling(0, 0, 0)),
-	};
-	// s = set_transform(s, scaling(0, 0, 0));
+	s = sphere();
+	s = set_transform(s, scaling(0, 0, 0));
 	r = ray(point(0, 0, -5), vector(0, 0, 1));
 	new_color = color(255, 0, 0);
 	init_canvas(&canvas);
@@ -31,7 +26,7 @@ int	main(void)
 			world_x = -wall_z / 2 + ps * j;
 			position = point(world_y, world_x, wall_z);
 			r = ray(point(0, 0, -5), normalize(subtract_tuples(position, r.origin)));
-			xs = intersect(&s, r);
+			xs = intersect(s, r);
 			if (xs.count > 0)
 				pixel_put(&canvas, i, j, new_color);
 			free(xs.array);
