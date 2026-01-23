@@ -20,9 +20,7 @@ t_world	default_world(void)
 	new_world.light = point_light(point(-10, 10, -10), color_float(1, 1, 1));
 	new_world.objects = ft_calloc(2, sizeof(t_object *));
 	if (!new_world.objects)
-		exit(404);
-	if (!new_world.objects[0] || !new_world.objects[1])
-		exit(404);
+		exit(42);
 	new_world.objects[0] = s1;
 	set_transform(s2, scaling(0.5f, 0.5f, 0.5f));
 	new_world.objects[1] = s2;
