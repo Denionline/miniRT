@@ -20,7 +20,7 @@ typedef struct s_object
 }	t_object;
 
 t_object	*set_transform(t_object *obj, t_matrix transform);
-t_object	sphere(void);
+t_object	*sphere(void);
 t_material	material(void);
 
 #endif

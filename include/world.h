@@ -12,6 +12,16 @@ typedef struct s_camera
 	t_matrix	transform;
 }	t_camera;
 
+typedef struct s_computations
+{
+	t_object	*object;
+	t_tuple		point;
+	t_tuple		eyev;
+	t_tuple		normalv;
+	int			inside;
+	float		t;
+}	t_computations;
+
 
 typedef struct s_world
 {
@@ -24,6 +34,9 @@ t_world			world(void);
 t_world			default_world(void);
 
 t_intersections	intersect_world(t_world w, t_ray r);
+t_computations	prepare_computations(t_intersection inter, t_ray r);
+t_tuple			shade_hit(t_world w, t_computations comps);
+t_tuple			color_at(t_world w, t_ray r);
 
 t_matrix	view_transform(t_tuple init_location, t_tuple look_pos, t_tuple up_vector);
 t_camera	camera(float fov);
