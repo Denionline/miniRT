@@ -1,8 +1,6 @@
 #ifndef CANVAS_H
 # define CANVAS_H
 
-# define WIDTH 900
-# define HEIGHT 900
 # define ESC_KEY 65307
 
 typedef struct s_canvas
@@ -14,15 +12,15 @@ typedef struct s_canvas
 	int		bpp;
 	int		sl;
 	int		endian;
+	int		hsize;
+	int		vsize;
 }	t_canvas;
 
-int		init_canvas(t_canvas *canvas);
-int		ft_destroy_canvas(t_canvas *canvas);
-void	pixel_put(t_canvas *canvas, int x, int y, t_tuple color);
-void	ft_init_hooks(t_canvas *canvas);
-t_tuple	sum_color(t_tuple color1, t_tuple color2);
-t_tuple	sub_color(t_tuple color1, t_tuple color2);
-t_tuple	mult_color(t_tuple color1, t_tuple color2);
-t_tuple	mult_color_float(t_tuple t, float times);
+int			init_canvas(t_canvas *canvas, int hsize, int vsize);
+int			ft_destroy_canvas(t_canvas *canvas);
+void		pixel_put(t_canvas *canvas, int x, int y, t_tuple color);
+void		ft_init_hooks(t_canvas *canvas);
+t_canvas	render(t_camera c, t_world w);
+t_tuple		pixel_at(t_canvas *canvas, int x, int y);
 
 #endif

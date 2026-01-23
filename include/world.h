@@ -5,6 +5,8 @@
 
 typedef struct s_camera
 {
+	float		hsize;
+	float		vsize;
 	float		fov;
 	float		pixel_size;
 	float		half_w;
@@ -38,8 +40,8 @@ t_computations	prepare_computations(t_intersection inter, t_ray r);
 t_tuple			shade_hit(t_world w, t_computations comps);
 t_tuple			color_at(t_world w, t_ray r);
 
-t_matrix	view_transform(t_tuple init_location, t_tuple look_pos, t_tuple up_vector);
-t_camera	camera(float fov);
-t_ray		ray_for_pixel(t_camera cam, float px, float py);
+t_matrix		view_transform(t_tuple init_location, t_tuple look_pos, t_tuple up_vector);
+t_camera		camera(float hsize, float vsize, float fov);
+t_ray			ray_for_pixel(t_camera cam, float px, float py);
 
 #endif

@@ -37,7 +37,7 @@ int		is_equals(float n1, float n2);
 t_tuple	tuple(float x, float y, float z, float w);
 t_tuple	vector(float x, float y, float z);
 t_tuple	point(float x, float y, float z);
-t_tuple	color(float r, float g, float b);
+t_tuple	color(t_tuple color_f);
 t_tuple	color_float(float x, float y, float z);
 
 t_tuple	sum_tuples(t_tuple t1, t_tuple t2);

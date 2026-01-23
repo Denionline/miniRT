@@ -1,6 +1,6 @@
 #include "head.h"
 
-t_camera	camera(float fov)
+t_camera	camera(float hsize, float vsize, float fov)
 {
 	t_camera	cam;
 	float		aspect;
@@ -9,20 +9,22 @@ t_camera	camera(float fov)
 	half_v = tanf(fov / 2);
 	cam = (t_camera) 
 	{
+		.hsize = hsize,
+		.vsize = vsize,
 		.fov = fov,
 		.transform = identity_matrix()
 	};
-	aspect = WIDTH / HEIGHT;
-	if (aspect < 1)
+	aspect = cam.hsize / cam.vsize;
+	if (aspect >= 1)
 	{
 		cam.half_w = half_v;
-		cam.half_w = half_v / aspect; 
+		cam.half_h = half_v / aspect; 
 	}
 	else
 	{
 		cam.half_w = half_v * aspect;
-		cam.half_w = half_v; 
+		cam.half_h = half_v; 
 	}
-	cam.pixel_size = cam.half_w * 2 / HEIGHT;
+	cam.pixel_size = cam.half_w * 2 / cam.hsize;
 	return (cam);
 }

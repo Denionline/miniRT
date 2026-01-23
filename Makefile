@@ -59,7 +59,14 @@ TEST_FILES		+= print_tuple
 TEST_FILES		+= print_color
 TEST_FILES		+= prints
 
-CANVAS_FILES	+= canvas ft_pixel_put init_canvas ft_destroy_canvas ft_init_hooks color_operations
+CANVAS_FILES	+= canvas
+CANVAS_FILES	+= ft_pixel_put
+CANVAS_FILES	+= init_canvas
+CANVAS_FILES	+= ft_destroy_canvas
+CANVAS_FILES	+= ft_init_hooks
+CANVAS_FILES	+= render
+CANVAS_FILES	+= pixel_at
+
 MATH_FILES		+= constructors
 MATH_FILES		+= is_equals
 MATH_FILES		+= sum_tuples
@@ -115,6 +122,7 @@ WORLD_FILES		+= intersect_world
 WORLD_FILES		+= prepare_computations
 WORLD_FILES		+= shade_hit
 WORLD_FILES		+= color_at
+WORLD_FILES		+= ray_for_pixel
 
 FILES			+= $(TEST_FILES)
 FILES			+= $(CANVAS_FILES)
