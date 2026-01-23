@@ -6,10 +6,10 @@ void	pixel_put(t_canvas *canvas, int x, int y, t_tuple color)
 {
 	char *dst;
 
-	if (x >= WIDTH || y >= HEIGHT
+	if (x >= canvas->hsize || y >= canvas->vsize
 		|| x < 0 || y < 0)
 		return ;
-	dst = canvas->address + ((HEIGHT - y) * canvas->sl + x * (canvas->bpp / 8));
+	dst = canvas->address + ((canvas->vsize - y) * canvas->sl + x * (canvas->bpp / 8));
 	*(unsigned int*)dst = construct_color(color, canvas->endian);
 }
 

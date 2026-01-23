@@ -21,11 +21,12 @@
 #include "matrix.h"
 #include "light.h"
 #include "obj.h"
-#include "map.h"
-#include "canvas.h"
 #include "ray.h"
-#include "surface.h"
 #include "world.h"
+#include "canvas.h"
+#include "surface.h"
+#include "map.h"
+
 
 typedef struct s_head
 {

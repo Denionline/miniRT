@@ -5,7 +5,7 @@ void	print_color(t_tuple c)
 	t_tuple	t;
 	const char	*type;
 
-	t = color(c.x, c.y, c.z);
+	t = color(c);
 
 	type = "COLOR";
 
