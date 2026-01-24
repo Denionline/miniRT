@@ -13,15 +13,15 @@ int	main(void)
 	t_intersections	xs;
 	
 	s = sphere();
-	s = set_transform(s, scaling(0, 0, 0));
+	s = set_transform(s, scaling(1, 1, 1));
 	r = ray(point(0, 0, -5), vector(0, 0, 1));
-	new_color = color(255, 0, 0);
-	init_canvas(&canvas);
-	float	ps = wall_z / WIDTH;
-	for (int i = 0; i < WIDTH; i += 1)
+	new_color = color_float(1, 0, 0);
+	init_canvas(&canvas, 900, 900);
+	float	ps = wall_z / 900;
+	for (int i = 0; i < 900; i += 1)
 	{
 		world_y =  wall_z / 2 - ps * i;
-		for (int j = 0; j < HEIGHT; j += 1)
+		for (int j = 0; j < 900; j += 1)
 		{
 			world_x = -wall_z / 2 + ps * j;
 			position = point(world_y, world_x, wall_z);

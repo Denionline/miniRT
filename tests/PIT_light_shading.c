@@ -20,13 +20,13 @@ int	main(void)
 	s->material.color = color_float(1, 0.2, 1);
 	l = point_light(point(-10, 10, -10), color_float(1, 1, 1));
 	r = ray(point(0, 0, -5), vector(0, 0, 1));
-	new_color = color(255, 0, 0);
-	init_canvas(&canvas);
-	float	ps = wall_z / WIDTH;
-	for (int i = 0; i < WIDTH; i += 1)
+	new_color = color_float(1, 0, 0);
+	init_canvas(&canvas, 900, 900);
+	float	ps = wall_z / 900;
+	for (int i = 0; i < 900; i += 1)
 	{
 		world_y =  wall_z / 2 - ps * i;
-		for (int j = 0; j < HEIGHT; j += 1)
+		for (int j = 0; j < 900; j += 1)
 		{
 			world_x = -wall_z / 2 + ps * j;
 			pos = point(world_y, world_x, wall_z);
@@ -38,9 +38,8 @@ int	main(void)
 			pos = position(r, rit.t);
 			normal = normal_at(rit.object, pos);
 			new_color = lighting(rit.object->material, l, pos, (t_phong_vec){.eyev = negate_tuple(r.direction), .normalv = normal});
-			new_color = color(new_color.x, new_color.y, new_color.z);
 			if (xs.count > 0)
-				pixel_put(&canvas, i, j, new_color);
+				pixel_put(&canvas, i, j, color(new_color));
 			free(xs.array);
 		}
 		mlx_put_image_to_window(canvas.mlx_ptr, canvas.win_ptr, canvas.img_ptr, 0, 0);
