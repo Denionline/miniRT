@@ -2,16 +2,10 @@
 #                                    Colors                                    #
 # **************************************************************************** #
 
-
-C_STD = \033[0;39m
-C_GRAY = \033[0;90m
-C_RED = \033[0;91m
-C_GREEN = \033[0;92m
-C_YELLOW = \033[0;93m
-C_BLUE = \033[0;94m
-C_MAGENTA = \033[0;95m
-C_CYAN = \033[0;96m
-C_WHITE = \033[0;97m
+C_MAGENTA := \033[35m
+C_YELLOW  := \033[33m
+C_GREEN   := \033[32m
+C_STD     := \033[0m
 
 # **************************************************************************** #
 #                                    Files                                     #
@@ -44,6 +38,7 @@ VPATH			+= src/objects
 VPATH			+= src/surface
 VPATH			+= src/light
 VPATH			+= src/world
+VPATH			+= src/world/aux
 
 LIBFT_PATH		= $(INC_PATH)/libft/
 MLX_PATH		= $(INC_PATH)/minilibx-linux/
@@ -124,6 +119,7 @@ WORLD_FILES		+= prepare_computations
 WORLD_FILES		+= shade_hit
 WORLD_FILES		+= color_at
 WORLD_FILES		+= is_shadowed
+WORLD_FILES		+= append_object_on_world
 
 FILES			+= $(TEST_FILES)
 FILES			+= $(CANVAS_FILES)
@@ -163,17 +159,18 @@ LIBS			= $(LIBFT)
 # **************************************************************************** #
 
 all: start verify_libft verify_mlx $(NAME)
-	@printf "$(C_MAGENTA)===========End [$(NAME)]===========$(C_STD)\n"
+	@printf "\r$(C_YELLOW)[%s] Files compiled $(C_STD)%-30s\n" $$(echo $(OBJS) | wc -w) " "
+	@printf "$(C_MAGENTA)✔ Build finished: $(NAME)$(C_STD)\n"
 
 start:
-	@printf "$(C_MAGENTA)===========Program [$(NAME)]===========$(C_STD)\n"
+	@printf "$(C_MAGENTA)▶ Building $(NAME)...$(C_STD)\n"
 
 $(NAME): $(BUILD_PATH) $(OBJS)
 	@$(CC) $(CFLAGS) -I$(INC_PATH) $(MAIN_FILE) $(OBJS) $(LIBS) $(MLXFLAGS) -o $(NAME)
 
 $(BUILD_PATH)%.o: %.c
+	@printf "\r$(C_YELLOW)[CC] %-50s$(C_STD)" "$<"
 	@$(CC) $(CFLAGS) -I$(INC_PATH) -c $< -o $@
-	@printf "$(C_YELLOW)Compiling $< -> $@$(C_STD)\n";
 
 $(BUILD_PATH):
 	@mkdir -p $(BUILD_PATH)
@@ -184,20 +181,17 @@ clean:
 fclean: clean
 	@$(RM) $(NAME)
 
-re: fclean make_libft all
+re: fclean all
 
 verify_libft:
 	@if test ! -d "$(LIBFT_PATH)"; then $(MAKE) get_libft; \
 		else printf "libft: $(C_GREEN)✅$(C_STD)\n"; fi
-	@cd $(LIBFT_PATH); git pull; $(MAKE); cd ../../
+# 	@cd $(LIBFT_PATH); git pull; $(MAKE); cd ../../
 
 get_libft:
 	@echo "Cloning Libft"
 	@git clone $(LIBFT_URL) $(LIBFT_PATH)
 	@printf "$(C_GREEN)libft$(C_STD) successfully downloaded\n"
-
-make_libft:
-	@$(MAKE) -C $(LIBFT_PATH)
 
 verify_mlx:
 	@if test ! -d "$(MLX_PATH)"; then $(MAKE) get_mlx; \
