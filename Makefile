@@ -105,6 +105,7 @@ RAY_FILES		+= intersection
 RAY_FILES		+= intersections
 RAY_FILES		+= hit
 RAY_FILES		+= sort_intersections
+RAY_FILES		+= ray_for_pixel
 
 OBJ_FILES		+= set_transform
 OBJ_FILES		+= constructors_objs
@@ -122,7 +123,6 @@ WORLD_FILES		+= intersect_world
 WORLD_FILES		+= prepare_computations
 WORLD_FILES		+= shade_hit
 WORLD_FILES		+= color_at
-WORLD_FILES		+= ray_for_pixel
 
 FILES			+= $(TEST_FILES)
 FILES			+= $(CANVAS_FILES)

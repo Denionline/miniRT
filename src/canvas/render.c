@@ -14,7 +14,7 @@ t_canvas	render(t_camera c, t_world w)
 		i = -1;
 		while (i++ < c.hsize)
 		{
-			r = ray_for_pixel(c, i, j);
+			r = ray_for_pixel(c, i, canvas.vsize - j);
 			pixel_put(&canvas, i, j, color(color_at(w, r)));
 		}
 		mlx_put_image_to_window(canvas.mlx_ptr, canvas.win_ptr, canvas.img_ptr, 0, 0);

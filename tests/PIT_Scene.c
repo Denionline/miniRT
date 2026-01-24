@@ -10,41 +10,41 @@ int	main(void)
 
 	t_object	*floor;
 	floor = sphere();
-	floor->transform = inverse(scaling(10, 0.01, 10));
+	floor->transform = ((scaling(10, 0.01, 10)));
 	floor->material = material();
 	floor->material.color = color_float(1, 0.9, 0.9);
 	floor->material.specular = 0;
 
 	t_object *l_wall = sphere();
-	l_wall->transform = inverse(multiply_matrix(translation(0, 0, 5),
+	l_wall->transform = multiply_matrix(translation(0, 0, 5),
 							multiply_matrix(rotate_y(-PI/4),
 								multiply_matrix(rotate_x(PI/2), 
-									scaling(10, 0.01, 10)))));	
+									scaling(10, 0.01, 10))));
 	l_wall->material = floor->material;
 
 	t_object *r_wall = sphere();
-	r_wall->transform = inverse(multiply_matrix(translation(0, 0, 5),
+	r_wall->transform = multiply_matrix(translation(0, 0, 5),
 							multiply_matrix(rotate_y(PI/4),
 								multiply_matrix(rotate_x(PI/2), 
-									scaling(10, 0.01, 10)))));	
+									scaling(10, 0.01, 10))));
 	r_wall->material = floor->material;
 	
 	t_object *middle = sphere();
-	middle->transform = inverse(translation(-0.5, 1, 0.5));
+	middle->transform = (translation(-0.5, 1, 0.5));
 	middle->material = material();
 	middle->material.color = color_float(0.1, 1, 0.5);
 	middle->material.difuse = 0.7;
 	middle->material.specular = 0.3;
 
 	t_object *right = sphere();
-	right->transform = inverse(multiply_matrix(translation(1.5, 0.5, -0.5), scaling(0.5, 0.5, 0.5)));
+	right->transform = multiply_matrix(translation(1.5, 0.5, -0.5), scaling(0.5, 0.5, 0.5));
 	right->material = material();
 	right->material.color = color_float(0.5, 1, 0.1);
 	right->material.difuse = 0.7;
 	right->material.specular = 0.3;
 
 	t_object *left = sphere();
-	left->transform = inverse(multiply_matrix(translation(-1.5, 0.33, -0.75), scaling(0.33, 0.33, 0.33)));
+	left->transform = multiply_matrix(translation(-1.5, 0.33, -0.75), scaling(0.33, 0.33, 0.33));
 	left->material = material();
 	left->material.color = color_float(1, 0.8, 0.1);
 	left->material.difuse = 0.7;
