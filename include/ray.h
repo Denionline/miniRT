@@ -25,8 +25,6 @@ typedef struct s_intersections
 t_ray			ray(t_tuple origin, t_tuple direction);
 t_ray			transform_ray(t_ray r, t_matrix m);
 t_tuple			position(t_ray r, float	t);
-t_ray			ray(t_tuple origin, t_tuple direction);
-t_tuple			position(t_ray r, float	t);
 t_intersections	intersect(t_object *object, t_ray r);
 t_intersection	intersection(float value_of, t_object *object);
 t_intersections	intersections(t_intersection values[], unsigned int count);

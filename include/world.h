@@ -44,4 +44,6 @@ t_matrix		view_transform(t_tuple init_location, t_tuple look_pos, t_tuple up_vec
 t_camera		camera(float hsize, float vsize, float fov);
 t_ray			ray_for_pixel(t_camera cam, float px, float py);
 
+int				is_shadowed(t_world w, t_tuple p);
+
 #endif

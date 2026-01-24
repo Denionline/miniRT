@@ -10,7 +10,7 @@ t_tuple	lighting(t_material material, t_light l, t_tuple p,	t_phong_vec phong)
 	vetor_light = normalize(subtract_tuples(l.position, p));
 	colors.ambient = multiply_tuple(colors.effective, material.ambient);
 	AB_cos = dot(vetor_light, phong.normalv);
-	if (AB_cos < 0)
+	if (AB_cos < 0 || phong.in_shadow)
 	{
 		colors.difuse = color_float(0, 0, 0);
 		colors.specular = color_float(0, 0, 0);

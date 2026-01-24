@@ -22,6 +22,7 @@ typedef	struct s_phong_vec
 {
 	t_tuple	eyev;
 	t_tuple	normalv;
+	int		in_shadow;
 }	t_phong_vec;
 
 typedef	struct s_phong_colors
