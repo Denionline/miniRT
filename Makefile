@@ -123,6 +123,7 @@ WORLD_FILES		+= intersect_world
 WORLD_FILES		+= prepare_computations
 WORLD_FILES		+= shade_hit
 WORLD_FILES		+= color_at
+WORLD_FILES		+= is_shadowed
 
 FILES			+= $(TEST_FILES)
 FILES			+= $(CANVAS_FILES)

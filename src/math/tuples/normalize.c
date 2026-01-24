@@ -2,7 +2,7 @@
 
 t_tuple	normalize(t_tuple t)
 {
-	const float	mag = sqrt(magnitude(t));
+	const float	mag = magnitude(t);
 
 	return (
 		tuple(
