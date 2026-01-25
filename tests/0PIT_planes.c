@@ -12,12 +12,15 @@ int	main(void)
 	t_object    *middle;
 	t_object    *right;
 	t_object    *left;
-	t_object    *objs[4];
+
+	w = world();
+	w.light = point_light(point(-10, 10, -10), color_float(1, 1, 1));
 
 	floor = plane();
 	floor->material = material();
 	floor->material.color = color_float(1, 0.9, 0.9);
 	floor->material.specular = 0;
+	append_object_on_world(&w, floor);
 
 	middle = sphere();
 	middle->transform = translation(-0.5, 1, 0.5);
@@ -25,6 +28,7 @@ int	main(void)
 	middle->material.color = color_float(0.1, 1, 0.5);
 	middle->material.difuse = 0.7;
 	middle->material.specular = 0.3;
+	append_object_on_world(&w, middle);
 
 	right = sphere();
 	right->transform = multiply_matrix(translation(1.5, 0.5, -0.5), scaling(0.5, 0.5, 0.5));
@@ -32,6 +36,7 @@ int	main(void)
 	right->material.color = color_float(0.5, 1, 0.1);
 	right->material.difuse = 0.7;
 	right->material.specular = 0.3;
+	append_object_on_world(&w, right);
 
 	left = sphere();
 	left->transform = multiply_matrix(translation(-1.5, 0.33, -0.75), scaling(0.33, 0.33, 0.33));
@@ -39,15 +44,7 @@ int	main(void)
 	left->material.color = color_float(1, 0.8, 0.1);
 	left->material.difuse = 0.7;
 	left->material.specular = 0.3;
-
-	objs[0] = floor;
-	objs[1] = middle;
-	objs[2] = right;
-	objs[3] = left;
-
-	w.light = point_light(point(-10, 10, -10), color_float(1, 1, 1));
-	w.n_objs = 4;
-	w.objects = objs;
+	append_object_on_world(&w, left);
 
 	c = camera(500, 500, PI / 3);
 	from = point(0, 1.5, -5);
