@@ -9,13 +9,21 @@ typedef struct s_light
 	t_tuple	intensity;
 }	t_light;
 
+typedef struct s_pattern 
+{
+	t_tuple	a;
+	t_tuple	b;
+	int		has_pattern;
+}	t_pattern;
+
 typedef	struct s_material
 {
-	t_tuple	color;
-	float	ambient;
-	float	difuse;
-	float	specular;
-	float	shininess;
+	t_pattern	pattern;
+	t_tuple		color;
+	float		ambient;
+	float		difuse;
+	float		specular;
+	float		shininess;
 }	t_material;
 
 typedef	struct s_phong_vec
@@ -36,4 +44,6 @@ typedef	struct s_phong_colors
 
 t_light	point_light(t_tuple pos, t_tuple color);
 t_tuple	lighting(t_material material, t_light l, t_tuple p,	t_phong_vec phong);
+t_tuple		stripe_at(t_pattern p, t_tuple pos);
+t_pattern	stripe_pattern(t_tuple color1, t_tuple color2);
 #endif

@@ -18,6 +18,7 @@ int	main(void)
 	
 	s = sphere();
 	s->material.color = color_float(1, 0.2, 1);
+	s->material.pattern = stripe_pattern(color_float(1, 0, 0), color_float(1, 1, 1));
 	l = point_light(point(-10, 10, -10), color_float(1, 1, 1));
 	r = ray(point(0, 0, -5), vector(0, 0, 1));
 	new_color = color_float(1, 0, 0);

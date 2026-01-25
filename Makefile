@@ -107,6 +107,8 @@ OBJ_FILES		+= constructors_objs
 
 LIGHT_FILES		+= point_light
 LIGHT_FILES		+= lighting
+LIGHT_FILES		+= stripe_at
+LIGHT_FILES		+= stripe_pattern
 
 SURFACE_FILES	+= normal_at
 SURFACE_FILES	+= reflect

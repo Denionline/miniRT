@@ -6,6 +6,8 @@ t_tuple	lighting(t_material material, t_light l, t_tuple p,	t_phong_vec phong)
 	float			AB_cos;
 	t_phong_colors	colors;
 
+	if (material.p.has_pattern)
+		material.color = stripe_at(material.p, p);
 	colors.effective = multiply_tuple_tuple(material.color, l.intensity);
 	vetor_light = normalize(subtract_tuples(l.position, p));
 	colors.ambient = multiply_tuple(colors.effective, material.ambient);
