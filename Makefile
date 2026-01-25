@@ -106,11 +106,11 @@ OBJ_FILES		+= set_transform
 OBJ_FILES		+= constructors_objs
 OBJ_FILES		+= local_normal_at
 OBJ_FILES		+= local_intersect
+OBJ_FILES		+= stripe_at
+OBJ_FILES		+= stripe_pattern
 
 LIGHT_FILES		+= point_light
 LIGHT_FILES		+= lighting
-LIGHT_FILES		+= stripe_at
-LIGHT_FILES		+= stripe_pattern
 
 SURFACE_FILES	+= normal_at
 SURFACE_FILES	+= reflect
