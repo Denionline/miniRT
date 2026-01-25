@@ -22,6 +22,7 @@ typedef struct s_computations
 	t_tuple		normalv;
 	int			inside;
 	float		t;
+	t_tuple		over_point;
 }	t_computations;
 
 
@@ -45,5 +46,8 @@ t_camera		camera(float hsize, float vsize, float fov);
 t_ray			ray_for_pixel(t_camera cam, float px, float py);
 
 int				is_shadowed(t_world w, t_tuple p);
+
+//aux
+void	append_object_on_world(t_world *w, t_object *new_object);
 
 #endif

@@ -17,5 +17,9 @@ t_computations	prepare_computations(t_intersection inter, t_ray r)
 	}
 	else
 		comps.inside = FALSE;
+	comps.over_point = sum_tuples(
+		comps.point,
+		multiply_tuple(comps.normalv, NARUTO)
+	);
 	return (comps);
 }
