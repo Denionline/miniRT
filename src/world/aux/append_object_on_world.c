@@ -5,7 +5,7 @@ void	append_object_on_world(t_world *w, t_object *new_object)
 	t_object	**objects;
 	size_t		i;
 
-	objects = ft_calloc(w->n_objs, sizeof(t_object *));
+	objects = ft_calloc(w->n_objs + 1, sizeof(t_object *));
 	if (!objects)
 		exit(42);
 	i = 0;
