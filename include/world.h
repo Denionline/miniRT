@@ -22,6 +22,7 @@ typedef struct s_computations
 	t_tuple		normalv;
 	int			inside;
 	float		t;
+	t_tuple		over_point;
 }	t_computations;
 
 

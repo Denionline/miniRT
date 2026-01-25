@@ -6,5 +6,6 @@ t_tuple	shade_hit(t_world w, t_computations comps)
 
 	pv.eyev = comps.eyev;
 	pv.normalv = comps.normalv;
-	return (lighting(comps.object->material, w.light, comps.point, pv));
+	pv.in_shadow = is_shadowed(w, comps.over_point);
+	return (lighting(comps.object->material, w.light, comps.over_point, pv));
 }
