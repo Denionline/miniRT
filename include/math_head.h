@@ -1,7 +1,7 @@
 #ifndef MATH_HEAD_H
 # define MATH_HEAD_H
 
-# include "head.h"
+# include <stdint.h>
 
 # define NARUTO 0.01
 # define PI 3.14159

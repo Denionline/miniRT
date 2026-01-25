@@ -104,6 +104,8 @@ RAY_FILES		+= ray_for_pixel
 
 OBJ_FILES		+= set_transform
 OBJ_FILES		+= constructors_objs
+OBJ_FILES		+= local_normal_at
+OBJ_FILES		+= local_intersect
 
 LIGHT_FILES		+= point_light
 LIGHT_FILES		+= lighting
