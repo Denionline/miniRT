@@ -1,7 +1,7 @@
 #ifndef MATRIX_H
 # define MATRIX_H
 
-#include "head.h"
+#include "math_head.h"
 
 typedef struct s_matrix
 {

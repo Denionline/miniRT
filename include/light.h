@@ -1,7 +1,7 @@
 #ifndef LIGHT_H
 # define LIGHT_H
 
-#include "head.h"
+#include "math_head.h"
 
 typedef struct s_light
 {
