@@ -2,16 +2,16 @@
 
 int	main(void)
 {
-	t_world     w;
-	t_camera    c;
-	t_tuple     from;
-	t_tuple     to;
-	t_tuple     up;
+	t_world		w;
+	t_camera	c;
+	t_tuple		from;
+	t_tuple		to;
+	t_tuple		up;
 
-	t_object    *floor;
-	t_object    *middle;
-	t_object    *right;
-	t_object    *left;
+	t_object	*floor;
+	t_object	*middle;
+	t_object	*right;
+	t_object	*left;
 
 	w = world();
 	w.light = point_light(point(-10, 10, -10), color_float(1, 1, 1));
