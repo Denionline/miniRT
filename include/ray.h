@@ -1,7 +1,10 @@
 #ifndef RAY_H
 # define RAY_H
 
-#include "head.h"
+#include "math_head.h"
+#include "matrix.h"
+
+typedef struct s_object t_object;
 
 typedef struct s_ray
 {
