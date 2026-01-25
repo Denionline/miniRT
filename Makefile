@@ -39,6 +39,7 @@ VPATH			+= src/surface
 VPATH			+= src/light
 VPATH			+= src/world
 VPATH			+= src/world/aux
+VPATH			+= src/pattern
 
 LIBFT_PATH		= $(INC_PATH)/libft/
 MLX_PATH		= $(INC_PATH)/minilibx-linux/
@@ -125,6 +126,8 @@ WORLD_FILES		+= color_at
 WORLD_FILES		+= is_shadowed
 WORLD_FILES		+= append_object_on_world
 
+PATTERN_FILES	+= pattern_at
+
 FILES			+= $(TEST_FILES)
 FILES			+= $(CANVAS_FILES)
 FILES			+= $(MATH_FILES)
@@ -134,6 +137,7 @@ FILES			+= $(OBJ_FILES)
 FILES			+= $(LIGHT_FILES)
 FILES			+= $(SURFACE_FILES)
 FILES			+= $(WORLD_FILES)
+FILES			+= $(PATTERN_FILES)
 
 
 SRCS			= $(addprefix ./, $(addsuffix .c, $(FILES)))
