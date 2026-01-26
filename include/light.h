@@ -27,6 +27,6 @@ typedef	struct s_phong_colors
 
 
 t_light		point_light(t_tuple pos, t_tuple color);
-t_tuple		lighting(t_material material, t_light l, t_tuple p,	t_phong_vec phong);
+t_tuple		lighting(t_material material, t_light l, t_tuple p,	t_phong_vec phong, t_object obj);
 
 #endif

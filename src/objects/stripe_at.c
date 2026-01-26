@@ -2,7 +2,7 @@
 
 t_tuple	stripe_at(t_pattern p, t_tuple pos)
 {
-	if (!fmod(pos.x, 2))
+	if (fmod(pos.x, 2) == 0)
 		return (p.a);
 	return (p.b);
 }

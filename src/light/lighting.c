@@ -1,13 +1,13 @@
 #include "head.h"
 
-t_tuple	lighting(t_material material, t_light l, t_tuple p,	t_phong_vec phong)
+t_tuple	lighting(t_material material, t_light l, t_tuple p,	t_phong_vec phong, t_object obj)
 {
 	t_tuple			vetor_light;
 	float			AB_cos;
 	t_phong_colors	colors;
 
 	if (material.pattern.has_pattern)
-		material.color = stripe_at(material.pattern, p);
+		material.color = pattern_at_obj(material.pattern, obj, p);
 	colors.effective = multiply_tuple_tuple(material.color, l.intensity);
 	vetor_light = normalize(subtract_tuples(l.position, p));
 	colors.ambient = multiply_tuple(colors.effective, material.ambient);
