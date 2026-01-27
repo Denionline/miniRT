@@ -12,6 +12,8 @@ typedef struct s_camera
 	float		half_w;
 	float		half_h;
 	t_matrix	transform;
+	t_tuple		position;
+	t_tuple		direction;
 }	t_camera;
 
 typedef struct s_computations
