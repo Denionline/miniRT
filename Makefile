@@ -14,6 +14,7 @@ C_STD     := \033[0m
 NAME			= miniRT
 LIBFT			= $(LIBFT_PATH)libft.a
 MLX				= $(MLX_PATH)libmlx.a
+MLX				= $(GNL_PATH)get_next_line.a
 
 # **************************************************************************** #
 #                                   Path's                                     #
@@ -26,6 +27,8 @@ VPATH			+= ./
 VPATH			+= tests/aux/
 VPATH			+= src/
 VPATH			+= src/aux/
+VPATH			+= src/parse
+VPATH			+= src/parse/aux
 VPATH			+= src/canvas/
 VPATH			+= src/math/
 VPATH			+= src/math/aux/
@@ -42,6 +45,7 @@ VPATH			+= src/world/aux
 VPATH			+= src/pattern
 
 LIBFT_PATH		= $(INC_PATH)/libft/
+GNL_PATH		= $(INC_PATH)/get_next_line/
 MLX_PATH		= $(INC_PATH)/minilibx-linux/
 
 # **************************************************************************** #
@@ -50,10 +54,19 @@ MLX_PATH		= $(INC_PATH)/minilibx-linux/
 
 MAIN_FILE		?= main.c
 
+AUX_FILES		+= is_empty
+
 TEST_FILES		+= print_matrix
 TEST_FILES		+= print_tuple
 TEST_FILES		+= print_color
 TEST_FILES		+= prints
+
+PARSE_FILES		+= parse_scene
+PARSE_FILES		+= parse_amblight
+PARSE_FILES		+= parse_camera
+PARSE_FILES		+= parse_light
+PARSE_FILES		+= parse_object
+PARSE_FILES		+= string_to_tuple
 
 CANVAS_FILES	+= canvas
 CANVAS_FILES	+= ft_pixel_put
@@ -129,6 +142,8 @@ WORLD_FILES		+= append_object_on_world
 PATTERN_FILES	+= pattern_at
 
 FILES			+= $(TEST_FILES)
+FILES			+= $(AUX_FILES)
+FILES			+= $(PARSE_FILES)
 FILES			+= $(CANVAS_FILES)
 FILES			+= $(MATH_FILES)
 FILES			+= $(MATRIX_FILES)
@@ -148,6 +163,7 @@ OBJS			= $(addprefix $(BUILD_PATH), $(addsuffix .o, $(FILES)))
 # **************************************************************************** #
 
 LIBFT_URL		= https://github.com/Denionline/libft.git
+GNL_URL			= https://github.com/Denionline/get_next_line.git
 MLX_URL			= https://github.com/42paris/minilibx-linux.git
 
 # **************************************************************************** #
@@ -166,7 +182,7 @@ LIBS			= $(LIBFT)
 #                                  Commands                                    #
 # **************************************************************************** #
 
-all: start verify_libft verify_mlx $(NAME)
+all: start verify_libs $(NAME)
 	@printf "\r$(C_YELLOW)[%s] Files compiled $(C_STD)%-30s\n" $$(echo $(OBJS) | wc -w) " "
 	@printf "$(C_MAGENTA)✔ Build finished: $(NAME)$(C_STD)\n"
 
@@ -191,22 +207,34 @@ fclean: clean
 
 re: fclean all
 
+verify_libs: verify_libft verify_gnl verify_mlx
+
 verify_libft:
 	@if test ! -d "$(LIBFT_PATH)"; then $(MAKE) get_libft; \
 		else printf "libft: $(C_GREEN)✅$(C_STD)\n"; fi
-# 	@cd $(LIBFT_PATH); git pull; $(MAKE); cd ../../
 
 get_libft:
 	@echo "Cloning Libft"
 	@git clone $(LIBFT_URL) $(LIBFT_PATH)
 	@printf "$(C_GREEN)libft$(C_STD) successfully downloaded\n"
+	@$(MAKE) -C $(LIBFT_PATH)
+
+verify_gnl:
+	@if test ! -d "$(GNL_PATH)"; then $(MAKE) get_gnl; \
+		else printf "get_next_line: $(C_GREEN)✅$(C_STD)\n"; fi
+
+get_gnl:
+	@echo "Cloning get_next_line"
+	@git clone $(GNL_URL) $(GNL_PATH)
+	@printf "$(C_GREEN)get_next_line$(C_STD) successfully downloaded\n"
+	@$(MAKE) -C $(GNL_PATH)
 
 verify_mlx:
 	@if test ! -d "$(MLX_PATH)"; then $(MAKE) get_mlx; \
 		else printf "minilibx: $(C_GREEN)✅$(C_STD)\n"; fi
 
 get_mlx:
-	@printf "Cloning get_next_line\n"
+	@printf "Cloning MLX\n"
 	@git clone $(MLX_URL) $(MLX_PATH)
 	@printf "\n$(C_GREEN)minilibx$(C_STD) successfully downloaded\n"
 	@$(MAKE) -C $(MLX_PATH)
