@@ -48,6 +48,7 @@ typedef struct s_object
 t_object		*set_transform(t_object *obj, t_matrix transform);
 t_object		*sphere(void);
 t_object		*plane(void);
+t_object		*cylinder(void);
 
 t_material		material(void);
 
