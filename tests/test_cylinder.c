@@ -12,9 +12,11 @@ int	main(void)
 
 
 	w = world();
-	w.light = point_light(point(-10, 10, -10), color_float(1, 1, 1));
+
+	w.light = point_light(point(-10, 10, -25), color_float(1, 1, 1));
 
 	floor = cylinder();
+	floor->height = 2.0f;
 	floor->material = material();
 	floor->material.color = color_float(222.0f/255.0f, 184.0f/255.0f, 135/255.0f);
 	floor->material.specular = 0;
