@@ -10,6 +10,31 @@ enum object_type {
 	CYLINDER
 };
 
+enum pattern_type {
+	STRIP,
+	GRADIENT,
+	RING,
+};
+
+typedef struct s_pattern 
+{
+	enum pattern_type	type;
+	t_matrix			transform;
+	t_tuple				a;
+	t_tuple				b;
+	int					has_pattern;
+}	t_pattern;
+
+typedef	struct s_material
+{
+	t_pattern	pattern;
+	t_tuple		color;
+	float		ambient;
+	float		difuse;
+	float		specular;
+	float		shininess;
+}	t_material;
+
 typedef struct s_object
 {
 	enum object_type	type;
@@ -29,4 +54,11 @@ t_material		material(void);
 t_intersections	local_intersect(t_object *plane, t_ray r);
 t_tuple			local_normal_at(t_object *plane, t_tuple p);
 
+t_tuple		stripe_at(t_pattern p, t_tuple pos);
+t_tuple		stripe_at_obj(t_pattern p, t_object obj, t_tuple pos);
+t_pattern	stripe_pattern(t_tuple color1, t_tuple color2);
+t_tuple		pattern_at(t_pattern g, t_tuple p);
+t_tuple		pattern_at_obj(t_pattern p, t_object obj, t_tuple pos);
+t_pattern	gradient_pattern(t_tuple color1, t_tuple color2);
+t_pattern	ring_pattern(t_tuple color1, t_tuple color2);
 #endif

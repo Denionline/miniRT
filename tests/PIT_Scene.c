@@ -35,6 +35,7 @@ int	main(void)
 	middle->material.color = color_float(0.1, 1, 0.5);
 	middle->material.difuse = 0.7;
 	middle->material.specular = 0.3;
+	middle->material.pattern = gradient_pattern(color_float(3.0f / 255.0f, 0.0f, 30.0f / 255.0f), color_float(236.0f / 255.0f, 56.0f / 255.0f, 188.0f / 255.0f));
 
 	t_object *right = sphere();
 	right->transform = multiply_matrix(translation(1.5, 0.5, -0.5), scaling(0.5, 0.5, 0.5));
@@ -42,6 +43,8 @@ int	main(void)
 	right->material.color = color_float(0.5, 1, 0.1);
 	right->material.difuse = 0.7;
 	right->material.specular = 0.3;
+	right->material.pattern = stripe_pattern(color_float(0, 1, 0), color_float(1, 1, 1));
+	right->material.pattern.transform = scaling(1.5, 1.5, 1.5);
 
 	t_object *left = sphere();
 	left->transform = multiply_matrix(translation(-1.5, 0.33, -0.75), scaling(0.33, 0.33, 0.33));
@@ -49,6 +52,8 @@ int	main(void)
 	left->material.color = color_float(1, 0.8, 0.1);
 	left->material.difuse = 0.7;
 	left->material.specular = 0.3;
+	left->material.pattern = ring_pattern(color_float(1, 0, 0), color_float(1, 1, 1));
+	left->material.pattern.transform = scaling(0.2, 0.2, 0.2);
 
 
 	t_object	*obj[6];

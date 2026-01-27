@@ -18,6 +18,10 @@ int	main(void)
 	
 	s = sphere();
 	s->material.color = color_float(1, 0.2, 1);
+	// s->material.pattern = gradient_pattern(color_float(3.0f / 255.0f, 0.0f, 30.0f / 255.0f), color_float(236.0f / 255.0f, 56.0f / 255.0f, 188.0f / 255.0f));
+	//s->material.pattern = stripe_pattern(color_float(1, 0, 0), color_float(1, 1, 1));
+	s->material.pattern = ring_pattern(color_float(1, 0, 0), color_float(1, 1, 1));
+	s->material.pattern.transform = scaling(0.2, 0.2, 0.2);
 	l = point_light(point(-10, 10, -10), color_float(1, 1, 1));
 	r = ray(point(0, 0, -5), vector(0, 0, 1));
 	new_color = color_float(1, 0, 0);
@@ -37,7 +41,7 @@ int	main(void)
 				continue;
 			pos = position(r, rit.t);
 			normal = normal_at(rit.object, pos);
-			new_color = lighting(rit.object->material, l, pos, (t_phong_vec){.eyev = negate_tuple(r.direction), .normalv = normal});
+			new_color = lighting(rit.object->material, l, pos, (t_phong_vec){.eyev = negate_tuple(r.direction), .normalv = normal}, *s);
 			if (xs.count > 0)
 				pixel_put(&canvas, i, j, color(new_color));
 			free(xs.array);

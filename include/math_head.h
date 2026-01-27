@@ -3,7 +3,7 @@
 
 # include <stdint.h>
 
-# define NARUTO 0.0001
+# define NARUTO 0.01
 # define PI 3.14159
 
 enum e_TUPLE_TYPES {
