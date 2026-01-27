@@ -32,9 +32,8 @@ t_intersections	intersect(t_object *object, t_ray r)
 	r = transform_ray(r, inverse(object->transform));
 	inter = (t_intersections) {};
 
-	if (object->type == PLANE)
+	if (object->type != SPHERE)
 		return (local_intersect(object, r));
-
 	vec = vector(dot(r.direction, r.direction), \
 	2 * dot(r.origin, r.direction), dot(r.origin, r.origin) - \
 	(object->diameter * 0.5) * \
