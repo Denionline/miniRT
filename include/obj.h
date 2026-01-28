@@ -15,6 +15,7 @@ enum pattern_type {
 	STRIP,
 	GRADIENT,
 	RING,
+	CHECKBOARD
 };
 
 typedef struct s_pattern 
@@ -60,8 +61,9 @@ t_tuple			local_normal_at(t_object *obj, t_tuple p);
 t_tuple		stripe_at(t_pattern p, t_tuple pos);
 t_tuple		stripe_at_obj(t_pattern p, t_object obj, t_tuple pos);
 t_pattern	stripe_pattern(t_tuple color1, t_tuple color2);
-t_tuple		pattern_at(t_pattern g, t_tuple p);
+t_tuple		pattern_at(t_pattern pat, t_tuple p);
 t_tuple		pattern_at_obj(t_pattern p, t_object obj, t_tuple pos);
 t_pattern	gradient_pattern(t_tuple color1, t_tuple color2);
 t_pattern	ring_pattern(t_tuple color1, t_tuple color2);
+t_pattern	checkboard_pattern(t_tuple color1, t_tuple color2);
 #endif
