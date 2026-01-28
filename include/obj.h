@@ -43,6 +43,7 @@ typedef struct s_object
 	t_material			material;
 	float				diameter;
 	float				height;
+	t_tuple				normal;
 }	t_object;
 
 t_object		*set_transform(t_object *obj, t_matrix transform);
@@ -50,7 +51,7 @@ t_object		*sphere(void);
 t_object		*plane(void);
 t_object		*cylinder(void);
 
-t_material		material(void);
+t_material		material(t_tuple color);
 
 t_intersections	local_intersect(t_object *plane, t_ray r);
 t_tuple			local_normal_at(t_object *plane, t_tuple p);
