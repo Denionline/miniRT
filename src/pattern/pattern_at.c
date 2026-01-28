@@ -1,10 +1,9 @@
 #include "head.h"
 
+static t_tuple	gradient_color(t_pattern pat, t_tuple p);
+
 t_tuple	pattern_at(t_pattern pat, t_tuple p)
 {
-	t_tuple	distance;
-	float	fraction;
-
 	if (pat.type == RING)
 	{
 		if (fabs(fmod(floorf(sqrtf(powf(p.x, 2.0f) + powf(p.y, 2))), 2)) < 0.001f) 
@@ -18,16 +17,22 @@ t_tuple	pattern_at(t_pattern pat, t_tuple p)
 		return (pat.b);
 	}
 	if (pat.type == GRADIENT)
-	{
-		distance = subtract_tuples(pat.b, pat.a);
-		fraction = (p.x + 1.0f) / 2.0f;
-		if (fraction < 0) 
-			fraction = 0;
-		if (fraction > 1) 
-			fraction = 1;
-		return (sum_tuples(pat.a, multiply_tuple(distance, fraction)));
-	}
+		return (gradient_color(pat, p));
 	return (color_float(0, 0, 0));
+}
+
+static t_tuple	gradient_color(t_pattern pat, t_tuple p)
+{
+	t_tuple	distance;
+	float	fraction;
+
+	distance = subtract_tuples(pat.b, pat.a);
+	fraction = (p.x + 1.0f) / 2.0f;
+	if (fraction < 0) 
+		fraction = 0;
+	if (fraction > 1) 
+		fraction = 1;
+	return (sum_tuples(pat.a, multiply_tuple(distance, fraction)));
 }
 
 t_tuple	pattern_at_obj(t_pattern p, t_object obj, t_tuple pos)
