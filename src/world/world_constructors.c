@@ -1,8 +1,11 @@
 #include "head.h"
 
-t_world	world(void)
+t_world	*world(void)
 {
-	return ((t_world) {});
+	t_world	*new_world;
+
+	new_world = saffe_calloc(1, sizeof(t_world));
+	return (new_world);
 }
 
 t_world	default_world(void)
@@ -17,7 +20,7 @@ t_world	default_world(void)
 	s1->material.specular = 0.2f;
 	s2 = sphere();
 	s2->transform = scaling(0.5f, 0.5f, 0.5f);
-	new_world.light = point_light(point(-10, 10, -10), color_float(1, 1, 1));
+	new_world.light = point_light(point(-10, 10, -10), color_float(1, 1, 1), 1);
 	new_world.objects = ft_calloc(2, sizeof(t_object *));
 	if (!new_world.objects)
 		exit(42);
