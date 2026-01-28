@@ -7,11 +7,11 @@ int	is_line_empty(char *line)
 	i = 0;
 	while (line && line[i])
 	{
-		if (!ft_isspace(line[i]))
+		if (!ft_isspace(line[i]) && line[i] != '\n')
 			return (FALSE);
 		i++;
 	}
-	return (FALSE);
+	return (TRUE);
 }
 
 int	is_tuple_empty(t_tuple t)
