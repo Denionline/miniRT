@@ -7,7 +7,8 @@
 enum object_type {
 	SPHERE,
 	PLANE,
-	CYLINDER
+	CYLINDER,
+	CONE
 };
 
 enum pattern_type {
@@ -49,11 +50,12 @@ t_object		*set_transform(t_object *obj, t_matrix transform);
 t_object		*sphere(void);
 t_object		*plane(void);
 t_object		*cylinder(void);
+t_object		*cone(void);
 
 t_material		material(void);
 
-t_intersections	local_intersect(t_object *plane, t_ray r);
-t_tuple			local_normal_at(t_object *plane, t_tuple p);
+t_intersections	local_intersect(t_object *obj, t_ray r);
+t_tuple			local_normal_at(t_object *obj, t_tuple p);
 
 t_tuple		stripe_at(t_pattern p, t_tuple pos);
 t_tuple		stripe_at_obj(t_pattern p, t_object obj, t_tuple pos);
