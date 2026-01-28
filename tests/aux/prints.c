@@ -189,8 +189,9 @@ static void	print_object_world(t_object *o, unsigned int index)
 
 	print_material_compact(o->material);
 
-	if (!is_identity_matrix(o->transform))
-		printf(C_WARN "      transform: (non-identity)\n" C_RESET);
+	print_matrix_simple(o->transform);
+	// if (!is_identity_matrix(o->transform))
+	// 	printf(C_WARN "      transform: (non-identity)\n" C_RESET);
 }
 
 void	print_light(t_light l)
