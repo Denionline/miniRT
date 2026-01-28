@@ -7,6 +7,7 @@ static t_object	*parse_cylinder(char *line)
 	
 	new_cylinder = saffe_calloc(1, sizeof(t_object));
 	new_cylinder->type = CYLINDER;
+	new_cylinder->transform = identity_matrix();
 	paramc = 0;
 	while (line && *line && paramc < 5)
 	{
@@ -35,6 +36,7 @@ static t_object	*parse_plane(char *line)
 
 	new_plane = saffe_calloc(1, sizeof(t_object));
 	new_plane->type = PLANE;
+	new_plane->transform = identity_matrix();
 	paramc = 0;
 	while (line && *line && paramc < 3)
 	{
