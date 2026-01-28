@@ -22,7 +22,7 @@ static t_object	*parse_cylinder(char *line)
 		else if (paramc == 3 && ++paramc)
 			new_cylinder->height = ft_atof(line);
 		else if (paramc == 4 && ++paramc)
-			new_cylinder->material = material(string_to_tuple(line, COLOR));
+			new_cylinder->material = material(multiply_tuple(string_to_tuple(line, COLOR), 1.0f / 255.0f));
 		while (*line && !ft_isspace(*(line++)))
 			;
 	}
@@ -47,7 +47,7 @@ static t_object	*parse_plane(char *line)
 		else if (paramc == 1 && ++paramc)
 			new_plane->normal = normalize(string_to_tuple(line, VECTOR));
 		else if (paramc == 2 && ++paramc)
-			new_plane->material = material(string_to_tuple(line, COLOR));
+			new_plane->material = material(multiply_tuple(string_to_tuple(line, COLOR), 1.0f / 255.0f));
 		while (*line && !ft_isspace(*(line++)))
 			;
 	}
