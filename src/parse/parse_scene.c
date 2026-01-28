@@ -16,7 +16,7 @@ void	parse_line(t_scene *scene, char *line)
 		if (line[i] == 'C')
 			return (parse_camera(&scene->camera, line + i));
 		if (line[i] == 'L')
-			return (parse_light(&scene->world, line + i));
+			return (parse_light(&scene->world.light, line + i));
 		if (line[i] == 's' && line[i + 1] == 'p')
 			return (parse_object(&scene->world, line + i, SPHERE));
 		if (line[i] == 'p' && line[i + 1] == 'l')
