@@ -1,29 +1,30 @@
 #include "head.h"
 
-void	parse_camera(t_camera *c, char *line)
+void	parse_camera(t_camera **c, char *line)
 {
 	t_tuple	direction;
 	t_tuple	position;
 	float	fov;
-	size_t	i;
+	size_t	paramc;
 
-	if (c->fov)
-		exit(42); // Already exists
-	i = 1;
-	while (line && line[i])
+	*c = saffe_calloc(1, sizeof(t_camera));
+	fov = 0.0f;
+	direction = (t_tuple){};
+	position = (t_tuple){};
+	paramc = 0;
+	while (line && *line && paramc < 3)
 	{
-		while (ft_isspace(line[i]))
-			i++;
-		if (is_tuple_empty(position))
-			position = string_to_tuple(line + i, POINT);
-		else if (is_tuple_empty(direction))
-			direction = string_to_tuple(line + i, VECTOR);
-		else if (!fov)
-			fov = ft_atof(line + i);
-		while (line[i] && !ft_isspace(line[i++]));
+		while (ft_isspace(*line))
+			line++;
+		if (paramc == 0 && ++paramc)
+			position = string_to_tuple(line, POINT);
+		else if (paramc == 1 && ++paramc)
+			direction = string_to_tuple(line, VECTOR);
+		else if (paramc == 2 && ++paramc)
+			fov = ft_atof(line);
+		while (*line && !ft_isspace(*(line++)))
+			;
 	}
-	*c = camera(500, 500, fov);
-	c->position = position; // If don't needed on struct, remove it.
-	c->direction = direction; // If don't needed on struct, remove it.
-	c->transform = view_transform(position, direction, vector(0, 1, 0));
+	**c = camera(500, 500, fov);
+	(*c)->transform = view_transform(position, direction, vector(0, 1, 0));
 }
