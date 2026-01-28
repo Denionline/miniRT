@@ -18,4 +18,5 @@ void	parse_light(t_light *l, char *line)
 		while (*line && !ft_isspace(*(line++)))
 			;
 	}
+	l->intensity = multiply_tuple(l->color, l->brightness);
 }
