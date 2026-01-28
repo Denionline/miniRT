@@ -22,24 +22,24 @@ static int	is_valid_tuple(char *str)
 
 t_tuple	string_to_tuple(char *string, enum e_TUPLE_TYPES w)
 {
+	size_t	paramc;
 	t_tuple	t;
-	size_t	i;
 
-	if (is_valid_tuple(string))
+	if (!is_valid_tuple(string))
 		exit(42); // Invalid tuple
 	t = (t_tuple){};
-	i = 0;
-	while (string && string[i])
+	paramc = 0;
+	t.w = w;
+	while (string && *string && paramc < 3)
 	{
-		if (!t.x)
+		if (paramc == 0 && ++paramc)
 			t.x = ft_atof(string);
-		else if (!t.y)
+		else if (paramc == 1 && ++paramc)
 			t.y = ft_atof(string);
-		else if (!t.z)
+		else if (paramc == 2 && ++paramc)
 			t.z = ft_atof(string);
-		else if (!t.w)
-			t.w = w;
-		while (string[i] && string[i++] != ',');
+		while (*string && *(string++) != ',')
+			;
 	}
 	return (t);
 }
