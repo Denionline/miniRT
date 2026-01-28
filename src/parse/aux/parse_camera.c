@@ -23,6 +23,7 @@ void	parse_camera(t_camera *c, char *line)
 		while (line[i] && !ft_isspace(line[i++]));
 	}
 	*c = camera(500, 500, fov);
-	c->position = position;
-	c->direction = direction;
+	c->position = position; // If don't needed on struct, remove it.
+	c->direction = direction; // If don't needed on struct, remove it.
+	c->transform = view_transform(position, direction, vector(0, 1, 0));
 }
