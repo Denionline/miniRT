@@ -19,7 +19,7 @@ int	main(void)
 	floor = plane();
 	floor->material = material();
 	floor->material.color = color_float(1, 0.9, 0.9);
-	floor->material.specular = 0;
+	floor->material.pattern = checkboard_pattern(color_float(137.0f / 255.0f, 81.0f / 255.0f, 41.0f / 255.0f), color_float(1, 1, 1));
 	append_object_on_world(&w, floor);
 
 	middle = sphere();

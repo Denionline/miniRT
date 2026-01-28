@@ -20,6 +20,7 @@ int	main(void)
 	floor->material = material();
 	floor->material.color = color_float(222.0f/255.0f, 184.0f/255.0f, 135/255.0f);
 	floor->material.specular = 0;
+	floor->material.pattern = checkboard_pattern(color_float(137.0f / 255.0f, 81.0f / 255.0f, 41.0f / 255.0f), color_float(1, 1, 1));
 	append_object_on_world(&w, floor);
 
 	c = camera(500, 500, PI / 3);

@@ -41,7 +41,7 @@ static t_tuple	gradient_color(t_pattern pat, t_tuple p)
 
 static t_tuple	checkboard_color(t_pattern pat, t_tuple p)
 {
-	if (fabs(fmod(floor(p.x) + floor(p.y), 2.0f)) < 0.0001f) 
+	if (fabs(fmod(floor(p.x) + floor(p.y) + floor(p.z), 2.0f)) < 0.0001f) 
 		return (pat.a);
 	return (pat.b);
 }
