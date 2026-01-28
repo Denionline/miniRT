@@ -65,4 +65,5 @@ t_tuple		pattern_at(t_pattern pat, t_tuple p);
 t_tuple		pattern_at_obj(t_pattern p, t_object obj, t_tuple pos);
 t_pattern	gradient_pattern(t_tuple color1, t_tuple color2);
 t_pattern	ring_pattern(t_tuple color1, t_tuple color2);
+t_pattern	checkboard_pattern(t_tuple color1, t_tuple color2);
 #endif
