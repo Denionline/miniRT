@@ -13,7 +13,7 @@ void	parse_amblight(t_amblight **amblight, char *line)
 		if (paramc == 0 && ++paramc)
 			(*amblight)->ratio = ft_atof(line);
 		else if (paramc == 1 && ++paramc)
-			(*amblight)->color = string_to_tuple(line, COLOR);
+			(*amblight)->color = multiply_tuple(string_to_tuple(line, COLOR), 1.0f / 255.0f);
 		while (*line && !ft_isspace(*(line++)))
 			;
 	}

@@ -72,7 +72,7 @@ static t_object	*parse_sphere(char *line)
 		else if (paramc == 1 && ++paramc)
 			new_sphere->diameter = ft_atof(line);
 		else if (paramc == 2 && ++paramc)
-			new_sphere->material = material(string_to_tuple(line, COLOR));
+			new_sphere->material = material(multiply_tuple(string_to_tuple(line, COLOR), 1.0f / 255.0f));
 		while (*line && !ft_isspace(*(line++)))
 			;
 	}

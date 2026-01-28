@@ -14,7 +14,7 @@ void	parse_light(t_light *l, char *line)
 		else if (paramc == 1 && ++paramc)
 			l->brightness = ft_atof(line);
 		else if (paramc == 2 && ++paramc)
-			l->color = string_to_tuple(line, COLOR);
+			l->color = multiply_tuple(string_to_tuple(line, COLOR), 1.0f / 255.0f);
 		while (*line && !ft_isspace(*(line++)))
 			;
 	}
