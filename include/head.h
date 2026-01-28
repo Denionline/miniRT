@@ -3,6 +3,7 @@
 
 #include "minilibx-linux/mlx.h"
 #include "libft/include/libft.h"
+#include "get_next_line/include/get_next_line.h"
 
 #include <stdio.h>
 #include <math.h>
@@ -25,13 +26,13 @@
 #include "world.h"
 #include "canvas.h"
 #include "surface.h"
-#include "map.h"
+#include "scene.h"
 
+void	*saffe_calloc(size_t n, size_t size);
 
-typedef struct s_head
-{
-	t_map	*map;
-}	t_head;
+int	is_tuple_empty(t_tuple t);
+int	is_matrix_empty(t_matrix m);
+int	is_line_empty(char *line);
 
 //Test auxiliars
 void	print_matrix(t_matrix m);
@@ -43,6 +44,7 @@ void	print_computations(t_computations c);
 void	print_tuple_simple(const char *name, t_tuple t);
 void	print_matrix_simple(t_matrix m);
 void	print_light(t_light l);
-void	print_world(t_world w);
+void	print_world(t_world *w);
+void	print_scene(t_scene *s);
 
 #endif

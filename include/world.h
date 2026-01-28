@@ -12,6 +12,8 @@ typedef struct s_camera
 	float		half_w;
 	float		half_h;
 	t_matrix	transform;
+	t_tuple		position;
+	t_tuple		direction;
 }	t_camera;
 
 typedef struct s_computations
@@ -33,7 +35,7 @@ typedef struct s_world
 	unsigned int	n_objs;
 }	t_world;
 
-t_world			world(void);
+t_world			*world(void);
 t_world			default_world(void);
 
 t_intersections	intersect_world(t_world w, t_ray r);
