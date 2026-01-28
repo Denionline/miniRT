@@ -20,6 +20,8 @@ int	is_tuple_empty(t_tuple t)
 		return (TRUE);
 	if (!t.r && !t.g && !t.b)
 		return (TRUE);
+	if (!t.w)
+		return (TRUE);
 	return (FALSE);
 }
 
