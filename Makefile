@@ -14,7 +14,7 @@ C_STD     := \033[0m
 NAME			= miniRT
 LIBFT			= $(LIBFT_PATH)libft.a
 MLX				= $(MLX_PATH)libmlx.a
-MLX				= $(GNL_PATH)get_next_line.a
+GNL				= $(GNL_PATH)get_next_line.a
 
 # **************************************************************************** #
 #                                   Path's                                     #
@@ -55,6 +55,7 @@ MLX_PATH		= $(INC_PATH)/minilibx-linux/
 MAIN_FILE		?= main.c
 
 AUX_FILES		+= is_empty
+AUX_FILES		+= saffe_calloc
 
 TEST_FILES		+= print_matrix
 TEST_FILES		+= print_tuple
@@ -176,7 +177,7 @@ MLXFLAGS		= -L$(MLX_PATH) -lmlx_Linux -L/usr/lib -I$(MLX_PATH) -lXext -lX11 -lm 
 MAKE			= make --no-print-directory
 MAKERE			= make re --no-print-directory
 RM				= rm -rf
-LIBS			= $(LIBFT)
+LIBS			= $(LIBFT) $(GNL)
 
 # **************************************************************************** #
 #                                  Commands                                    #
