@@ -1,20 +1,20 @@
 #include "head.h"
 
-void	parse_amblight(t_amblight *amblight, char *line)
+void	parse_amblight(t_amblight **amblight, char *line)
 {
-	size_t	i;
+	size_t	paramc;
 
-	if (amblight->ratio)
-		exit(42); // Already exists
-	i = 1;
-	while (line && line[i])
+	*amblight = saffe_calloc(1, sizeof(t_amblight));
+	paramc = 0;
+	while (line && *line && paramc < 2)
 	{
-		while (ft_isspace(line[i]))
-			i++;
-		if (!amblight->ratio)
-			amblight->ratio = ft_atof(line + i);
-		else if (is_tuple_empty(amblight->color))
-			amblight->color = string_to_tuple(line + i, COLOR);
-		while (line[i] && !ft_isspace(line[i++]));
+		while (ft_isspace(*line))
+			line++;
+		if (paramc == 0 && ++paramc)
+			(*amblight)->ratio = ft_atof(line);
+		else if (paramc == 1 && ++paramc)
+			(*amblight)->color = string_to_tuple(line, COLOR);
+		while (*line && !ft_isspace(*(line++)))
+			;
 	}
 }
