@@ -7,13 +7,15 @@
 enum object_type {
 	SPHERE,
 	PLANE,
-	CYLINDER
+	CYLINDER,
+	CONE
 };
 
 enum pattern_type {
 	STRIP,
 	GRADIENT,
 	RING,
+	CHECKBOARD
 };
 
 typedef struct s_pattern 
@@ -50,17 +52,19 @@ t_object		*set_transform(t_object *obj, t_matrix transform);
 t_object		*sphere(void);
 t_object		*plane(void);
 t_object		*cylinder(void);
+t_object		*cone(void);
 
 t_material		material(t_tuple color);
 
-t_intersections	local_intersect(t_object *plane, t_ray r);
-t_tuple			local_normal_at(t_object *plane, t_tuple p);
+t_intersections	local_intersect(t_object *obj, t_ray r);
+t_tuple			local_normal_at(t_object *obj, t_tuple p);
 
 t_tuple		stripe_at(t_pattern p, t_tuple pos);
 t_tuple		stripe_at_obj(t_pattern p, t_object obj, t_tuple pos);
 t_pattern	stripe_pattern(t_tuple color1, t_tuple color2);
-t_tuple		pattern_at(t_pattern g, t_tuple p);
+t_tuple		pattern_at(t_pattern pat, t_tuple p);
 t_tuple		pattern_at_obj(t_pattern p, t_object obj, t_tuple pos);
 t_pattern	gradient_pattern(t_tuple color1, t_tuple color2);
 t_pattern	ring_pattern(t_tuple color1, t_tuple color2);
+t_pattern	checkboard_pattern(t_tuple color1, t_tuple color2);
 #endif
