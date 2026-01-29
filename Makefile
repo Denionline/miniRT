@@ -68,6 +68,7 @@ PARSE_FILES		+= parse_camera
 PARSE_FILES		+= parse_light
 PARSE_FILES		+= parse_object
 PARSE_FILES		+= string_to_tuple
+PARSE_FILES		+= check_params
 
 CANVAS_FILES	+= canvas
 CANVAS_FILES	+= ft_pixel_put
