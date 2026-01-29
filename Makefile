@@ -106,6 +106,7 @@ MATRIX_FILES	+= rotate_y
 MATRIX_FILES	+= rotate_z
 MATRIX_FILES	+= scaling
 MATRIX_FILES	+= shearing
+MATRIX_FILES	+= rodrigues_rotation
 
 RAY_FILES		+= ray_constructor
 RAY_FILES		+= position
