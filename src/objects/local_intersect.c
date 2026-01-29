@@ -81,9 +81,9 @@ static int	check_height(t_object *cyl, t_ray r, float t)
 	float	y;
 	float	half_h;
 
-	half_h = cyl->height / 2.0;
+	half_h = cyl->height;
 	y = r.origin.y + t * r.direction.y;
-	if (y > -half_h && y < half_h)
+	if (-half_h < y && y < half_h)
 		return(1);
 	return (0);
 }

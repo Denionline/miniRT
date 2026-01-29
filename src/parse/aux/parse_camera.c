@@ -25,6 +25,6 @@ void	parse_camera(t_scene *scene, t_camera **c, char *line)
 	}
 	if (fov < 0 || 180 < fov)
 		end(scene, ERR_OUT_OF_RANGE);
-	**c = camera(500, 500, fov * PI / 180.0f );
-	(*c)->transform = view_transform(position, sum_tuples(position, direction), vector(0, 1, 0));
+	**c = camera(500, 300, fov * PI / 180.0f );
+	(*c)->transform = inverse(view_transform(position, sum_tuples(position, direction), vector(0, 1, 0)));
 }
