@@ -1,0 +1,11 @@
+#ifndef END_H
+# define END_H
+
+enum ERROR_CODE {
+	MALLOC = 42,
+	ERR_OPEN_FILE,
+	ERR_INVALID_TUPLE,
+	ERR_UNKNOWN_IDENTIFIER,
+};
+
+#endif
