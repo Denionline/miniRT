@@ -6,6 +6,7 @@ static t_object	*parse_cylinder(t_scene *scene, char *line)
 {
 	t_object	*new_cylinder;
 	size_t		paramc;
+	t_tuple		p;
 	
 	check_params(scene, line, NPARAM_CYLINDER);
 	new_cylinder = saffe_calloc(scene, 1, sizeof(t_object));
@@ -28,6 +29,9 @@ static t_object	*parse_cylinder(t_scene *scene, char *line)
 		while (*line && !ft_isspace(*(line++)))
 			;
 	}
+	p = new_cylinder->position;
+	new_cylinder->transform = geral_rotation(new_cylinder->normal);
+	new_cylinder->transform = multiply_matrix(translation(p.x, p.y, p.z), new_cylinder->transform);
 	return (new_cylinder);
 }
 
@@ -82,6 +86,7 @@ static t_object	*parse_sphere(t_scene *scene, char *line)
 		while (*line && !ft_isspace(*(line++)))
 			;
 	}
+	new_sphere->transform = translation(new_sphere->position.x, new_sphere->position.y, new_sphere->position.z);
 	return (new_sphere);
 }
 
