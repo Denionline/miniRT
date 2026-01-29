@@ -26,5 +26,5 @@ void	parse_camera(t_camera **c, char *line)
 			;
 	}
 	**c = camera(500, 300, fov * PI / 180.0f );
-	(*c)->transform = view_transform(position, sum_tuples(position, direction), vector(0, 1, 0));
+	(*c)->transform = inverse(view_transform(position, sum_tuples(position, direction), vector(0, 1, 0)));
 }
