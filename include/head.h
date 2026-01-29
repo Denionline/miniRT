@@ -27,6 +27,8 @@
 #include "canvas.h"
 #include "surface.h"
 #include "scene.h"
+#include "parse.h"
+#include "end.h"
 
 void	*saffe_calloc(size_t n, size_t size);
 
