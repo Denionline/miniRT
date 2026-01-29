@@ -7,12 +7,10 @@ void	parse_camera(t_camera **c, char *line)
 	float	fov;
 	size_t	paramc;
 
+	check_params(line, NPARAM_CAMERA);
 	*c = saffe_calloc(1, sizeof(t_camera));
-	fov = 0.0f;
-	direction = (t_tuple){};
-	position = (t_tuple){};
 	paramc = 0;
-	while (line && *line && paramc < 3)
+	while (line && *line && paramc < NPARAM_CAMERA)
 	{
 		while (ft_isspace(*line))
 			line++;

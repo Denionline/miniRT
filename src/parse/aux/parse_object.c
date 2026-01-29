@@ -5,11 +5,11 @@ static t_object	*parse_cylinder(char *line)
 	t_object	*new_cylinder;
 	size_t		paramc;
 	
+	check_params(line, NPARAM_CYLINDER);
 	new_cylinder = saffe_calloc(1, sizeof(t_object));
 	new_cylinder->type = CYLINDER;
-	new_cylinder->transform = identity_matrix();
 	paramc = 0;
-	while (line && *line && paramc < 5)
+	while (line && *line && paramc < NPARAM_CYLINDER)
 	{
 		while (ft_isspace(*line))
 			line++;
@@ -34,11 +34,11 @@ static t_object	*parse_plane(char *line)
 	t_object	*new_plane;
 	size_t		paramc;
 
+	check_params(line, NPARAM_PLANE);
 	new_plane = saffe_calloc(1, sizeof(t_object));
 	new_plane->type = PLANE;
-	new_plane->transform = identity_matrix();
 	paramc = 0;
-	while (line && *line && paramc < 3)
+	while (line && *line && paramc < NPARAM_PLANE)
 	{
 		while (ft_isspace(*line))
 			line++;
@@ -59,11 +59,11 @@ static t_object	*parse_sphere(char *line)
 	t_object	*new_sphere;
 	size_t		paramc;
 
+	check_params(line, NPARAM_SPHERE);
 	new_sphere = saffe_calloc(1, sizeof(t_object));
 	new_sphere->type = SPHERE;
-	new_sphere->transform = identity_matrix();
 	paramc = 0;
-	while (line && *line && paramc < 3)
+	while (line && *line && paramc < NPARAM_SPHERE)
 	{
 		while (ft_isspace(*line))
 			line++;
@@ -90,5 +90,6 @@ void	parse_object(t_world *w, char *line, enum object_type type)
 		new_object = parse_plane(line);
 	else if (type == CYLINDER)
 		new_object = parse_cylinder(line);
+	new_object->transform = identity_matrix();
 	append_object_on_world(w, new_object);
 }	

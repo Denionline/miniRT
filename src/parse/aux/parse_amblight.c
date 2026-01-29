@@ -4,9 +4,10 @@ void	parse_amblight(t_amblight **amblight, char *line)
 {
 	size_t	paramc;
 
+	check_params(line, NPARAM_AMBLIGHT);
 	*amblight = saffe_calloc(1, sizeof(t_amblight));
 	paramc = 0;
-	while (line && *line && paramc < 2)
+	while (line && *line && paramc < NPARAM_AMBLIGHT)
 	{
 		while (ft_isspace(*line))
 			line++;

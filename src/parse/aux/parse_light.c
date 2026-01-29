@@ -4,8 +4,9 @@ void	parse_light(t_light *l, char *line)
 {
 	size_t	paramc;
 
+	check_params(line, NPARAM_LIGHT);
 	paramc = 0;
-	while (line && *line && paramc < 3)
+	while (line && *line && paramc < NPARAM_LIGHT)
 	{
 		while (ft_isspace(*line))
 			line++;
