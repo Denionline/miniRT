@@ -30,7 +30,7 @@ t_tuple	string_to_tuple(char *string, enum e_TUPLE_TYPES w)
 	t = (t_tuple){};
 	paramc = 0;
 	t.w = w;
-	while (string && *string && paramc < 3)
+	while (string && *string && paramc < NPARAM_TUPLE)
 	{
 		if (paramc == 0 && ++paramc)
 			t.x = ft_atof(string);
