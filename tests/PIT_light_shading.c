@@ -22,7 +22,7 @@ int	main(void)
 	//s->material.pattern = stripe_pattern(color_float(1, 0, 0), color_float(1, 1, 1));
 	s->material.pattern = checkboard_pattern(color_float(137.0f / 255.0f, 81.0f / 255.0f, 41.0f / 255.0f), color_float(1, 1, 1));
 	s->material.pattern.transform = scaling(0.5, 0.5, 0.5);
-	l = point_light(point(-10, 10, -10), color_float(1, 1, 1));
+	l = point_light(point(-10, 10, -10), color_float(1, 1, 1), 1);
 	r = ray(point(0, 0, -5), vector(0, 0, 1));
 	new_color = color_float(1, 0, 0);
 	init_canvas(&canvas, 900, 900);

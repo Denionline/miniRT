@@ -25,7 +25,9 @@ static t_intersection get_smallest_time(t_intersection *values, size_t size)
 			best = &values[i];
 		i++;
 	}
-	return (*best);
+	if (best)
+		return (*best);
+	return (intersection(0, NULL));
 }
 
 t_intersection	hit(t_intersections inters)
