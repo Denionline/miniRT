@@ -31,6 +31,7 @@ static t_object	*parse_cylinder(t_scene *scene, char *line)
 	}
 	p = new_cylinder->position;
 	new_cylinder->transform = geral_rotation(new_cylinder->normal);
+	new_cylinder->transform = multiply_matrix(scaling(new_cylinder->diameter, new_cylinder->diameter, new_cylinder->diameter), new_cylinder->transform);
 	new_cylinder->transform = multiply_matrix(translation(p.x, p.y, p.z), new_cylinder->transform);
 	return (new_cylinder);
 }
@@ -86,7 +87,9 @@ static t_object	*parse_sphere(t_scene *scene, char *line)
 		while (*line && !ft_isspace(*(line++)))
 			;
 	}
-	new_sphere->transform = translation(new_sphere->position.x, new_sphere->position.y, new_sphere->position.z);
+	new_sphere->transform = scaling(new_sphere->diameter, new_sphere->diameter, new_sphere->diameter);
+	new_sphere->transform = multiply_matrix(translation(new_sphere->position.x, new_sphere->position.y, new_sphere->position.z)\
+	, new_sphere->transform);
 	return (new_sphere);
 }
 

@@ -6,7 +6,7 @@ t_camera	camera(float hsize, float vsize, float fov)
 	float		aspect;
 	float		half_v;
 
-	half_v = tanf(fov / 2);
+	half_v = tanf(fov * 0.5f);
 	cam = (t_camera) 
 	{
 		.hsize = hsize,
@@ -25,6 +25,6 @@ t_camera	camera(float hsize, float vsize, float fov)
 		cam.half_w = half_v * aspect;
 		cam.half_h = half_v; 
 	}
-	cam.pixel_size = cam.half_w * 2 / cam.hsize;
+	cam.pixel_size = cam.half_w * 2.0f / cam.hsize;
 	return (cam);
 }

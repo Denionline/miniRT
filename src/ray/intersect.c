@@ -27,17 +27,18 @@ t_intersections	intersect(t_object *object, t_ray r)
 {
 	t_intersections	inter;
 	t_tuple			vec;
+	t_tuple			sphe_to_array;
 	float			delta;
 
 	r = transform_ray(r, inverse(object->transform));
+	sphe_to_array = subtract_tuples(r.origin, point(0, 0, 0));
 	inter = (t_intersections) {};
 
 	if (object->type != SPHERE)
 		return (local_intersect(object, r));
 	vec = vector(dot(r.direction, r.direction), \
-	2 * dot(r.origin, r.direction), dot(r.origin, r.origin) - \
-	(object->diameter * 0.5) * \
-	(object->diameter * 0.5));
+	2.0f * dot(r.direction, sphe_to_array), \
+	dot(sphe_to_array, sphe_to_array) - 1.0f);
 	delta = vec.y * vec.y - 4.0f * vec.x * vec.z;
 	inter = intersect_values(inter, vec, delta, object);
 	return (inter);
