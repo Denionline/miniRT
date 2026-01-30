@@ -1,11 +1,10 @@
 #include "head.h"
 
-t_world	*world(void)
+t_world	world(void)
 {
-	t_world	*new_world;
-
-	new_world = saffe_calloc(1, sizeof(t_world));
-	return (new_world);
+	return (
+		(t_world){}
+	);
 }
 
 t_world	default_world(void)
