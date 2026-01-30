@@ -30,7 +30,7 @@
 #include "parse.h"
 #include "end.h"
 
-void	*saffe_calloc(t_scene *scene, size_t n, size_t size);
+void	*saffe_calloc(t_scene *scene, char *s,size_t n, size_t size);
 
 int	is_tuple_empty(t_tuple t);
 int	is_matrix_empty(t_matrix m);
