@@ -1,5 +1,23 @@
 #include "head.h"
 
+static int	is_out_of_range(t_tuple v, enum e_TUPLE_TYPES w)
+{
+	float	max;
+	float	min;
+
+	max = 1.0f + NARUTO;
+	if (w == COLOR)
+		max = 255.0f;
+	min = -max;
+	if (w == COLOR)
+		min = 0.0f;
+	if(v.x > max || v.y > max || v.z > max)
+		return (TRUE);
+	if(v.x < min || v.y < min || v.z < min)
+		return (TRUE);
+	return (FALSE);
+}
+
 static int	is_valid_tuple(char *str)
 {
 	size_t	commas;
@@ -20,13 +38,13 @@ static int	is_valid_tuple(char *str)
 	return ((dots <= 3 && commas == 2));
 }
 
-t_tuple	string_to_tuple(char *string, enum e_TUPLE_TYPES w)
+t_tuple	string_to_tuple(t_scene *scene, char *string, enum e_TUPLE_TYPES w)
 {
 	size_t	paramc;
 	t_tuple	t;
 
 	if (!is_valid_tuple(string))
-		exit(42); // Invalid tuple
+		end(scene, ERR_INVALID_TUPLE);
 	t = (t_tuple){};
 	paramc = 0;
 	t.w = w;
@@ -41,5 +59,7 @@ t_tuple	string_to_tuple(char *string, enum e_TUPLE_TYPES w)
 		while (*string && *(string++) != ',')
 			;
 	}
+	if (w != POINT && is_out_of_range(t, w))
+		end(scene, ERR_OUT_OF_RANGE);
 	return (t);
 }

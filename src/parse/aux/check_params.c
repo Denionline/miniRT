@@ -19,19 +19,19 @@ static size_t	countwords(char *str, char sep)
 	return (cnt);
 }
 
-void	check_params(char *s, enum N_PARAMS nparams)
+void	check_params(t_scene *scene, char *s, enum N_PARAMS nparams)
 {
 	size_t	i;
 
 	if (countwords(s, ' ') != nparams)
-		exit(42); // Number of params exceeded
+		end(scene, ERR_OUT_OF_RANGE);
 	i = 0;
 	while (s && s[i])
 	{
 		if (!ft_isdigit(s[i]) && !ft_isspace(s[i]))
 		{
 			if (s[i] != '.' && s[i] != ',' && s[i] != '+' && s[i] != '-')
-				exit(42); // Character invalid on params
+				end(scene, ERR_INVALID_CHAR);
 		}
 		i++;
 	}
