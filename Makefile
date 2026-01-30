@@ -27,6 +27,7 @@ VPATH			+= ./
 VPATH			+= tests/aux/
 VPATH			+= src/
 VPATH			+= src/aux/
+VPATH			+= src/exit/
 VPATH			+= src/parse
 VPATH			+= src/parse/aux
 VPATH			+= src/canvas/
@@ -56,6 +57,8 @@ MAIN_FILE		?= main.c
 
 AUX_FILES		+= is_empty
 AUX_FILES		+= saffe_calloc
+AUX_FILES		+= end
+AUX_FILES		+= print_error
 
 TEST_FILES		+= print_matrix
 TEST_FILES		+= print_tuple
