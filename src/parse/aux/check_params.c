@@ -24,14 +24,14 @@ void	check_params(t_scene *scene, char *s, enum N_PARAMS nparams)
 	size_t	i;
 
 	if (countwords(s, ' ') != nparams)
-		end(scene, ERR_OUT_OF_RANGE);
+		end(scene, ERR_OUT_OF_RANGE, s);
 	i = 0;
 	while (s && s[i])
 	{
 		if (!ft_isdigit(s[i]) && !ft_isspace(s[i]))
 		{
 			if (s[i] != '.' && s[i] != ',' && s[i] != '+' && s[i] != '-')
-				end(scene, ERR_INVALID_CHAR);
+				end(scene, ERR_INVALID_CHAR, s);
 		}
 		i++;
 	}
