@@ -42,24 +42,26 @@ t_tuple	string_to_tuple(t_scene *scene, char *string, enum e_TUPLE_TYPES w)
 {
 	size_t	paramc;
 	t_tuple	t;
+	size_t	i;
 
 	if (!is_valid_tuple(string))
-		end(scene, ERR_INVALID_TUPLE);
+		end(scene, ERR_INVALID_TUPLE, string);
 	t = (t_tuple){};
 	paramc = 0;
 	t.w = w;
-	while (string && *string && paramc < NPARAM_TUPLE)
+	i = 0;
+	while (string && string[i] && paramc < NPARAM_TUPLE)
 	{
 		if (paramc == 0 && ++paramc)
-			t.x = ft_atof(string);
+			t.x = ft_atof(string + i);
 		else if (paramc == 1 && ++paramc)
-			t.y = ft_atof(string);
+			t.y = ft_atof(string + i);
 		else if (paramc == 2 && ++paramc)
-			t.z = ft_atof(string);
-		while (*string && *(string++) != ',')
+			t.z = ft_atof(string + i);
+		while (string[i] && string[i++] != ',')
 			;
 	}
 	if (w != POINT && is_out_of_range(t, w))
-		end(scene, ERR_OUT_OF_RANGE);
+		end(scene, ERR_OUT_OF_RANGE, string);
 	return (t);
 }
