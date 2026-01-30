@@ -23,14 +23,14 @@
 #include "light.h"
 #include "ray.h"
 #include "obj.h"
+#include "scene.h"
 #include "world.h"
 #include "canvas.h"
 #include "surface.h"
-#include "scene.h"
 #include "parse.h"
 #include "end.h"
 
-void	*saffe_calloc(size_t n, size_t size);
+void	*saffe_calloc(t_scene *scene, size_t n, size_t size);
 
 int	is_tuple_empty(t_tuple t);
 int	is_matrix_empty(t_matrix m);
