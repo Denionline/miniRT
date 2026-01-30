@@ -16,12 +16,11 @@ int	main(void)
 	t_tuple			normal;
 	
 	
-	s = sphere();
+	s = cylinder();
 	s->material.color = color_float(1, 0.2, 1);
 	// s->material.pattern = gradient_pattern(color_float(3.0f / 255.0f, 0.0f, 30.0f / 255.0f), color_float(236.0f / 255.0f, 56.0f / 255.0f, 188.0f / 255.0f));
 	//s->material.pattern = stripe_pattern(color_float(1, 0, 0), color_float(1, 1, 1));
-	s->material.pattern = checkboard_pattern(color_float(137.0f / 255.0f, 81.0f / 255.0f, 41.0f / 255.0f), color_float(1, 1, 1));
-	s->material.pattern.transform = scaling(0.5, 0.5, 0.5);
+	s->material.pattern = checkboard_pattern(color_float(137.0f / 255.0f, 81.0f / 255.0f, 41.0f / 255.0f), color_float(1, 1, 1), s->type);
 	l = point_light(point(-10, 10, -10), color_float(1, 1, 1), 1);
 	r = ray(point(0, 0, -5), vector(0, 0, 1));
 	new_color = color_float(1, 0, 0);

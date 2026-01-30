@@ -9,7 +9,7 @@ int	main(int argc, char *argv[])
 	(void)argc;
 	// if (argc != 2)
 	// 	return (1);
-	parse_scene(&scene, "scenes/mandatory.rt");
+	parse_scene(&scene, argv[1]);
 	canvas = render(*scene->camera, *scene->world);
 	ft_init_hooks(&canvas);
 	mlx_loop(canvas.mlx_ptr);
