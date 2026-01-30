@@ -9,17 +9,17 @@ static void	parse_line(t_scene *scene, char *line)
 	while (ft_isspace(line[i]))
 		i++;
 	if (line[i] == 'A')
-		return (parse_amblight(scene, &scene->amblight, line + i + 1));
+		return (parse_amblight(scene, &scene->amblight, line));
 	if (line[i] == 'C')
-		return (parse_camera(scene, &scene->camera, line + i + 1));
+		return (parse_camera(scene, &scene->camera, line));
 	if (line[i] == 'L')
-		return (parse_light(scene, &scene->world->light, line + i + 1));
+		return (parse_light(scene, &scene->world->light, line));
 	if (line[i] == 's' && line[i + 1] == 'p')
-		return (parse_object(scene, scene->world, line + i, SPHERE));
+		return (parse_object(scene, scene->world, line, SPHERE));
 	if (line[i] == 'p' && line[i + 1] == 'l')
-		return (parse_object(scene, scene->world, line + i, PLANE));
+		return (parse_object(scene, scene->world, line, PLANE));
 	if (line[i] == 'c' && line[i + 1] == 'y')
-		return (parse_object(scene, scene->world, line + i, CYLINDER));
+		return (parse_object(scene, scene->world, line, CYLINDER));
 	end(scene, ERR_UNKNOWN_IDENTIFIER, line);
 }
 
