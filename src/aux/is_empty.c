@@ -7,6 +7,8 @@ int	is_line_empty(char *line)
 	i = 0;
 	while (line && line[i])
 	{
+		if (line[i] == '#')
+			return (TRUE);
 		if (!ft_isspace(line[i]) && line[i] != '\n')
 			return (FALSE);
 		i++;

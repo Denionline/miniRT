@@ -106,6 +106,7 @@ MATRIX_FILES	+= rotate_y
 MATRIX_FILES	+= rotate_z
 MATRIX_FILES	+= scaling
 MATRIX_FILES	+= shearing
+MATRIX_FILES	+= rodrigues_rotation
 
 RAY_FILES		+= ray_constructor
 RAY_FILES		+= position
@@ -172,7 +173,7 @@ MLX_URL			= https://github.com/42paris/minilibx-linux.git
 # **************************************************************************** #
 
 CC				= cc
-CFLAGS			= -Werror -Wextra -Wall -g
+CFLAGS			= -Werror -Wextra -Wall -g -O3
 MLXFLAGS		= -L$(MLX_PATH) -lmlx_Linux -L/usr/lib -I$(MLX_PATH) -lXext -lX11 -lm -lz
 MAKE			= make --no-print-directory
 MAKERE			= make re --no-print-directory
