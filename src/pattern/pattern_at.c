@@ -51,7 +51,7 @@ t_tuple	pattern_at_obj(t_pattern p, t_object obj, t_tuple pos)
 	t_tuple	obj_point;
 	t_tuple	pattern_point;
 
-	obj_point = multiply_matrix_tuple(inverse(obj.transform), pos);
+	obj_point = multiply_matrix_tuple((obj.transform), pos);
 	pattern_point = multiply_matrix_tuple(inverse(p.transform), obj_point);
 	return(pattern_at(p, pattern_point));
 }
