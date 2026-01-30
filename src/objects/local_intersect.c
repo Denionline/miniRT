@@ -2,7 +2,7 @@
 
 static t_intersections	intersect_cone(t_object *cone, t_ray r, t_intersection *xs);
 static t_intersections	intersect_cyl(t_object *cyl, t_ray r, t_intersection *xs);
-static int				check_height(t_object *cyl, t_ray r, float t);
+static int				check_height(t_ray r, float t);
 
 t_intersections	local_intersect(t_object *obj, t_ray r)
 {
@@ -40,9 +40,9 @@ static t_intersections	intersect_cyl(t_object *cyl, t_ray r, t_intersection *xs)
 		return (intersections(NULL, 0));
 	t[0] = (-q[1] - sqrtf(q[3])) / (2.0f * q[0]);
 	t[1] = (-q[1] + sqrtf(q[3])) / (2.0f * q[0]);
-	if (check_height(cyl, r, t[0]))
+	if (check_height(r, t[0]))
 		xs[count++] = (t_intersection){t[0], cyl};
-	if (check_height(cyl, r, t[1]))
+	if (check_height(r, t[1]))
 		xs[count++] = (t_intersection){t[1], cyl};
 	return (intersections(xs, count));
 }
@@ -69,21 +69,19 @@ static t_intersections	intersect_cone(t_object *cone, t_ray r, t_intersection *x
 	if (fabs(q[0]) < 0.00001)
 		t[0] = -q[2] / (2.0f * q[1]);
 	t[1] = (-q[1] + sqrtf(q[3])) / (2.0f * q[0]);
-	if (check_height(cone, r, t[0]))
+	if (check_height(r, t[0]))
 		xs[count++] = (t_intersection){t[0], cone};
-	if (check_height(cone, r, t[1]))
+	if (check_height(r, t[1]))
 		xs[count++] = (t_intersection){t[1], cone};
 	return (intersections(xs, count));
 }
 
-static int	check_height(t_object *cyl, t_ray r, float t)
+static int  check_height(t_ray r, float t)
 {
-	float	y;
-	float	half_h;
+    float   y;
 
-	half_h = cyl->height;
-	y = r.origin.y + t * r.direction.y;
-	if (-half_h < y && y < half_h)
-		return(1);
-	return (0);
+    y = r.origin.y + t * r.direction.y;
+    if (y > -0.5f && y < 0.5f)
+        return (1);
+    return (0);
 }
