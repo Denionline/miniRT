@@ -21,10 +21,10 @@ static void	scene_cleaner(t_scene *scene)
 	}
 }
 
-void	end(t_scene *scene, enum ERROR_CODE status_code)
+void	end(t_scene *scene, enum ERROR_CODE status_code, char *description)
 {
 	scene_cleaner(scene);
 	if (status_code)
-		print_error(status_code);
+		print_error(status_code, description);
 	exit(status_code);
 }

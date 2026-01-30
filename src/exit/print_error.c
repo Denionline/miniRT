@@ -1,6 +1,13 @@
 #include "head.h"
 
-void	print_error(enum ERROR_CODE error_code)
+static int	is_to_free_description(enum ERROR_CODE error_code)
+{
+	if (error_code % 2)
+		return (TRUE);
+	return (FALSE);
+}
+
+void	print_error(enum ERROR_CODE error_code, char *description)
 {
 	if (error_code == ERR_MALLOC)
 		printf("Malloc error\n");
@@ -18,4 +25,6 @@ void	print_error(enum ERROR_CODE error_code)
 		printf("There is some invalid character on scene\n");
 	else
 		printf("Unexpected Error\n");
+	if (description && is_to_free_description(error_code))
+		free(description);
 }
