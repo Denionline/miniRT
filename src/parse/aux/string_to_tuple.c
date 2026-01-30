@@ -44,6 +44,7 @@ t_tuple	string_to_tuple(t_scene *scene, char *string, enum e_TUPLE_TYPES w)
 	t_tuple	t;
 	size_t	i;
 
+	// In case of tuple erro to set the w as negative and after call the end function
 	if (!is_valid_tuple(string))
 		end(scene, ERR_INVALID_TUPLE, string, TRUE);
 	t = (t_tuple){};
