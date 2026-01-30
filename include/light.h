@@ -10,6 +10,7 @@ typedef struct s_light
 	t_tuple	intensity;
 	t_tuple	color;
 	float	brightness;
+	int		exists;
 }	t_light;
 
 typedef	struct s_phong_vec

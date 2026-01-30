@@ -14,6 +14,7 @@ typedef struct s_camera
 	t_matrix	transform;
 	t_tuple		position;
 	t_tuple		direction;
+	int			exists;
 }	t_camera;
 
 typedef struct s_computations
