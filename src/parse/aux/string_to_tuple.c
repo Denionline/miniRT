@@ -45,7 +45,7 @@ t_tuple	string_to_tuple(t_scene *scene, char *string, enum e_TUPLE_TYPES w)
 	size_t	i;
 
 	if (!is_valid_tuple(string))
-		end(scene, ERR_INVALID_TUPLE, string);
+		end(scene, ERR_INVALID_TUPLE, string, TRUE);
 	t = (t_tuple){};
 	paramc = 0;
 	t.w = w;
@@ -62,6 +62,6 @@ t_tuple	string_to_tuple(t_scene *scene, char *string, enum e_TUPLE_TYPES w)
 			;
 	}
 	if (w != POINT && is_out_of_range(t, w))
-		end(scene, ERR_OUT_OF_RANGE, string);
+		end(scene, ERR_OUT_OF_RANGE, string, TRUE);
 	return (t);
 }

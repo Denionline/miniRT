@@ -6,6 +6,7 @@ static void	parse_line(t_scene *scene, char *line)
 
 	if (is_line_empty(line))
 		return ;
+	i = 0;
 	while (ft_isspace(line[i]))
 		i++;
 	if (line[i] == 'A')
@@ -20,7 +21,7 @@ static void	parse_line(t_scene *scene, char *line)
 		return (parse_object(scene, scene->world, line, PLANE));
 	if (line[i] == 'c' && line[i + 1] == 'y')
 		return (parse_object(scene, scene->world, line, CYLINDER));
-	end(scene, ERR_UNKNOWN_IDENTIFIER, line);
+	end(scene, ERR_UNKNOWN_IDENTIFIER, line, TRUE);
 }
 
 void	parse_scene(t_scene **scene, char *file)
@@ -29,9 +30,9 @@ void	parse_scene(t_scene **scene, char *file)
 	char		*line;
 
 	if (file_fd < 0)
-		end(*scene, ERR_OPEN_FILE, file);
-	*scene = saffe_calloc(*scene, 1, sizeof(t_scene), NULL);
-	(*scene)->world = saffe_calloc(*scene, 1, sizeof(t_world), NULL);
+		end(*scene, ERR_OPEN_FILE, file, FALSE);
+	*scene = saffe_calloc(*scene, NULL, 1, sizeof(t_scene));
+	(*scene)->world = saffe_calloc(*scene, NULL, 1, sizeof(t_world));
 	while (TRUE)
 	{
 		line = get_next_line(file_fd);

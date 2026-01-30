@@ -11,7 +11,7 @@ enum ERROR_CODE {
 	ERR_UNKNOWN_IDENTIFIER = 53,
 };
 
-void	end(t_scene *scene, enum ERROR_CODE status_code, char *description);
+void	end(t_scene *scene, int status_code, char *description, int to_free);
 void	print_error(enum ERROR_CODE error_code, char *description);
 
 #endif

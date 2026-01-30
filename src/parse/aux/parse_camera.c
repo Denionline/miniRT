@@ -9,7 +9,9 @@ static void	fill_values(t_scene *scene, t_camera *c, char *line)
 	{
 		while (ft_isspace(*line))
 			line++;
-		if (paramc == 0 && ++paramc)
+		if (paramc == 0 && *line == 'C')
+			line += 1;
+		else if (paramc == 0 && ++paramc)
 			c->position = string_to_tuple(scene, line, POINT);
 		else if (paramc == 1 && ++paramc)
 			c->direction = string_to_tuple(scene, line, VECTOR);
@@ -27,12 +29,13 @@ void	parse_camera(t_scene *scene, t_camera **c, char *line)
 	float	fov;
 
 	check_params(scene, line, NPARAM_CAMERA);
-	*c = saffe_calloc(scene, 1, sizeof(t_camera), line);
+	*c = saffe_calloc(scene, line, 1, sizeof(t_camera));
 	fill_values(scene, *c, line);
 	position = (*c)->position;
 	direction = (*c)->direction;
+	fov = (*c)->fov;
 	if (fov < 0 || 180 < fov)
-		end(scene, ERR_OUT_OF_RANGE, line);
+		end(scene, ERR_OUT_OF_RANGE, line, TRUE);
 	**c = camera(500, 300, fov * PI / 180.0f);
 	(*c)->transform = inverse(
 		view_transform(
