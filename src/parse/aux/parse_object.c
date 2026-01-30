@@ -101,6 +101,7 @@ void	parse_object(t_world *w, char *line, enum object_type type)
 	t_object	*new_object;
 
 	line += 2;
+	new_object = NULL;
 	if (type == SPHERE)
 		new_object = parse_sphere(line);
 	else if (type == PLANE)
