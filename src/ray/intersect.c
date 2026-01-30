@@ -30,7 +30,7 @@ t_intersections	intersect(t_object *object, t_ray r)
 	t_tuple			sphe_to_array;
 	float			delta;
 
-	r = transform_ray(r, inverse(object->transform));
+	r = transform_ray(r, (object->transform));
 	sphe_to_array = subtract_tuples(r.origin, point(0, 0, 0));
 	inter = (t_intersections) {};
 
