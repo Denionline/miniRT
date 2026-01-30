@@ -33,7 +33,7 @@ static t_object	*parse_cylinder(char *line)
 	p = new_cylinder->position;
 	radius = new_cylinder->diameter * 0.5f;
 	new_cylinder->transform = geral_rotation(new_cylinder->normal);
-	new_cylinder->transform = multiply_matrix(scaling(radius, radius, radius), new_cylinder->transform);
+	new_cylinder->transform = multiply_matrix(scaling(radius, new_cylinder->height, radius), new_cylinder->transform);
 	new_cylinder->transform = multiply_matrix(translation(p.x, p.y, p.z), new_cylinder->transform);
 	return (new_cylinder);
 }
