@@ -20,7 +20,8 @@ enum pattern_type {
 
 typedef struct s_pattern 
 {
-	enum pattern_type	type;
+	enum pattern_type	type_p;
+	enum object_type	tpye_obj;
 	t_matrix			transform;
 	t_tuple				a;
 	t_tuple				b;
@@ -61,10 +62,14 @@ t_tuple			local_normal_at(t_object *obj, t_tuple p);
 
 t_tuple		stripe_at(t_pattern p, t_tuple pos);
 t_tuple		stripe_at_obj(t_pattern p, t_object obj, t_tuple pos);
-t_pattern	stripe_pattern(t_tuple color1, t_tuple color2);
 t_tuple		pattern_at(t_pattern pat, t_tuple p);
 t_tuple		pattern_at_obj(t_pattern p, t_object obj, t_tuple pos);
-t_pattern	gradient_pattern(t_tuple color1, t_tuple color2);
-t_pattern	ring_pattern(t_tuple color1, t_tuple color2);
-t_pattern	checkboard_pattern(t_tuple color1, t_tuple color2);
+t_tuple		spherical_map(t_tuple p);
+t_tuple		planar_map(t_tuple p);
+t_tuple		converter_map(t_tuple p, enum object_type t);
+t_pattern	stripe_pattern(t_tuple color1, t_tuple color2, enum object_type type);
+t_pattern	gradient_pattern(t_tuple color1, t_tuple color2, enum object_type type);
+t_pattern	ring_pattern(t_tuple color1, t_tuple color2, enum object_type type);
+t_pattern	checkboard_pattern(t_tuple color1, t_tuple color2, enum object_type type);
+
 #endif

@@ -132,6 +132,7 @@ OBJ_FILES		+= local_normal_at
 OBJ_FILES		+= local_intersect
 OBJ_FILES		+= stripe_at
 OBJ_FILES		+= constructor_patterns
+OBJ_FILES		+= const_maps
 
 LIGHT_FILES		+= point_light
 LIGHT_FILES		+= lighting

@@ -35,6 +35,7 @@ t_object	*plane(void)
 		exit(42);
 	new_object->transform = identity_matrix();
 	new_object->position = point(0, 0, 0);
+	new_object->normal = vector(0, 1, 0);
 	new_object->material = material(color_float(1, 1, 1));
 	new_object->type = PLANE;
 	return (new_object);
