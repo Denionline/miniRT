@@ -1,6 +1,15 @@
 #include "head.h"
 
-static void	fill_values(t_scene *scene, t_object *new_sphere, char *line)
+static int	error_check(t_object *sphere)
+{
+	if (sphere->position.error_code)
+		return (sphere->position.error_code);
+	if (sphere->material.color.error_code)
+		return (sphere->material.color.error_code);
+	return (0);
+}
+
+static void	fill_values(t_object *new_sphere, char *line)
 {
 	size_t	paramc;
 
@@ -12,13 +21,13 @@ static void	fill_values(t_scene *scene, t_object *new_sphere, char *line)
 		if (paramc == 0 && *line == 's')
 			line += 2;
 		else if (paramc == 0 && ++paramc)
-			new_sphere->position = string_to_tuple(scene, line, POINT);
+			new_sphere->position = string_to_tuple(line, POINT);
 		else if (paramc == 1 && ++paramc)
 			new_sphere->diameter = ft_atof(line);
 		else if (paramc == 2 && ++paramc)
 			new_sphere->material = material(
 				multiply_tuple(
-					string_to_tuple(scene, line, COLOR),
+					string_to_tuple(line, COLOR),
 					1.0f / 255.0f
 				)
 			);
@@ -31,16 +40,20 @@ t_object	*parse_sphere(t_scene *scene, char *line)
 {
 	t_object	*new_sphere;
 	float		radius;
+	int			error_code;
 
 	check_params(scene, line, NPARAM_SPHERE);
 	new_sphere = saffe_calloc(scene, line, 1, sizeof(t_object));
 	new_sphere->type = SPHERE;
-	fill_values(scene, new_sphere, line);
+	fill_values(new_sphere, line);
+	error_code = error_check(new_sphere);
+	if (error_code)
+		end(scene, error_code, line, TRUE);
 	radius = new_sphere->diameter * 0.5f;
 	new_sphere->transform = scaling(radius, radius, radius);
 	new_sphere->transform = multiply_matrix(
 			translation(
-				new_sphere->position.x, 
+				new_sphere->position.x,
 				new_sphere->position.y,
 				new_sphere->position.z 
 			),
