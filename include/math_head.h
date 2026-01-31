@@ -30,6 +30,7 @@ typedef struct s_tuple
 			uint8_t	b;
 		};
 	};
+	int	error_code;
 }	t_tuple;
 
 int		is_equals(float n1, float n2);
