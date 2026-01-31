@@ -73,6 +73,7 @@ PARSE_FILES		+= parse_object
 PARSE_FILES		+= parse_sphere
 PARSE_FILES		+= parse_plane
 PARSE_FILES		+= parse_cylinder
+PARSE_FILES		+= parse_cone
 PARSE_FILES		+= string_to_tuple
 PARSE_FILES		+= check_params
 PARSE_FILES		+= geral_rotation
