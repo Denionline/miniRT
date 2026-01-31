@@ -12,6 +12,6 @@ enum ERROR_CODE {
 };
 
 void	end(t_scene *scene, int status_code, char *description, int to_free);
-void	print_error(enum ERROR_CODE error_code, char *description);
+void	print_error(enum ERROR_CODE error_code);
 
 #endif
