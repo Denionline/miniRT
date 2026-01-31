@@ -2,6 +2,8 @@
 
 t_tuple	negate_tuple(t_tuple t)
 {
+	if (t.error_code)
+		return (t);
 	return (
 		tuple(
 			-t.x,

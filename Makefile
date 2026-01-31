@@ -27,6 +27,7 @@ VPATH			+= ./
 VPATH			+= tests/aux/
 VPATH			+= src/
 VPATH			+= src/aux/
+VPATH			+= src/exit/
 VPATH			+= src/parse
 VPATH			+= src/parse/aux
 VPATH			+= src/canvas/
@@ -56,6 +57,8 @@ MAIN_FILE		?= main.c
 
 AUX_FILES		+= is_empty
 AUX_FILES		+= saffe_calloc
+AUX_FILES		+= end
+AUX_FILES		+= print_error
 
 TEST_FILES		+= print_matrix
 TEST_FILES		+= print_tuple
@@ -67,7 +70,12 @@ PARSE_FILES		+= parse_amblight
 PARSE_FILES		+= parse_camera
 PARSE_FILES		+= parse_light
 PARSE_FILES		+= parse_object
+PARSE_FILES		+= parse_sphere
+PARSE_FILES		+= parse_plane
+PARSE_FILES		+= parse_cylinder
 PARSE_FILES		+= string_to_tuple
+PARSE_FILES		+= check_params
+PARSE_FILES		+= geral_rotation
 
 CANVAS_FILES	+= canvas
 CANVAS_FILES	+= ft_pixel_put
@@ -196,7 +204,7 @@ $(NAME): $(BUILD_PATH) $(OBJS)
 	@$(CC) $(CFLAGS) -I$(INC_PATH) $(MAIN_FILE) $(OBJS) $(LIBS) $(MLXFLAGS) -o $(NAME)
 
 $(BUILD_PATH)%.o: %.c
-	@printf "\r$(C_YELLOW)[CC] %-50s$(C_STD)" "$<"
+	@printf "\r$(C_YELLOW)[CC] %-60s$(C_STD)" "$<"
 	@$(CC) $(CFLAGS) -I$(INC_PATH) -c $< -o $@
 
 $(BUILD_PATH):
