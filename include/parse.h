@@ -13,18 +13,18 @@ enum N_PARAMS {
 	NPARAM_CYLINDER = 6,
 };
 
-void	parse_scene(t_scene **scene, char *file);
-void	parse_amblight(t_scene *scene, t_amblight **amblight, char *line);
-void	parse_camera(t_scene *scene, t_camera **camera, char *line);
-void	parse_light(t_scene *scene, t_light *l, char *line);
-void	parse_object(t_scene *s, t_world *w, char *line, enum object_type type);
+void		parse_scene(t_scene **scene, char *file);
+void		parse_amblight(t_scene *scene, t_amblight **amblight, char *line);
+void		parse_camera(t_scene *scene, t_camera **camera, char *line);
+void		parse_light(t_scene *scene, t_light *l, char *line);
+void		parse_object(t_scene *s, t_world *w, char *line, enum object_type type);
 
 t_object	*parse_sphere(t_scene *scene, char *line);
 t_object	*parse_plane(t_scene *scene, char *line);
 t_object	*parse_cylinder(t_scene *scene, char *line);
 
-t_tuple	string_to_tuple(t_scene *scene, char *string, enum e_TUPLE_TYPES w);
-void	check_params(t_scene *scene, char *str, enum N_PARAMS nparams);
+t_tuple		string_to_tuple(char *string, enum e_TUPLE_TYPES w);
+void		check_params(t_scene *scene, char *str, enum N_PARAMS nparams);
 t_matrix	geral_rotation(t_tuple	vec_norm);
 
 #endif
