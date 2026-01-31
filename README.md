@@ -112,7 +112,7 @@ These notes reflect the current implementation in this repository:
 
 - **Single light only**: the world stores one `t_light`, and the parser rejects duplicate `L` entries.
 - **Fixed render size**: the camera is constructed as **500×300** during parsing.
-- Supported objects in parsing are: **sphere**, **plane**, **cylinder**.
+- Supported objects in parsing are: **sphere**, **plane**, **cylinder**, **cone**.
 
 ## Tests / Debug helpers
 
