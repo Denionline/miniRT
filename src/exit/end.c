@@ -7,15 +7,19 @@ static void	scene_cleaner(t_scene *scene)
 	if (scene)
 	{
 		if (scene->amblight)
-		free(scene->amblight);
+			free(scene->amblight);
 		if (scene->camera)
 			free(scene->camera);
-		if (scene->world && scene->world->n_objs)
+		if (scene->world)
 		{
-			i = 0;
-			while (i < scene->world->n_objs)
-				free(scene->world->objects[i++]);
-			free(scene->world->objects);
+			if (scene->world->objects)
+			{
+				i = 0;
+				while (i < scene->world->n_objs)
+					free(scene->world->objects[i++]);
+				free(scene->world->objects);
+			}
+			free(scene->world);
 		}
 		free(scene);
 	}
