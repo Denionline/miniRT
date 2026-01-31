@@ -16,6 +16,10 @@ void	print_error(enum ERROR_CODE error_code)
 		printf("Some parameter on scene is out of range\n");
 	else if (error_code == ERR_INVALID_CHAR)
 		printf("There is some invalid character on scene\n");
+	else if (error_code == ERR_DUPLICATE)
+		printf("There is some unique rule duplicated\n");
+	else if (error_code == ERR_MISSING)
+		printf("There is some mandatory rule missing\n");
 	else
 		printf("Unexpected Error\n");
 }
