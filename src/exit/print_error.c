@@ -2,6 +2,7 @@
 
 void	print_error(enum ERROR_CODE error_code)
 {
+	printf("Error\n");
 	if (error_code == ERR_MALLOC)
 		printf("Malloc error\n");
 	else if (error_code == ERR_NOT_ENOUGH_ARGS)

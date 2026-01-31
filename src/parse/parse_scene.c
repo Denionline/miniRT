@@ -43,7 +43,7 @@ void	parse_scene(t_scene **scene, char *file)
 	char		*line;
 
 	*scene = saffe_calloc(*scene, NULL, 1, sizeof(t_scene));
-	if (file_fd < 0)
+	if (file_fd < 0 || !file)
 		end(*scene, ERR_OPEN_FILE, file, FALSE);
 	(*scene)->world = saffe_calloc(*scene, NULL, 1, sizeof(t_world));
 	while (TRUE)
