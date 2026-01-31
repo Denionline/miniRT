@@ -40,9 +40,9 @@ void	parse_scene(t_scene **scene, char *file)
 	const int	file_fd = open(file, O_RDONLY);
 	char		*line;
 
+	*scene = saffe_calloc(*scene, NULL, 1, sizeof(t_scene));
 	if (file_fd < 0)
 		end(*scene, ERR_OPEN_FILE, file, FALSE);
-	*scene = saffe_calloc(*scene, NULL, 1, sizeof(t_scene));
 	(*scene)->world = saffe_calloc(*scene, NULL, 1, sizeof(t_world));
 	while (TRUE)
 	{
