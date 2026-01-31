@@ -64,5 +64,6 @@ t_object	*parse_cylinder(t_scene *scene, char *line)
 		translation(p.x, p.y, p.z),
 		new_cylinder->transform
 	);
+	new_cylinder->transform = inverse(new_cylinder->transform);
 	return (new_cylinder);
 }

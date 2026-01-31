@@ -59,5 +59,6 @@ t_object	*parse_plane(t_scene *scene, char *line)
 		translation(p.x, p.y, p.z),
 		new_plane->transform
 	);
+	new_plane->transform = inverse(new_plane->transform);
 	return (new_plane);
 }
