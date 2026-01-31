@@ -60,11 +60,6 @@ AUX_FILES		+= saffe_calloc
 AUX_FILES		+= end
 AUX_FILES		+= print_error
 
-TEST_FILES		+= print_matrix
-TEST_FILES		+= print_tuple
-TEST_FILES		+= print_color
-TEST_FILES		+= prints
-
 PARSE_FILES		+= parse_scene
 PARSE_FILES		+= parse_amblight
 PARSE_FILES		+= parse_camera
@@ -153,7 +148,6 @@ WORLD_FILES		+= append_object_on_world
 
 PATTERN_FILES	+= pattern_at
 
-FILES			+= $(TEST_FILES)
 FILES			+= $(AUX_FILES)
 FILES			+= $(PARSE_FILES)
 FILES			+= $(CANVAS_FILES)
