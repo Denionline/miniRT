@@ -34,7 +34,7 @@ t_tuple	cylindrical_map(t_tuple p)
 
 t_tuple planar_map(t_tuple p)
 {
-    return (vector(p.x - floorf(p.x), p.z - floorf(p.z), 0));
+    return (vector(p.x, p.z, 0));
 }
 
 t_tuple	converter_map(t_tuple p, enum object_type t)

@@ -38,26 +38,39 @@ static int	is_identifier(char *s)
 	return (0);
 }
 
+static int	is_pattern(char *s)
+{
+	if (s[0] == 'c' && s[1] == 'k')
+		return (2);
+	return (0);
+}
+
 void	check_params(t_scene *scene, char *s, int nparams, int exists)
 {
 	size_t	id_len;
 	size_t	i;
+	int		count;
 
 	if (exists)
 		end(scene, ERR_DUPLICATE, s, TRUE);
-	if (countwords(s) != nparams)
+	count = countwords(s);
+	if (!(count != nparams || count != nparams - 1))
 		end(scene, ERR_OUT_OF_RANGE, s, TRUE);
 	i = 0;
+	while (ft_isspace(s[i]))
+		i++;
+	id_len = is_identifier(s + i);
+	if (id_len)
+		i += id_len;
 	while (s && s[i])
 	{
-		id_len = is_identifier(s + i);
-		if (id_len)
-			i += id_len;
 		if (!ft_isdigit(s[i]) && !ft_isspace(s[i]))
 		{
 			if (s[i] != '.' && s[i] != ',' && s[i] != '+' && s[i] != '-')
-				end(scene, ERR_INVALID_CHAR, s, TRUE);
+				break ;
 		}
 		i++;
 	}
+	if (s[i] && !is_pattern(s + i))
+		end(scene, ERR_INVALID_CHAR, s, TRUE);
 }
