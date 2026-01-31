@@ -33,6 +33,8 @@ static int	is_identifier(char *s)
 		return (2);
 	if (s[0] == 'c' && s[1] == 'y')
 		return (2);
+	if (s[0] == 'c' && s[1] == 'o')
+		return (2);
 	return (0);
 }
 
