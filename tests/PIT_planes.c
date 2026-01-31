@@ -18,7 +18,7 @@ int	main(void)
 
 	floor = plane();
 	floor->material = material(color_float(1, 0.9, 0.9));
-	floor->material.pattern = checkboard_pattern(color_float(137.0f / 255.0f, 81.0f / 255.0f, 41.0f / 255.0f), color_float(1, 1, 1));
+	floor->material.pattern = checkboard_pattern(color_float(137.0f / 255.0f, 81.0f / 255.0f, 41.0f / 255.0f), color_float(1, 1, 1), floor->type);
 	append_object_on_world(w, floor);
 
 	middle = sphere();
@@ -44,9 +44,9 @@ int	main(void)
 
 	c = camera(500, 500, PI / 3);
 	from = point(0, 1.5, -5);
-	to = point(0, 1, 0);
+	to = sum_tuples(from, vector(0, 0, 1));
 	up = vector(0, 1, 0);
-	c.transform = (view_transform(from, to, up));
+	c.transform = inverse(view_transform(from, to, up));
 	t_canvas canvas = render(c, *w);
 	ft_init_hooks(&canvas);
 	mlx_loop(canvas.mlx_ptr);

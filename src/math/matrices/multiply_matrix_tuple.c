@@ -3,6 +3,7 @@
 t_tuple	multiply_matrix_tuple(t_matrix matrix, t_tuple t)
 {
 	const float	(*m)[4] = matrix.matrix;
+
 	return (
 		(t_tuple) {
 			.x = m[0][0] * t.x + m[0][1] * t.y + m[0][2] * t.z + m[0][3] * t.w,

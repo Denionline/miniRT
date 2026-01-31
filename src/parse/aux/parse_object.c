@@ -35,6 +35,7 @@ static t_object	*parse_cylinder(char *line)
 	new_cylinder->transform = geral_rotation(new_cylinder->normal);
 	new_cylinder->transform = multiply_matrix(scaling(radius, new_cylinder->height, radius), new_cylinder->transform);
 	new_cylinder->transform = multiply_matrix(translation(p.x, p.y, p.z), new_cylinder->transform);
+	new_cylinder->transform = inverse(new_cylinder->transform);
 	return (new_cylinder);
 }
 
@@ -64,6 +65,7 @@ static t_object	*parse_plane(char *line)
 	p = new_plane->position;
 	new_plane->transform = geral_rotation(new_plane->normal);
 	new_plane->transform = multiply_matrix(translation(p.x, p.y, p.z), new_plane->transform);
+	new_plane->transform = inverse(new_plane->transform);
 	return (new_plane);
 }
 
@@ -93,6 +95,7 @@ static t_object	*parse_sphere(char *line)
 	new_sphere->transform = scaling(radius, radius, radius);
 	new_sphere->transform = multiply_matrix(translation(new_sphere->position.x, new_sphere->position.y, new_sphere->position.z)\
 	, new_sphere->transform);
+	new_sphere->transform = inverse(new_sphere->transform);
 	return (new_sphere);
 }
 
