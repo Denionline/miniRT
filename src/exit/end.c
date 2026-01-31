@@ -29,7 +29,7 @@ void	end(t_scene *scene, int status_code, char *description, int to_free)
 {
 	scene_cleaner(scene);
 	if (status_code)
-		print_error(status_code, description);
+		print_error(status_code);
 	if (to_free)
 		free(description);
 	exit(status_code);
