@@ -18,7 +18,7 @@ static int	is_out_of_range(t_tuple v, enum e_TUPLE_TYPES w)
 	return (FALSE);
 }
 
-static int	is_valid_tuple(char *str)
+static int	is_valid_string(char *str)
 {
 	size_t	commas;
 	size_t	dots;
@@ -38,18 +38,17 @@ static int	is_valid_tuple(char *str)
 	return ((dots <= 3 && commas == 2));
 }
 
-t_tuple	string_to_tuple(t_scene *scene, char *string, enum e_TUPLE_TYPES w)
+t_tuple	string_to_tuple(char *string, enum e_TUPLE_TYPES w)
 {
 	size_t	paramc;
 	t_tuple	t;
 	size_t	i;
 
-	// In case of tuple erro to set the w as negative and after call the end function
-	if (!is_valid_tuple(string))
-		end(scene, ERR_INVALID_TUPLE, string, TRUE);
 	t = (t_tuple){};
-	paramc = 0;
+	if (!is_valid_string(string))
+		t.error_code = ERR_INVALID_TUPLE;
 	t.w = w;
+	paramc = 0;
 	i = 0;
 	while (string && string[i] && paramc < NPARAM_TUPLE)
 	{
@@ -63,6 +62,6 @@ t_tuple	string_to_tuple(t_scene *scene, char *string, enum e_TUPLE_TYPES w)
 			;
 	}
 	if (w != POINT && is_out_of_range(t, w))
-		end(scene, ERR_OUT_OF_RANGE, string, TRUE);
+		t.error_code = ERR_OUT_OF_RANGE;
 	return (t);
 }
