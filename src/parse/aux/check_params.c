@@ -1,6 +1,6 @@
 #include "head.h"
 
-static size_t	countwords(char *str, char sep)
+static size_t	countwords(char *str)
 {
 	size_t	cnt;
 	size_t	i;
@@ -9,11 +9,11 @@ static size_t	countwords(char *str, char sep)
 	i = 0;
 	while (str[i])
 	{
-		while (str[i] == sep)
+		while (ft_isspace(str[i]))
 			i++;
-		if (str[i] && str[i] != sep)
+		if (str[i] && !ft_isspace(str[i]))
 			cnt++;
-		while (str[i] && str[i] != sep)
+		while (str[i] && !ft_isspace(str[i]))
 			i++;
 	}
 	return (cnt);
@@ -22,30 +22,34 @@ static size_t	countwords(char *str, char sep)
 static int	is_identifier(char *s)
 {
 	if (s[0] == 'A')
-		return (TRUE);
+		return (1);
 	if (s[0] == 'C')
-		return (TRUE);
+		return (1);
 	if (s[0] == 'L')
-		return (TRUE);
+		return (1);
 	if (s[0] == 'p' && s[1] == 'l')
-		return (TRUE);
+		return (2);
 	if (s[0] == 's' && s[1] == 'p')
-		return (TRUE);
+		return (2);
 	if (s[0] == 'c' && s[1] == 'y')
-		return (TRUE);
-	return (FALSE);
+		return (2);
+	return (0);
 }
 
 void	check_params(t_scene *scene, char *s, enum N_PARAMS nparams)
 {
+	size_t	id_len;
 	size_t	i;
 
-	if (countwords(s, ' ') != nparams)
+	if (countwords(s) != nparams)
 		end(scene, ERR_OUT_OF_RANGE, s, TRUE);
 	i = 0;
 	while (s && s[i])
 	{
-		if (!ft_isdigit(s[i]) && !ft_isspace(s[i]) && !is_identifier(s + i))
+		id_len = is_identifier(s + i);
+		if (id_len)
+			i += id_len;
+		if (!ft_isdigit(s[i]) && !ft_isspace(s[i]))
 		{
 			if (s[i] != '.' && s[i] != ',' && s[i] != '+' && s[i] != '-')
 				end(scene, ERR_INVALID_CHAR, s, TRUE);
