@@ -37,7 +37,7 @@ void	parse_light(t_scene *scene, t_light *l, char *line)
 {
 	int	error_code;
 
-	check_params(scene, line, NPARAM_LIGHT);
+	check_params(scene, line, NPARAM_LIGHT, l->exists);
 	fill_values(l, line);
 	if (l->brightness < 0.00f || l->brightness > 1.00f)
 		end(scene, ERR_OUT_OF_RANGE, line, TRUE);
@@ -45,4 +45,5 @@ void	parse_light(t_scene *scene, t_light *l, char *line)
 	if (error_code)
 		end(scene, error_code, line, TRUE);
 	l->intensity = multiply_tuple(l->color, l->brightness);
+	l->exists = TRUE;
 }

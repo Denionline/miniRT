@@ -1,5 +1,16 @@
 #include "head.h"
 
+static int	is_missing_rule(t_scene *scene)
+{
+	if (!scene->amblight)
+		return (TRUE);
+	if (!scene->camera)
+		return (TRUE);
+	if (!scene->world->light.exists)
+		return (TRUE);
+	return (FALSE);
+}
+
 static void	parse_line(t_scene *scene, char *line)
 {
 	size_t	i;
@@ -41,4 +52,6 @@ void	parse_scene(t_scene **scene, char *file)
 		parse_line(*scene, line);
 		free(line);
 	}
+	if (is_missing_rule(*scene))
+		end(*scene, ERR_MISSING, NULL, FALSE);
 }

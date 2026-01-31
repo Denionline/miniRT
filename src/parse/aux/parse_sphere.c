@@ -42,7 +42,7 @@ t_object	*parse_sphere(t_scene *scene, char *line)
 	float		radius;
 	int			error_code;
 
-	check_params(scene, line, NPARAM_SPHERE);
+	check_params(scene, line, NPARAM_SPHERE, 0);
 	new_sphere = saffe_calloc(scene, line, 1, sizeof(t_object));
 	new_sphere->type = SPHERE;
 	fill_values(new_sphere, line);

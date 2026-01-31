@@ -1,9 +1,9 @@
 #include "head.h"
 
-static size_t	countwords(char *str)
+static int	countwords(char *str)
 {
-	size_t	cnt;
-	size_t	i;
+	int	cnt;
+	int	i;
 
 	cnt = 0;
 	i = 0;
@@ -36,11 +36,13 @@ static int	is_identifier(char *s)
 	return (0);
 }
 
-void	check_params(t_scene *scene, char *s, enum N_PARAMS nparams)
+void	check_params(t_scene *scene, char *s, int nparams, int exists)
 {
 	size_t	id_len;
 	size_t	i;
 
+	if (exists)
+		end(scene, ERR_DUPLICATE, s, TRUE);
 	if (countwords(s) != nparams)
 		end(scene, ERR_OUT_OF_RANGE, s, TRUE);
 	i = 0;

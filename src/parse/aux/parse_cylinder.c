@@ -46,7 +46,7 @@ t_object	*parse_cylinder(t_scene *scene, char *line)
 	float		radius;
 	int			error_code;
 	
-	check_params(scene, line, NPARAM_CYLINDER);
+	check_params(scene, line, NPARAM_CYLINDER, 0);
 	new_cylinder = saffe_calloc(scene, line, 1, sizeof(t_object));
 	new_cylinder->type = CYLINDER;
 	fill_values(new_cylinder, line);

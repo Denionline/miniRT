@@ -46,7 +46,7 @@ t_object	*parse_plane(t_scene *scene, char *line)
 	t_tuple		p;
 	int			error_code;
 
-	check_params(scene, line, NPARAM_PLANE);
+	check_params(scene, line, NPARAM_PLANE, 0);
 	new_plane = saffe_calloc(scene, line, 1, sizeof(t_object));
 	new_plane->type = PLANE;
 	fill_values(new_plane, line);

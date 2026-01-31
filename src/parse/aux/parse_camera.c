@@ -38,7 +38,7 @@ void	parse_camera(t_scene *scene, t_camera **c, char *line)
 	float	fov;
 	int		error_code;
 
-	check_params(scene, line, NPARAM_CAMERA);
+	check_params(scene, line, NPARAM_CAMERA, (*c) != NULL);
 	*c = saffe_calloc(scene, line, 1, sizeof(t_camera));
 	fill_values(*c, line);
 	error_code = error_check(*c);

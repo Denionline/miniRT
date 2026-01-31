@@ -34,7 +34,7 @@ void	parse_amblight(t_scene *scene, t_amblight **amblight, char *line)
 {
 	int	error_code;
 
-	check_params(scene, line, NPARAM_AMBLIGHT);
+	check_params(scene, line, NPARAM_AMBLIGHT, (*amblight) != NULL);
 	*amblight = saffe_calloc(scene, line, 1, sizeof(t_amblight));
 	fill_values(*amblight, line);
 	if ((*amblight)->ratio < 0.00f || (*amblight)->ratio > 1.00f)
