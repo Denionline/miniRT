@@ -24,7 +24,7 @@ t_object	*parse_plane(t_scene *scene, char *line);
 t_object	*parse_cylinder(t_scene *scene, char *line);
 
 t_tuple		string_to_tuple(char *string, enum e_TUPLE_TYPES w);
-void		check_params(t_scene *scene, char *str, enum N_PARAMS nparams);
+void		check_params(t_scene *scene, char *str, int nparams, int exists);
 t_matrix	geral_rotation(t_tuple	vec_norm);
 
 #endif

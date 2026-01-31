@@ -3,12 +3,14 @@
 
 enum ERROR_CODE {
 	ERR_MALLOC = 42,
-	ERR_OPEN_FILE = 43,
+	ERR_OPEN_FILE,
 	ERR_NOT_ENOUGH_ARGS,
 	ERR_INVALID_TUPLE,
 	ERR_OUT_OF_RANGE,
 	ERR_INVALID_CHAR,
-	ERR_UNKNOWN_IDENTIFIER = 53,
+	ERR_UNKNOWN_IDENTIFIER,
+	ERR_DUPLICATE,
+	ERR_MISSING,
 };
 
 void	end(t_scene *scene, int status_code, char *description, int to_free);

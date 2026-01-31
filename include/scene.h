@@ -7,7 +7,6 @@ typedef struct s_amblight
 {
 	float	ratio;
 	t_tuple	color;
-	int		exists;
 }	t_amblight;
 
 typedef struct s_scene
