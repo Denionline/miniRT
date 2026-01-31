@@ -36,17 +36,4 @@ int	is_tuple_empty(t_tuple t);
 int	is_matrix_empty(t_matrix m);
 int	is_line_empty(char *line);
 
-//Test auxiliars
-void	print_matrix(t_matrix m);
-void	print_tuple(t_tuple t);
-void	print_color(t_tuple t);
-void	print_object(t_object o);
-void	print_material(t_material m);
-void	print_computations(t_computations c);
-void	print_tuple_simple(const char *name, t_tuple t);
-void	print_matrix_simple(t_matrix m);
-void	print_light(t_light l);
-void	print_world(t_world *w);
-void	print_scene(t_scene *s);
-
 #endif
