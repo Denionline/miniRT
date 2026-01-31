@@ -11,6 +11,7 @@ enum N_PARAMS {
 	NPARAM_SPHERE = 4,
 	NPARAM_PLANE = 4,
 	NPARAM_CYLINDER = 6,
+	NPARAM_CONE = 6,
 };
 
 void		parse_scene(t_scene **scene, char *file);
@@ -22,6 +23,7 @@ void		parse_object(t_scene *s, t_world *w, char *line, enum object_type type);
 t_object	*parse_sphere(t_scene *scene, char *line);
 t_object	*parse_plane(t_scene *scene, char *line);
 t_object	*parse_cylinder(t_scene *scene, char *line);
+t_object	*parse_cone(t_scene *scene, char *line);
 
 t_tuple		string_to_tuple(char *string, enum e_TUPLE_TYPES w);
 void		check_params(t_scene *scene, char *str, int nparams, int exists);

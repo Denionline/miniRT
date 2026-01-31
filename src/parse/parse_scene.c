@@ -32,6 +32,8 @@ static void	parse_line(t_scene *scene, char *line)
 		return (parse_object(scene, scene->world, line, PLANE));
 	if (line[i] == 'c' && line[i + 1] == 'y')
 		return (parse_object(scene, scene->world, line, CYLINDER));
+	if (line[i] == 'c' && line[i + 1] == 'o')
+		return (parse_object(scene, scene->world, line, CONE));
 	end(scene, ERR_UNKNOWN_IDENTIFIER, line, TRUE);
 }
 
