@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   light.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/01 14:42:12 by dximenes          #+#    #+#             */
+/*   Updated: 2026/02/01 14:43:50 by dximenes         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef LIGHT_H
 # define LIGHT_H
 
-#include "obj.h"
-#include "math_head.h"
+# include "obj.h"
+# include "math_head.h"
 
 typedef struct s_light
 {
@@ -30,6 +42,7 @@ typedef	struct s_phong_colors
 
 
 t_light		point_light(t_tuple pos, t_tuple color, float brightness);
-t_tuple		lighting(t_material material, t_light l, t_tuple p,	t_phong_vec phong, t_object obj);
+t_tuple		lighting(t_material material, t_light l, t_tuple p,
+				t_phong_vec phong, t_object obj);
 
 #endif

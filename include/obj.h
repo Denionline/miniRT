@@ -1,27 +1,41 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   obj.h                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/01 14:39:25 by dximenes          #+#    #+#             */
+/*   Updated: 2026/02/01 14:40:33 by dximenes         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef OBJ_H
 # define OBJ_H
 
-#include "light.h"
-#include "ray.h"
+# include "light.h"
+# include "ray.h"
 
-enum object_type {
+enum e_object_type
+{
 	SPHERE,
 	PLANE,
 	CYLINDER,
 	CONE
 };
 
-enum pattern_type {
+enum e_pattern_type
+{
 	STRIP,
 	GRADIENT,
 	RING,
 	CHECKBOARD
 };
 
-typedef struct s_pattern 
+typedef struct s_pattern
 {
-	enum pattern_type	type_p;
-	enum object_type	tpye_obj;
+	enum e_pattern_type	type_p;
+	enum e_object_type	tpye_obj;
 	t_matrix			transform;
 	t_tuple				a;
 	t_tuple				b;
@@ -30,7 +44,7 @@ typedef struct s_pattern
 	int					height;
 }	t_pattern;
 
-typedef	struct s_material
+typedef struct s_material
 {
 	t_pattern	pattern;
 	t_tuple		color;
@@ -42,7 +56,7 @@ typedef	struct s_material
 
 typedef struct s_object
 {
-	enum object_type	type;
+	enum e_object_type	type;
 	t_tuple				position;
 	t_matrix			transform;
 	t_material			material;
@@ -62,16 +76,20 @@ t_material		material(t_tuple color);
 t_intersections	local_intersect(t_object *obj, t_ray r);
 t_tuple			local_normal_at(t_object *obj, t_tuple p);
 
-t_tuple		stripe_at(t_pattern p, t_tuple pos);
-t_tuple		stripe_at_obj(t_pattern p, t_object obj, t_tuple pos);
-t_tuple		pattern_at(t_pattern pat, t_tuple p);
-t_tuple		pattern_at_obj(t_pattern p, t_object obj, t_tuple pos);
-t_tuple		spherical_map(t_tuple p);
-t_tuple		planar_map(t_tuple p);
-t_tuple		converter_map(t_tuple p, enum object_type t);
-t_pattern	stripe_pattern(t_tuple color1, t_tuple color2, enum object_type type);
-t_pattern	gradient_pattern(t_tuple color1, t_tuple color2, enum object_type type);
-t_pattern	ring_pattern(t_tuple color1, t_tuple color2, enum object_type type);
-t_pattern	checkboard_pattern(t_tuple color1, t_tuple color2, enum object_type type);
+t_tuple			stripe_at(t_pattern p, t_tuple pos);
+t_tuple			stripe_at_obj(t_pattern p, t_object obj, t_tuple pos);
+t_tuple			pattern_at(t_pattern pat, t_tuple p);
+t_tuple			pattern_at_obj(t_pattern p, t_object obj, t_tuple pos);
+t_tuple			spherical_map(t_tuple p);
+t_tuple			planar_map(t_tuple p);
+t_tuple			converter_map(t_tuple p, enum e_object_type t);
+t_pattern		stripe_pattern(t_tuple color1, t_tuple color2,
+					enum e_object_type type);
+t_pattern		gradient_pattern(t_tuple color1, t_tuple color2,
+					enum e_object_type type);
+t_pattern		ring_pattern(t_tuple color1, t_tuple color2,
+					enum e_object_type type);
+t_pattern		checkboard_pattern(t_tuple color1, t_tuple color2,
+					enum e_object_type type);
 
 #endif

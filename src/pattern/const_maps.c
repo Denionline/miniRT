@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   const_maps.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/01 14:32:54 by dximenes          #+#    #+#             */
+/*   Updated: 2026/02/01 14:39:56 by dximenes         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "head.h"
 
 t_tuple	spherical_map(t_tuple p)
@@ -37,7 +49,7 @@ t_tuple planar_map(t_tuple p)
     return (vector(fmod(p.x, 1), fmod(p.z, 1), 0));
 }
 
-t_tuple	converter_map(t_tuple p, enum object_type t)
+t_tuple	converter_map(t_tuple p, enum e_object_type t)
 {
 	if (t == PLANE)
 		return (planar_map(p));

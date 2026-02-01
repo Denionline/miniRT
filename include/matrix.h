@@ -1,7 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   matrix.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/01 14:42:38 by dximenes          #+#    #+#             */
+/*   Updated: 2026/02/01 14:43:43 by dximenes         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef MATRIX_H
 # define MATRIX_H
 
-#include "math_head.h"
+# include "math_head.h"
 
 typedef struct s_matrix
 {

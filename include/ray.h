@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ray.h                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/01 14:43:09 by dximenes          #+#    #+#             */
+/*   Updated: 2026/02/01 14:43:35 by dximenes         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef RAY_H
 # define RAY_H
 
-#include "math_head.h"
-#include "matrix.h"
+# include "math_head.h"
+# include "matrix.h"
 
 typedef struct s_object t_object;
 
