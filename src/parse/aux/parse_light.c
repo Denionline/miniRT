@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_light.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/01 19:05:43 by dximenes          #+#    #+#             */
+/*   Updated: 2026/02/01 19:06:01 by dximenes         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "head.h"
 
 static int	error_check(t_light *l)
@@ -8,6 +20,7 @@ static int	error_check(t_light *l)
 		return (l->color.error_code);
 	return (0);
 }
+
 static void	fill_values(t_light *l, char *line)
 {
 	size_t	paramc;
@@ -25,9 +38,8 @@ static void	fill_values(t_light *l, char *line)
 			l->brightness = ft_atof(line);
 		else if (paramc == 2 && ++paramc)
 			l->color = multiply_tuple(
-				string_to_tuple(line, COLOR),
-				1.0f / 255.0f
-			);
+					string_to_tuple(line, COLOR),
+					1.0f / 255.0f);
 		while (*line && !ft_isspace(*(line++)))
 			;
 	}

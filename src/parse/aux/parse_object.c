@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_object.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/01 19:06:09 by dximenes          #+#    #+#             */
+/*   Updated: 2026/02/01 19:06:26 by dximenes         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "head.h"
 
 void	parse_object(t_scene *s, t_world *w, char *line, enum e_object_type t)
@@ -14,5 +26,4 @@ void	parse_object(t_scene *s, t_world *w, char *line, enum e_object_type t)
 	else if (t == CONE)
 		new_object = parse_cone(s, line);
 	append_object_on_world(w, new_object);
-}	
-
+}

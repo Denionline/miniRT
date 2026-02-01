@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   string_to_tuple.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/01 19:04:17 by dximenes          #+#    #+#             */
+/*   Updated: 2026/02/01 19:04:55 by dximenes         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "head.h"
 
 static int	is_out_of_range(t_tuple v, enum e_TUPLE_TYPES w)
@@ -11,9 +23,9 @@ static int	is_out_of_range(t_tuple v, enum e_TUPLE_TYPES w)
 	min = -max;
 	if (w == COLOR)
 		min = 0.0f;
-	if(v.x > max || v.y > max || v.z > max)
+	if (v.x > max || v.y > max || v.z > max)
 		return (TRUE);
-	if(v.x < min || v.y < min || v.z < min)
+	if (v.x < min || v.y < min || v.z < min)
 		return (TRUE);
 	return (FALSE);
 }

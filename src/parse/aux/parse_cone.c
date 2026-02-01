@@ -43,7 +43,7 @@ static int	check_cond(size_t *paramc, t_object *new_cone, char *line)
 			string_to_tuple(line, COLOR), 1.0f / 255.0f));
 	else if ((*paramc) == 5 && ++(*paramc))
 	{
-		if(*line != '\n')
+		if (*line != '\n')
 		{
 			new_cone->material.pattern = check_pattern(line);
 			if (!new_cone->material.pattern.has_pattern)
