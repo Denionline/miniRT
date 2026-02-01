@@ -1,0 +1,9 @@
+{
+   minilibx_x11_writev_uninit
+   Memcheck:Param
+   writev(vector[0])
+   fun:writev
+   ...
+   fun:mlx_int_wait_first_expose
+   fun:mlx_new_window
+}
