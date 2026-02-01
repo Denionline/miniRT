@@ -6,23 +6,23 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 14:33:36 by dximenes          #+#    #+#             */
-/*   Updated: 2026/02/01 14:33:37 by dximenes         ###   ########.fr       */
+/*   Updated: 2026/02/01 17:41:23 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "head.h"
 
-t_intersections	append_intersections(t_intersections inters, t_intersections temp )
+t_intersections	append_intersections(t_intersections inters, t_intersections t)
 {
 	t_intersections	new_inters;
 	size_t			i;
 	size_t			j;
 
-	new_inters.count = inters.count + temp.count;
+	new_inters.count = inters.count + t.count;
 	new_inters.array = ft_calloc(
-		new_inters.count,
-		sizeof(t_intersection)
-	);
+			new_inters.count,
+			sizeof(t_intersection)
+			);
 	if (!new_inters.array)
 		exit(42);
 	i = 0;
@@ -32,12 +32,11 @@ t_intersections	append_intersections(t_intersections inters, t_intersections tem
 		i++;
 	}
 	j = 0;
-	while (j < temp.count)
-		new_inters.array[i++] = temp.array[j++];
+	while (j < t.count)
+		new_inters.array[i++] = t.array[j++];
 	free(inters.array);
 	return (new_inters);
 }
-
 
 t_intersections	intersect_world(t_world w, t_ray r)
 {
