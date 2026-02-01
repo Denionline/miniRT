@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   constructors.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/01 14:29:20 by dximenes          #+#    #+#             */
+/*   Updated: 2026/02/01 14:29:24 by dximenes         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "head.h"
 
 t_tuple	tuple(float x, float y, float z, float w)
@@ -36,4 +48,3 @@ t_tuple	color_float(float x, float y, float z)
 {
 	return ((t_tuple) {.x = x, .y = y, .z = z, .w = COLOR});
 }
-

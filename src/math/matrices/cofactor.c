@@ -1,4 +1,16 @@
-# include "head.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cofactor.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/01 14:30:08 by dximenes          #+#    #+#             */
+/*   Updated: 2026/02/01 14:30:09 by dximenes         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "head.h"
 
 float	cofactor(t_matrix matrix_3d, unsigned int row, unsigned int col)
 {
