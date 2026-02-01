@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 14:33:01 by dximenes          #+#    #+#             */
-/*   Updated: 2026/02/01 18:15:48 by dximenes         ###   ########.fr       */
+/*   Updated: 2026/02/01 19:12:06 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static size_t	is_all_negatives(t_intersections inters)
 	return (count == inters.count);
 }
 
-static t_intersection get_smallest_time(t_intersection *values, size_t size)
+static t_intersection	get_smallest_time(t_intersection *values, size_t size)
 {
 	t_intersection	*best;
 	size_t			i;
