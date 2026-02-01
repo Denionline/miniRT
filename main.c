@@ -21,7 +21,7 @@ int	main(int argc, char *argv[])
 		execl("./.select_scene", ".select_scene", (char *)NULL);
 	parse_scene(&scene, argv[1]);
 	canvas = render(*scene->camera, *scene->world);
-	ft_init_hooks(&canvas);
+	ft_init_hooks(&canvas, scene);
 	mlx_loop(canvas.mlx_ptr);
 	end(scene, 0, NULL, FALSE);
 }
