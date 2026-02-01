@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 14:42:54 by dximenes          #+#    #+#             */
-/*   Updated: 2026/02/01 14:43:38 by dximenes         ###   ########.fr       */
+/*   Updated: 2026/02/01 15:39:13 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void		parse_amblight(t_scene *scene, t_amblight **amblight, char *line);
 void		parse_camera(t_scene *scene, t_camera **camera, char *line);
 void		parse_light(t_scene *scene, t_light *l, char *line);
 void		parse_object(t_scene *s, t_world *w, char *line,
-				enum e_object_type type);
+				enum e_object_type t);
 
 t_object	*parse_sphere(t_scene *scene, char *line);
 t_object	*parse_plane(t_scene *scene, char *line);
