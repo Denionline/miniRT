@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 14:42:12 by dximenes          #+#    #+#             */
-/*   Updated: 2026/02/01 14:43:50 by dximenes         ###   ########.fr       */
+/*   Updated: 2026/02/01 15:32:59 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,10 @@ typedef struct s_light
 
 typedef	struct s_phong_vec
 {
-	t_tuple	eyev;
-	t_tuple	normalv;
-	int		in_shadow;
+	t_tuple		eyev;
+	t_tuple		normalv;
+	int			in_shadow;
+	t_object	*object;
 }	t_phong_vec;
 
 typedef	struct s_phong_colors
@@ -41,8 +42,7 @@ typedef	struct s_phong_colors
 }	t_phong_colors;
 
 
-t_light		point_light(t_tuple pos, t_tuple color, float brightness);
-t_tuple		lighting(t_material material, t_light l, t_tuple p,
-				t_phong_vec phong, t_object obj);
+t_light	point_light(t_tuple pos, t_tuple color, float brightness);
+t_tuple	lighting(t_material m, t_light l, t_tuple t, t_phong_vec p);
 
 #endif

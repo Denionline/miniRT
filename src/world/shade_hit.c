@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 14:33:32 by dximenes          #+#    #+#             */
-/*   Updated: 2026/02/01 14:33:33 by dximenes         ###   ########.fr       */
+/*   Updated: 2026/02/01 15:34:07 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,6 @@ t_tuple	shade_hit(t_world w, t_computations comps)
 	pv.eyev = comps.eyev;
 	pv.normalv = comps.normalv;
 	pv.in_shadow = is_shadowed(w, comps.over_point);
-	return (lighting(comps.object->material, w.light, comps.over_point, pv, *comps.object));
+	pv.object = comps.object;
+	return (lighting(comps.object->material, w.light, comps.over_point, pv));
 }
