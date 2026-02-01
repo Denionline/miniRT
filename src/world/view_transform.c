@@ -6,13 +6,14 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 14:33:31 by dximenes          #+#    #+#             */
-/*   Updated: 2026/02/01 14:33:32 by dximenes         ###   ########.fr       */
+/*   Updated: 2026/02/01 18:39:32 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "head.h"
 
-t_matrix	view_transform(t_tuple init_location, t_tuple look_pos, t_tuple up_vector)
+t_matrix	view_transform(t_tuple init_location, t_tuple look_pos,
+		t_tuple up_vector)
 {
 	t_tuple		going;
 	t_tuple		left;
@@ -27,9 +28,8 @@ t_matrix	view_transform(t_tuple init_location, t_tuple look_pos, t_tuple up_vect
 			up_scene.x, up_scene.y, up_scene.z, 0,
 			-going.x, -going.y, -going.z, 0,
 			0, 0, 0, 1
-		}
-		, 4);
-	
-	return (multiply_matrix(m, \
-		translation(-init_location.x, -init_location.y, -init_location.z)));
+		}, 4);
+	return (multiply_matrix(m,
+			translation(-init_location.x, -init_location.y, -init_location.z)
+		));
 }

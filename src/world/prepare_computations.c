@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 14:33:33 by dximenes          #+#    #+#             */
-/*   Updated: 2026/02/01 14:33:34 by dximenes         ###   ########.fr       */
+/*   Updated: 2026/02/01 18:40:02 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ t_computations	prepare_computations(t_intersection inter, t_ray r)
 	else
 		comps.inside = FALSE;
 	comps.over_point = sum_tuples(
-		comps.point,
-		multiply_tuple(comps.normalv, NARUTO)
-	);
+			comps.point,
+			multiply_tuple(comps.normalv, NARUTO)
+			);
 	return (comps);
 }

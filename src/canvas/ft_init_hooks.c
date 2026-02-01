@@ -6,17 +6,11 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 14:32:30 by dximenes          #+#    #+#             */
-/*   Updated: 2026/02/01 18:29:37 by dximenes         ###   ########.fr       */
+/*   Updated: 2026/02/01 18:37:57 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "head.h"
-
-typedef struct s_hook_ctx
-{
-	t_canvas	*canvas;
-	t_scene		*scene;
-} 	t_hook_ctx;
 
 static int	destroy_and_end(t_hook_ctx *ctx)
 {

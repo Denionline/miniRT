@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 14:41:14 by dximenes          #+#    #+#             */
-/*   Updated: 2026/02/01 14:41:15 by dximenes         ###   ########.fr       */
+/*   Updated: 2026/02/01 18:38:11 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,12 @@
 # define CANVAS_H
 
 # define ESC_KEY 65307
+
+typedef struct s_hook_ctx
+{
+	t_canvas	*canvas;
+	t_scene		*scene;
+} 	t_hook_ctx;
 
 typedef struct s_canvas
 {

@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 14:33:34 by dximenes          #+#    #+#             */
-/*   Updated: 2026/02/01 18:15:40 by dximenes         ###   ########.fr       */
+/*   Updated: 2026/02/01 18:40:18 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	is_shadowed(t_world w, t_tuple p)
 	float			distance;
 	t_intersection	rit;
 	t_intersections	inters;
- 
+
 	vector_d = subtract_tuples(w.light.position, p);
 	distance = magnitude(vector_d);
 	r = ray(p, normalize(vector_d));
