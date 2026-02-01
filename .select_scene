@@ -1,0 +1,29 @@
+#!/bin/bash
+
+shopt -s nullglob
+
+SCENE=()
+for f in scenes/*.rt; do
+  SCENE+=("$(basename "$f" ".rt")" "")
+done
+
+if [ ${#SCENE[@]} -eq 0 ]; then
+  whiptail --msgbox "No files found." 10 40
+  exit 1
+fi
+
+CHOICE=$(whiptail \
+  --title "Select a file to execute" \
+  --menu "Choose:" 20 60 10 \
+  "${SCENE[@]}" \
+  3>&1 1>&2 2>&3)
+
+if [ $? -ne 0 ]; then
+  exit 0
+fi
+
+if [ -f "scenes/$CHOICE.rt" ]; then
+  ./miniRT "scenes/$CHOICE.rt"
+fi
+
+exit 1

@@ -49,7 +49,7 @@ void	parse_camera(t_scene *scene, t_camera **c, char *line)
 		end(scene, ERR_OUT_OF_RANGE, line, TRUE);
 	position = (*c)->position;
 	direction = (*c)->direction;
-	**c = camera(500, 300, fov * PI / 180.0f);
+	**c = camera(640, 480, fov * PI / 180.0f);
 	(*c)->transform = inverse(
 		view_transform(
 			position,
