@@ -6,13 +6,14 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 14:28:49 by dximenes          #+#    #+#             */
-/*   Updated: 2026/02/01 14:39:56 by dximenes         ###   ########.fr       */
+/*   Updated: 2026/02/01 19:17:31 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "head.h"
 
-t_pattern	ring_pattern(t_tuple color1, t_tuple color2, enum e_object_type type)
+t_pattern	ring_pattern(t_tuple color1, t_tuple color2,
+		enum e_object_type type)
 {
 	t_pattern	p;
 
@@ -25,7 +26,8 @@ t_pattern	ring_pattern(t_tuple color1, t_tuple color2, enum e_object_type type)
 	return (p);
 }
 
-t_pattern	stripe_pattern(t_tuple color1, t_tuple color2, enum e_object_type type)
+t_pattern	stripe_pattern(t_tuple color1, t_tuple color2,
+		enum e_object_type type)
 {
 	t_pattern	p;
 
@@ -38,7 +40,8 @@ t_pattern	stripe_pattern(t_tuple color1, t_tuple color2, enum e_object_type type
 	return (p);
 }
 
-t_pattern	gradient_pattern(t_tuple color1, t_tuple color2, enum e_object_type type)
+t_pattern	gradient_pattern(t_tuple color1, t_tuple color2,
+		enum e_object_type type)
 {
 	t_pattern	p;
 
@@ -51,7 +54,8 @@ t_pattern	gradient_pattern(t_tuple color1, t_tuple color2, enum e_object_type ty
 	return (p);
 }
 
-t_pattern	checkboard_pattern(t_tuple color1, t_tuple color2, enum e_object_type type)
+t_pattern	checkboard_pattern(t_tuple color1, t_tuple color2,
+		enum e_object_type type)
 {
 	t_pattern	p;
 
