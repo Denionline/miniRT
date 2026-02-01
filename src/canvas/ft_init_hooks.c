@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 14:32:30 by dximenes          #+#    #+#             */
-/*   Updated: 2026/02/01 18:23:26 by dximenes         ###   ########.fr       */
+/*   Updated: 2026/02/01 18:29:37 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,16 @@ typedef struct s_hook_ctx
 
 static int	destroy_and_end(t_hook_ctx *ctx)
 {
+	t_canvas	*canvas;
+	t_scene		*scene;
+
 	if (!ctx)
 		exit(0);
-	ft_destroy_canvas(ctx->canvas);
-	end(ctx->scene, 0, NULL, FALSE);
+	canvas = ctx->canvas;
+	scene = ctx->scene;
+	free(ctx);
+	ft_destroy_canvas(canvas);
+	end(scene, 0, NULL, FALSE);
 	return (0);
 }
 
@@ -38,7 +44,7 @@ void	ft_init_hooks(t_canvas *canvas, t_scene *scene)
 {
 	t_hook_ctx	*ctx;
 
-	ctx = malloc(sizeof(*ctx));
+	ctx = ft_calloc(1, sizeof(t_hook_ctx));
 	if (!ctx)
 		end(scene, ERR_MALLOC, NULL, FALSE);
 	ctx->canvas = canvas;

@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 14:33:42 by dximenes          #+#    #+#             */
-/*   Updated: 2026/02/01 17:54:46 by dximenes         ###   ########.fr       */
+/*   Updated: 2026/02/01 18:31:33 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	main(int argc, char *argv[])
 {
-	t_canvas canvas;
-	t_scene	*scene;
+	t_canvas	canvas;
+	t_scene		*scene;
 
 	if (argc != 2)
 		execl("./.select_scene", ".select_scene", (char *)NULL);
