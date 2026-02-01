@@ -26,7 +26,7 @@ typedef struct s_pattern
 	t_tuple				a;
 	t_tuple				b;
 	int					has_pattern;
-	int					with;
+	int					width;
 	int					height;
 }	t_pattern;
 

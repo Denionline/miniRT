@@ -15,6 +15,13 @@ static t_pattern	check_pattern(char *line)
 {
 	if (line[0] == 'c' && line[1] == 'k')
 		return (checkboard_pattern(color_float(1, 1, 1), color_float(0, 0, 0), PLANE));
+	if (line[0] == 's' && line[1] == 't')
+		return (stripe_pattern(color_float(1, 1, 1), color_float(0, 0, 0), PLANE));
+	if (line[0] == 'r' && line[1] == 'g')
+		return (ring_pattern(color_float(1, 1, 1), color_float(1, 0, 0), PLANE));
+	if (line[0] == 'g' && line[1] == 'r')
+		return (gradient_pattern(color_float(1, 0, 0), \
+		color_float(252 / 255.0f, 15 / 255.0f, 192 / 255.0f), PLANE));
 	return ((t_pattern){});
 }
 

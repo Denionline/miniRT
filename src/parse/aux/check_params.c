@@ -42,6 +42,12 @@ static int	is_pattern(char *s)
 {
 	if (s[0] == 'c' && s[1] == 'k')
 		return (2);
+	if (s[0] == 's' && s[1] == 't')
+		return (2);
+	if (s[0] == 'r' && s[1] == 'g')
+		return (2);
+	if (s[0] == 'g' && s[1] == 'r')
+		return (2);
 	return (0);
 }
 
