@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 14:30:45 by dximenes          #+#    #+#             */
-/*   Updated: 2026/02/01 14:30:46 by dximenes         ###   ########.fr       */
+/*   Updated: 2026/02/01 18:44:10 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 t_matrix	rotate_x(double radians)
 {
-	const double c	= cos(radians);
-	const double s	= sin(radians);
+	const double	c = cos(radians);
+	const double	s = sin(radians);
 
 	return (
 		matrix((float []){
