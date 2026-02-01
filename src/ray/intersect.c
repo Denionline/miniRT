@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 14:33:07 by dximenes          #+#    #+#             */
-/*   Updated: 2026/02/01 18:51:06 by dximenes         ###   ########.fr       */
+/*   Updated: 2026/02/01 19:09:25 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,13 @@ t_intersections	intersect(t_object *object, t_ray r)
 	r = transform_ray(r, (object->transform));
 	sphe_to_array = subtract_tuples(r.origin, point(0, 0, 0));
 	inter = (t_intersections){};
-
 	if (object->type != SPHERE)
 		return (local_intersect(object, r));
-	vec = vector(dot(r.direction, r.direction), \
-	2.0f * dot(r.direction, sphe_to_array), \
-	dot(sphe_to_array, sphe_to_array) - 1.0f);
+	vec = vector(
+			dot(r.direction, r.direction),
+			2.0f * dot(r.direction, sphe_to_array),
+			dot(sphe_to_array, sphe_to_array) - 1.0f
+			);
 	delta = vec.y * vec.y - 4.0f * vec.x * vec.z;
 	inter = intersect_values(inter, vec, delta, object);
 	return (inter);

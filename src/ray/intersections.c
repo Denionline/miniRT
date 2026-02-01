@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 14:33:05 by dximenes          #+#    #+#             */
-/*   Updated: 2026/02/01 18:51:06 by dximenes         ###   ########.fr       */
+/*   Updated: 2026/02/01 19:10:05 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,7 @@ t_intersections	intersections(t_intersection values[], unsigned int count)
 	}
 	return (
 		(t_intersections){
-			.array = sort_intersections(new_array, count),
-			.count = count,
-		}
-	);
+		.array = sort_intersections(new_array, count),
+		.count = count,
+	});
 }
