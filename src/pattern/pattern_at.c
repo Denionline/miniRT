@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 14:32:55 by dximenes          #+#    #+#             */
-/*   Updated: 2026/02/01 15:04:27 by dximenes         ###   ########.fr       */
+/*   Updated: 2026/02/01 15:08:22 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,5 @@ t_tuple	pattern_at_obj(t_pattern p, t_object obj, t_tuple pos)
 	t_tuple	obj_point;
 
 	obj_point = multiply_matrix_tuple((obj.transform), pos);
-	return(pattern_at(p, obj_point));
+	return (pattern_at(p, obj_point));
 }
