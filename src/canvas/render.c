@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 14:32:26 by dximenes          #+#    #+#             */
-/*   Updated: 2026/02/01 14:32:27 by dximenes         ###   ########.fr       */
+/*   Updated: 2026/02/01 15:36:42 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_canvas	render(t_camera c, t_world w)
 	t_ray		r;
 	int			i;
 	int			j;
-	
+
 	init_canvas(&canvas, c.hsize, c.vsize);
 	j = 0;
 	while (j < c.vsize)
@@ -30,7 +30,10 @@ t_canvas	render(t_camera c, t_world w)
 			pixel_put(&canvas, i, j, color(color_at(w, r)));
 			i++;
 		}
-		mlx_put_image_to_window(canvas.mlx_ptr, canvas.win_ptr, canvas.img_ptr, 0, 0);
+		mlx_put_image_to_window(
+			canvas.mlx_ptr,
+			canvas.win_ptr,
+			canvas.img_ptr, 0, 0);
 		j++;
 	}
 	return (canvas);
