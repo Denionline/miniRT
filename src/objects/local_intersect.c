@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 14:29:10 by dximenes          #+#    #+#             */
-/*   Updated: 2026/02/01 14:29:10 by dximenes         ###   ########.fr       */
+/*   Updated: 2026/02/01 17:51:27 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static t_intersections	intersect_cyl(t_object *cyl, t_ray r, t_intersection *xs)
 
 	count = 0;
 	q[0] = powf(r.direction.x, 2) + powf(r.direction.z, 2);
-	if (fabs(q[0]) < 0.00001)
+	if (fabs(q[0]) < NARUTO)
 		return (intersections(NULL, 0));
 	q[1] = 2.0f * (r.origin.x * r.direction.x + r.origin.z * r.direction.z);
 	q[2] = powf(r.origin.x, 2) + powf(r.origin.z, 2) - 1.0f;
@@ -90,10 +90,10 @@ static t_intersections	intersect_cone(t_object *cone, t_ray r, t_intersection *x
 
 static int  check_height(t_ray r, float t)
 {
-    float   y;
+	float	y;
 
-    y = r.origin.y + t * r.direction.y;
-    if (y > -0.5f && y < 0.5f)
-        return (1);
-    return (0);
+	y = r.origin.y + t * r.direction.y;
+	if (y > -0.5f && y < 0.5f)
+		return (1);
+	return (0);
 }

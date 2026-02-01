@@ -73,7 +73,6 @@ PARSE_FILES		+= string_to_tuple
 PARSE_FILES		+= check_params
 PARSE_FILES		+= geral_rotation
 
-CANVAS_FILES	+= canvas
 CANVAS_FILES	+= ft_pixel_put
 CANVAS_FILES	+= init_canvas
 CANVAS_FILES	+= ft_destroy_canvas

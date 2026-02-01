@@ -6,13 +6,14 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 14:33:07 by dximenes          #+#    #+#             */
-/*   Updated: 2026/02/01 14:33:08 by dximenes         ###   ########.fr       */
+/*   Updated: 2026/02/01 17:57:54 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "head.h"
 
-static t_intersections	intersect_values(t_intersections inter, t_tuple vec, float delta, t_object *ob)
+static t_intersections	intersect_values(t_intersections inter, t_tuple vec,
+		float delta, t_object *ob)
 {
 	float	sqr_root;
 	float	division;
@@ -27,7 +28,7 @@ static t_intersections	intersect_values(t_intersections inter, t_tuple vec, floa
 		inter.count = 2;
 		sqr_root = sqrtf(delta);
 	}
-	inter.array = calloc(2, sizeof(t_intersection));
+	inter.array = ft_calloc(2, sizeof(t_intersection));
 	if (!inter.array)
 		exit(404);
 	inter.array[0] = intersection((-vec.y + sqr_root) * division, ob);

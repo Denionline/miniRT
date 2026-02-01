@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 14:33:42 by dximenes          #+#    #+#             */
-/*   Updated: 2026/02/01 14:33:43 by dximenes         ###   ########.fr       */
+/*   Updated: 2026/02/01 17:54:46 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,5 @@ int	main(int argc, char *argv[])
 	canvas = render(*scene->camera, *scene->world);
 	ft_init_hooks(&canvas);
 	mlx_loop(canvas.mlx_ptr);
+	end(scene, 0, NULL, FALSE);
 }

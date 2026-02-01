@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 14:33:05 by dximenes          #+#    #+#             */
-/*   Updated: 2026/02/01 14:33:06 by dximenes         ###   ########.fr       */
+/*   Updated: 2026/02/01 17:48:34 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_intersections	intersections(t_intersection values[], unsigned int count)
 
 	if (!values || !count)
 		return ((t_intersections){NULL, 0});
-	new_array = calloc(count, sizeof(t_intersection));
+	new_array = ft_calloc(count, sizeof(t_intersection));
 	if (!new_array)
 		exit(42);
 	i = 0;
