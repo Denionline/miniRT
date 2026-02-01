@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 14:44:02 by dximenes          #+#    #+#             */
-/*   Updated: 2026/02/01 14:44:13 by dximenes         ###   ########.fr       */
+/*   Updated: 2026/02/01 19:20:28 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ typedef struct s_computations
 	float		t;
 	t_tuple		over_point;
 }	t_computations;
-
 
 typedef struct s_world
 {

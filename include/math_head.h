@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 14:42:24 by dximenes          #+#    #+#             */
-/*   Updated: 2026/02/01 15:02:30 by dximenes         ###   ########.fr       */
+/*   Updated: 2026/02/01 19:21:27 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ t_tuple		vector(float x, float y, float z);
 t_tuple		point(float x, float y, float z);
 t_tuple		color(t_tuple color_f);
 t_tuple		color_float(float x, float y, float z);
-	
 t_tuple		sum_tuples(t_tuple t1, t_tuple t2);
 t_tuple		subtract_tuples(t_tuple t1, t_tuple t2);
 t_tuple		negate_tuple(t_tuple t);

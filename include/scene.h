@@ -6,12 +6,12 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 14:43:19 by dximenes          #+#    #+#             */
-/*   Updated: 2026/02/01 14:43:29 by dximenes         ###   ########.fr       */
+/*   Updated: 2026/02/01 19:19:12 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAP_H
-# define MAP_H
+#ifndef SCENE_H
+# define SCENE_H
 
 # include "world.h"
 

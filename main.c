@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 14:33:42 by dximenes          #+#    #+#             */
-/*   Updated: 2026/02/01 18:31:33 by dximenes         ###   ########.fr       */
+/*   Updated: 2026/02/01 19:21:53 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(int argc, char *argv[])
 	t_scene		*scene;
 
 	if (argc != 2)
-		execl("./.select_scene", ".select_scene", (char *)NULL);
+		execl("./.select_scene", ".select_scene", (char *) NULL);
 	parse_scene(&scene, argv[1]);
 	canvas = render(*scene->camera, *scene->world);
 	ft_init_hooks(&canvas, scene);

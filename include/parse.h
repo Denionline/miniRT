@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 14:42:54 by dximenes          #+#    #+#             */
-/*   Updated: 2026/02/01 15:39:13 by dximenes         ###   ########.fr       */
+/*   Updated: 2026/02/01 19:18:56 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 # include "scene.h"
 
-enum N_PARAMS {
+enum e_N_PARAMS
+{
 	NPARAM_TUPLE = 3,
 	NPARAM_AMBLIGHT = 3,
 	NPARAM_CAMERA = 4,
