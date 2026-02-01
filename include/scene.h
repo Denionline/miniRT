@@ -1,7 +1,19 @@
-#ifndef MAP_H
-# define MAP_H
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   scene.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/01 14:43:19 by dximenes          #+#    #+#             */
+/*   Updated: 2026/02/01 19:19:12 by dximenes         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#include "world.h"
+#ifndef SCENE_H
+# define SCENE_H
+
+# include "world.h"
 
 typedef struct s_amblight
 {

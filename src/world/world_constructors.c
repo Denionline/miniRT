@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   world_constructors.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/01 14:33:31 by dximenes          #+#    #+#             */
+/*   Updated: 2026/02/01 18:40:34 by dximenes         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "head.h"
 
 t_world	world(void)
@@ -12,7 +24,7 @@ t_world	default_world(void)
 	t_world		new_world;
 	t_object	*s1;
 	t_object	*s2;
-	
+
 	s1 = sphere();
 	s1->material.color = color_float(0.8, 1.0, 0.6);
 	s1->material.difuse = 0.7f;

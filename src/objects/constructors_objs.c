@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   constructors_objs.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/01 14:29:12 by dximenes          #+#    #+#             */
+/*   Updated: 2026/02/01 19:13:15 by dximenes         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "head.h"
 
 t_material	material(t_tuple color)
 {
-	return ((t_material) {
-		.color	= color,
+	return ((t_material){
+		.color = color,
 		.ambient = 0.1f,
 		.difuse = 0.9f,
 		.specular = 0.9f,
@@ -20,7 +32,7 @@ t_object	*sphere(void)
 		exit(42);
 	new_object->transform = identity_matrix();
 	new_object->diameter = 2.0f;
-	new_object->position =  point(0, 0, 0);
+	new_object->position = point(0, 0, 0);
 	new_object->material = material(color_float(1, 1, 1));
 	new_object->type = SPHERE;
 	return (new_object);

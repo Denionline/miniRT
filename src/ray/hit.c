@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   hit.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/01 14:33:01 by dximenes          #+#    #+#             */
+/*   Updated: 2026/02/01 19:12:06 by dximenes         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "head.h"
 
 static size_t	is_all_negatives(t_intersections inters)
@@ -12,7 +24,7 @@ static size_t	is_all_negatives(t_intersections inters)
 	return (count == inters.count);
 }
 
-static t_intersection get_smallest_time(t_intersection *values, size_t size)
+static t_intersection	get_smallest_time(t_intersection *values, size_t size)
 {
 	t_intersection	*best;
 	size_t			i;
@@ -32,7 +44,10 @@ static t_intersection get_smallest_time(t_intersection *values, size_t size)
 
 t_intersection	hit(t_intersections inters)
 {
+	t_intersection	best;
+
 	if (is_all_negatives(inters))
 		return (intersection(0, NULL));
-	return (get_smallest_time(inters.array, inters.count));
+	best = get_smallest_time(inters.array, inters.count);
+	return (best);
 }

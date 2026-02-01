@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   transpose_matrix.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/01 14:30:09 by dximenes          #+#    #+#             */
+/*   Updated: 2026/02/01 18:46:33 by dximenes         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "head.h"
 
 t_matrix	transpose(t_matrix old_matrix)
@@ -13,7 +25,7 @@ t_matrix	transpose(t_matrix old_matrix)
 		j = 0;
 		while (j < new_matrix.size)
 		{
-			new_matrix.matrix[i][j] = old_matrix.matrix[j][i];		
+			new_matrix.matrix[i][j] = old_matrix.matrix[j][i];
 			j++;
 		}
 		i++;

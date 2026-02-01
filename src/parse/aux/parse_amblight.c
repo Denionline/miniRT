@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_amblight.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/01 19:05:06 by dximenes          #+#    #+#             */
+/*   Updated: 2026/02/01 19:05:24 by dximenes         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "head.h"
 
 static int	error_check(t_amblight *amblight)
@@ -22,9 +34,8 @@ static void	fill_values(t_amblight *amblight, char *line)
 			amblight->ratio = ft_atof(line);
 		else if (paramc == 1 && ++paramc)
 			amblight->color = multiply_tuple(
-				string_to_tuple(line, COLOR),
-				1.0f / 255.0f
-			);
+					string_to_tuple(line, COLOR),
+					1.0f / 255.0f);
 		while (*line && !ft_isspace(*(line++)))
 			;
 	}

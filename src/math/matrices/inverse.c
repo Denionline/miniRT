@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   inverse.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/01 14:30:18 by dximenes          #+#    #+#             */
+/*   Updated: 2026/02/01 18:48:01 by dximenes         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "head.h"
 
 t_matrix	inverse(t_matrix m)
@@ -9,7 +21,7 @@ t_matrix	inverse(t_matrix m)
 
 	i = 0;
 	j = 0;
-	inv_m = (t_matrix) {.size = m.size};
+	inv_m = (t_matrix){.size = m.size};
 	det = determinant(m);
 	if (det == 0)
 		return (identity_matrix());

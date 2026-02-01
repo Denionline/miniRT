@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   intersections.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/01 14:33:05 by dximenes          #+#    #+#             */
+/*   Updated: 2026/02/01 19:10:05 by dximenes         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "head.h"
 
 t_intersections	intersections(t_intersection values[], unsigned int count)
@@ -7,7 +19,7 @@ t_intersections	intersections(t_intersection values[], unsigned int count)
 
 	if (!values || !count)
 		return ((t_intersections){NULL, 0});
-	new_array = calloc(count, sizeof(t_intersection));
+	new_array = ft_calloc(count, sizeof(t_intersection));
 	if (!new_array)
 		exit(42);
 	i = 0;
@@ -17,9 +29,8 @@ t_intersections	intersections(t_intersection values[], unsigned int count)
 		i++;
 	}
 	return (
-		(t_intersections) {
-			.array = sort_intersections(new_array, count),
-			.count = count,
-		}
-	);
+		(t_intersections){
+		.array = sort_intersections(new_array, count),
+		.count = count,
+	});
 }

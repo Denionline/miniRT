@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_cone.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/01 19:06:54 by dximenes          #+#    #+#             */
+/*   Updated: 2026/02/01 19:08:09 by dximenes         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "head.h"
 
 static int	error_check(t_object *cylinder)
@@ -14,14 +26,17 @@ static int	error_check(t_object *cylinder)
 static t_pattern	check_pattern(char *line)
 {
 	if (line[0] == 'c' && line[1] == 'k')
-		return (checkboard_pattern(color_float(1, 1, 1), color_float(0, 0, 0), CONE));
+		return (checkboard_pattern(color_float(1, 1, 1),
+				color_float(0, 0, 0), CONE));
 	if (line[0] == 's' && line[1] == 't')
-		return (stripe_pattern(color_float(1, 1, 1), color_float(0, 0, 0), CONE));
+		return (stripe_pattern(color_float(1, 1, 1),
+				color_float(0, 0, 0), CONE));
 	if (line[0] == 'r' && line[1] == 'g')
-		return (ring_pattern(color_float(1, 1, 1), color_float(1, 0, 0), CONE));
+		return (ring_pattern(color_float(1, 1, 1),
+				color_float(1, 0, 0), CONE));
 	if (line[0] == 'g' && line[1] == 'r')
-		return (gradient_pattern(color_float(1, 0, 0), \
-		color_float(252 / 255.0f, 15 / 255.0f, 192 / 255.0f), CONE));
+		return (gradient_pattern(color_float(1, 0, 0),
+				color_float(252 / 255.0f, 15 / 255.0f, 192 / 255.0f), CONE));
 	return ((t_pattern){});
 }
 
@@ -33,17 +48,17 @@ static int	check_cond(size_t *paramc, t_object *new_cone, char *line)
 		new_cone->position = string_to_tuple(line, POINT);
 	else if ((*paramc) == 1 && ++(*paramc))
 		new_cone->normal = normalize(
-			string_to_tuple(line, VECTOR));
+				string_to_tuple(line, VECTOR));
 	else if ((*paramc) == 2 && ++(*paramc))
 		new_cone->diameter = ft_atof(line);
 	else if ((*paramc) == 3 && ++(*paramc))
 		new_cone->height = ft_atof(line);
 	else if ((*paramc) == 4 && ++(*paramc))
 		new_cone->material = material(multiply_tuple(
-			string_to_tuple(line, COLOR), 1.0f / 255.0f));
+					string_to_tuple(line, COLOR), 1.0f / 255.0f));
 	else if ((*paramc) == 5 && ++(*paramc))
 	{
-		if(*line != '\n')
+		if (*line != '\n')
 		{
 			new_cone->material.pattern = check_pattern(line);
 			if (!new_cone->material.pattern.has_pattern)
@@ -76,7 +91,7 @@ t_object	*parse_cone(t_scene *scene, char *line)
 	t_tuple		p;
 	float		radius;
 	int			error_code;
-	
+
 	check_params(scene, line, NPARAM_CONE, 0);
 	new_cone = saffe_calloc(scene, line, 1, sizeof(t_object));
 	new_cone->type = CONE;
@@ -89,13 +104,11 @@ t_object	*parse_cone(t_scene *scene, char *line)
 	radius = new_cone->diameter * 0.5f;
 	new_cone->transform = geral_rotation(new_cone->normal);
 	new_cone->transform = multiply_matrix(
-		scaling(radius, new_cone->height, radius),
-		new_cone->transform
-	);
+			scaling(radius, new_cone->height, radius),
+			new_cone->transform);
 	new_cone->transform = multiply_matrix(
-		translation(p.x, p.y, p.z),
-		new_cone->transform
-	);
+			translation(p.x, p.y, p.z),
+			new_cone->transform);
 	new_cone->transform = inverse(new_cone->transform);
 	return (new_cone);
 }

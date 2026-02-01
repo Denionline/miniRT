@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   multiply_matrix.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/01 14:30:13 by dximenes          #+#    #+#             */
+/*   Updated: 2026/02/01 18:51:47 by dximenes         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "head.h"
 
 t_matrix	multiply_matrix(t_matrix m1, t_matrix m2)
 {
-	t_matrix	m;
-	unsigned	r;
-	unsigned	c;
+	t_matrix		m;
+	unsigned int	r;
+	unsigned int	c;
 
 	m.size = m1.size;
 	r = 0;

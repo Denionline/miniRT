@@ -1,39 +1,51 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   head.h                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/01 14:41:02 by dximenes          #+#    #+#             */
+/*   Updated: 2026/02/01 19:20:19 by dximenes         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef HEAD_H
 # define HEAD_H
 
-#include "minilibx-linux/mlx.h"
-#include "libft/include/libft.h"
-#include "get_next_line/include/get_next_line.h"
+# include "minilibx-linux/mlx.h"
+# include "libft/include/libft.h"
+# include "get_next_line/include/get_next_line.h"
 
-#include <stdio.h>
-#include <math.h>
-#include <stdint.h>
+# include <stdio.h>
+# include <math.h>
+# include <stdint.h>
 
 /* ANSI colors */
-#define C_RESET   "\033[0m"
-#define C_TITLE   "\033[1;36m"
-#define C_LABEL   "\033[1;33m"
-#define C_VALUE   "\033[0;37m"
-#define C_VEC     "\033[0;32m"
-#define C_MAT     "\033[0;35m"
-#define C_WARN    "\033[0;31m"
+# define C_RESET   "\033[0m"
+# define C_TITLE   "\033[1;36m"
+# define C_LABEL   "\033[1;33m"
+# define C_VALUE   "\033[0;37m"
+# define C_VEC     "\033[0;32m"
+# define C_MAT     "\033[0;35m"
+# define C_WARN    "\033[0;31m"
 
-#include "math_head.h"
-#include "matrix.h"
-#include "light.h"
-#include "ray.h"
-#include "obj.h"
-#include "scene.h"
-#include "world.h"
-#include "canvas.h"
-#include "surface.h"
-#include "parse.h"
-#include "end.h"
+# include "math_head.h"
+# include "matrix.h"
+# include "light.h"
+# include "ray.h"
+# include "obj.h"
+# include "scene.h"
+# include "world.h"
+# include "canvas.h"
+# include "surface.h"
+# include "parse.h"
+# include "end.h"
 
-void	*saffe_calloc(t_scene *scene, char *s,size_t n, size_t size);
+void	*saffe_calloc(t_scene *scene, char *s, size_t n, size_t size);
 
-int	is_tuple_empty(t_tuple t);
-int	is_matrix_empty(t_matrix m);
-int	is_line_empty(char *line);
+int		is_tuple_empty(t_tuple t);
+int		is_matrix_empty(t_matrix m);
+int		is_line_empty(char *line);
 
 #endif

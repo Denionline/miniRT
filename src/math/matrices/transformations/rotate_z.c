@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rotate_z.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/01 14:30:42 by dximenes          #+#    #+#             */
+/*   Updated: 2026/02/01 18:44:24 by dximenes         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "head.h"
 
 t_matrix	rotate_z(double radians)
 {
-	const double c	= cos(radians);
-	const double s	= sin(radians);
+	const double	c = cos(radians);
+	const double	s = sin(radians);
 
 	return (
 		matrix((float []){

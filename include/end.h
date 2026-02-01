@@ -1,7 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   end.h                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/01 14:41:41 by dximenes          #+#    #+#             */
+/*   Updated: 2026/02/01 15:01:38 by dximenes         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef END_H
 # define END_H
 
-enum ERROR_CODE {
+enum e_ERROR_CODE
+{
 	ERR_MALLOC = 42,
 	ERR_OPEN_FILE,
 	ERR_NOT_ENOUGH_ARGS,
@@ -14,6 +27,6 @@ enum ERROR_CODE {
 };
 
 void	end(t_scene *scene, int status_code, char *description, int to_free);
-void	print_error(enum ERROR_CODE error_code);
+void	print_error(enum e_ERROR_CODE error_code);
 
 #endif

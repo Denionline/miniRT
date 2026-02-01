@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   const_maps.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/01 14:32:54 by dximenes          #+#    #+#             */
+/*   Updated: 2026/02/01 15:07:14 by dximenes         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "head.h"
 
 t_tuple	spherical_map(t_tuple p)
@@ -11,7 +23,7 @@ t_tuple	spherical_map(t_tuple p)
 	theta = atan2f(p.x, p.z);
 	radius = magnitude(p);
 	polar_angle = acosf(p.y / radius);
-	new_p = (t_tuple) {
+	new_p = (t_tuple){
 		.x = 1 - (theta * 0.5f / PI),
 		.y = 1 - (polar_angle / PI)
 	};
@@ -25,19 +37,19 @@ t_tuple	cylindrical_map(t_tuple p)
 
 	p.w = 1;
 	theta = atan2(p.x, p.z);
-	new_p = (t_tuple) {
+	new_p = (t_tuple){
 		.x = 1 - ((theta / (2.0f * PI)) + 0.5f),
 		.y = fmod(p.y, 1)
 	};
 	return (new_p);
 }
 
-t_tuple planar_map(t_tuple p)
+t_tuple	planar_map(t_tuple p)
 {
-    return (vector(fmod(p.x, 1), fmod(p.z, 1), 0));
+	return (vector(fmod(p.x, 1), fmod(p.z, 1), 0));
 }
 
-t_tuple	converter_map(t_tuple p, enum object_type t)
+t_tuple	converter_map(t_tuple p, enum e_object_type t)
 {
 	if (t == PLANE)
 		return (planar_map(p));

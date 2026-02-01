@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   shearing.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/01 14:30:32 by dximenes          #+#    #+#             */
+/*   Updated: 2026/02/01 18:45:09 by dximenes         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "head.h"
 
 // p - define proportion in the axis
@@ -7,7 +19,7 @@
 
 t_matrix	shearing(t_tuple p1, t_tuple p2)
 {
-	t_matrix skew;
+	t_matrix	skew;
 
 	skew = identity_matrix();
 	skew.matrix[0][1] = p1.x;

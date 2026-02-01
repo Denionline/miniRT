@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init_canvas.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/01 14:32:28 by dximenes          #+#    #+#             */
+/*   Updated: 2026/02/01 15:42:47 by dximenes         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "head.h"
 
 int	init_canvas(t_canvas *canvas, int hsize, int vsize)
@@ -9,6 +21,11 @@ int	init_canvas(t_canvas *canvas, int hsize, int vsize)
 		return (0);
 	canvas->win_ptr = mlx_new_window(canvas->mlx_ptr, hsize, vsize, "LA ELE");
 	canvas->img_ptr = mlx_new_image(canvas->mlx_ptr, hsize, vsize);
-	canvas->address = mlx_get_data_addr(canvas->img_ptr, &canvas->bpp, &canvas->sl, &canvas->endian);
+	canvas->address = mlx_get_data_addr(
+			canvas->img_ptr,
+			&canvas->bpp,
+			&canvas->sl,
+			&canvas->endian
+			);
 	return (1);
 }

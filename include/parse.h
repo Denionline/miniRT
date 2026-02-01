@@ -1,9 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/01 14:42:54 by dximenes          #+#    #+#             */
+/*   Updated: 2026/02/01 19:18:56 by dximenes         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PARSE_H
 # define PARSE_H
 
-#include "scene.h"
+# include "scene.h"
 
-enum N_PARAMS {
+enum e_N_PARAMS
+{
 	NPARAM_TUPLE = 3,
 	NPARAM_AMBLIGHT = 3,
 	NPARAM_CAMERA = 4,
@@ -18,7 +31,8 @@ void		parse_scene(t_scene **scene, char *file);
 void		parse_amblight(t_scene *scene, t_amblight **amblight, char *line);
 void		parse_camera(t_scene *scene, t_camera **camera, char *line);
 void		parse_light(t_scene *scene, t_light *l, char *line);
-void		parse_object(t_scene *s, t_world *w, char *line, enum object_type type);
+void		parse_object(t_scene *s, t_world *w, char *line,
+				enum e_object_type t);
 
 t_object	*parse_sphere(t_scene *scene, char *line);
 t_object	*parse_plane(t_scene *scene, char *line);

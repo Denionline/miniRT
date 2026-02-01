@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   stripe_at.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/01 14:28:52 by dximenes          #+#    #+#             */
+/*   Updated: 2026/02/01 19:17:10 by dximenes         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "head.h"
 
 t_tuple	stripe_at(t_pattern p, t_tuple pos)
@@ -14,5 +26,5 @@ t_tuple	stripe_at_obj(t_pattern p, t_object obj, t_tuple pos)
 
 	obj_point = multiply_matrix_tuple((obj.transform), pos);
 	pattern_point = multiply_matrix_tuple(inverse(p.transform), obj_point);
-	return(stripe_at(p, pattern_point));
+	return (stripe_at(p, pattern_point));
 }

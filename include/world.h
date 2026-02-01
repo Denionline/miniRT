@@ -1,7 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   world.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/01 14:44:02 by dximenes          #+#    #+#             */
+/*   Updated: 2026/02/01 19:20:28 by dximenes         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef WORLD_H
 # define WORLD_H
 
-#include "head.h"
+# include "head.h"
 
 typedef struct s_camera
 {
@@ -27,7 +39,6 @@ typedef struct s_computations
 	t_tuple		over_point;
 }	t_computations;
 
-
 typedef struct s_world
 {
 	t_light			light;
@@ -43,13 +54,14 @@ t_computations	prepare_computations(t_intersection inter, t_ray r);
 t_tuple			shade_hit(t_world w, t_computations comps);
 t_tuple			color_at(t_world w, t_ray r);
 
-t_matrix		view_transform(t_tuple init_location, t_tuple look_pos, t_tuple up_vector);
+t_matrix		view_transform(t_tuple init_location, t_tuple look_pos,
+					t_tuple up_vector);
 t_camera		camera(float hsize, float vsize, float fov);
 t_ray			ray_for_pixel(t_camera cam, float px, float py);
 
 int				is_shadowed(t_world w, t_tuple p);
 
 //aux
-void	append_object_on_world(t_world *w, t_object *new_object);
+void			append_object_on_world(t_world *w, t_object *new_object);
 
 #endif

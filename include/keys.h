@@ -1,22 +1,31 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   keys.h                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/01 14:42:01 by dximenes          #+#    #+#             */
+/*   Updated: 2026/02/01 14:44:51 by dximenes         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef KEYS_H
 # define KEYS_H
 
 # include "head.h"
 
-enum e_KEYS {
+enum e_KEYS
+{
 	KEY_TAB = 65289,
 	KEY_ESC = 65307,
 	KEY_CTRL = 65507,
-
 	KEY_PLUS = 65451,
 	KEY_MINUS = 65453,
-
 	KEY_ARROW_UP = 65362,
 	KEY_ARROW_DOWN = 65364,
 	KEY_ARROW_LEFT = 65361,
 	KEY_ARROW_RIGHT = 65363,
-
 	KEY_A = 97,
 	KEY_B = 98,
 	KEY_C = 99,
@@ -25,7 +34,6 @@ enum e_KEYS {
 	KEY_Q = 113,
 	KEY_S = 115,
 	KEY_W = 119,
-
 	KEY_NUMPAD_1 = 65436,
 	KEY_NUMPAD_2 = 65433,
 	KEY_NUMPAD_3 = 65435,
@@ -35,18 +43,14 @@ enum e_KEYS {
 	KEY_NUMPAD_7 = 65429,
 	KEY_NUMPAD_8 = 65431,
 	KEY_NUMPAD_9 = 65434,
-
 	KEY_COL_LEFT = 91,
 	KEY_COL_RIGHT = 93,
-
 	KEY_DOT = 44,
 	KEY_COMMA = 46,
-
 	MOUSE_LEFT_CLICK = 1,
 	MOUSE_RIGHT_CLICK = 2,
 	MOUSE_SCROLL_UP = 4,
 	MOUSE_SCROLL_DOWN = 5,
 };
-
 
 #endif
