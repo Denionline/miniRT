@@ -6,23 +6,23 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 14:32:30 by dximenes          #+#    #+#             */
-/*   Updated: 2026/02/01 14:32:31 by dximenes         ###   ########.fr       */
+/*   Updated: 2026/02/01 15:45:36 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "head.h"
 
-static int handle_keypress(int keycode, t_canvas *canvas);
+static int	handle_keypress(int keycode, t_canvas *canvas)
+{
+	if (keycode == ESC_KEY)
+		ft_destroy_canvas(canvas);
+	return (0);
+}
 
 void	ft_init_hooks(t_canvas *canvas)
 {
-	mlx_hook(canvas->win_ptr, 2, 1L<<0, (int (*)(void)) (void *)handle_keypress, canvas);
-	mlx_hook(canvas->win_ptr, 17, 0, (int (*)(void)) (void *)ft_destroy_canvas, canvas);
-}
-
-static int handle_keypress(int keycode, t_canvas *canvas)
-{
-    if (keycode == ESC_KEY)
-        ft_destroy_canvas(canvas);
-    return (0);
+	mlx_hook(canvas->win_ptr,
+		2, 1L << 0, (int (*)(void))(void *)handle_keypress, canvas);
+	mlx_hook(canvas->win_ptr,
+		17, 0, (int (*)(void))(void *)ft_destroy_canvas, canvas);
 }
