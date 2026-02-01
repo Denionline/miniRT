@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 14:32:29 by dximenes          #+#    #+#             */
-/*   Updated: 2026/02/01 14:32:30 by dximenes         ###   ########.fr       */
+/*   Updated: 2026/02/01 15:38:08 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@ void	pixel_put(t_canvas *canvas, int x, int y, t_tuple color)
 	if (x >= canvas->hsize || y >= canvas->vsize
 		|| x < 0 || y < 0)
 		return ;
-	dst = canvas->address + ((canvas->vsize - y) * canvas->sl + x * (canvas->bpp / 8));
+	dst = canvas->address;
+	dst += (canvas->vsize - y) * canvas->sl;
+	dst += x * (canvas->bpp / 8);
 	*(unsigned int*)dst = construct_color(color, canvas->endian);
 }
 
