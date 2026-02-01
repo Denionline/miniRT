@@ -59,14 +59,14 @@ static t_intersections	intersect_cone(t_object *cone, t_ray r, t_intersection *x
 	powf(r.direction.z, 2);
 	q[1] = 2.0f * (r.origin.x * r.direction.x - r.origin.y * r.direction.y + \
 	r.origin.z * r.direction.z);
-	if (fabs(q[0]) < 0.00001 && fabs(q[1]) < 0.00001)
+	if (fabs(q[0]) < NARUTO && fabs(q[1]) < NARUTO)
 		return (intersections(NULL, 0));
 	q[2] = powf(r.origin.x, 2) - powf(r.origin.y, 2) + powf(r.origin.z, 2);
 	q[3] = (q[1] * q[1]) - (4.0f * q[0] * q[2]);
 	if (q[3] < 0)
 		return (intersections(NULL, 0));
 	t[0] = (-q[1] - sqrtf(q[3])) / (2.0f * q[0]);
-	if (fabs(q[0]) < 0.00001)
+	if (fabs(q[0]) < NARUTO)
 		t[0] = -q[2] / (2.0f * q[1]);
 	t[1] = (-q[1] + sqrtf(q[3])) / (2.0f * q[0]);
 	if (check_height(r, t[0]))

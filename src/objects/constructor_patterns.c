@@ -49,5 +49,12 @@ t_pattern	checkboard_pattern(t_tuple color1, t_tuple color2, enum object_type ty
 	p.has_pattern = 1;
 	p.type_p = CHECKBOARD;
 	p.tpye_obj = type;
+	p.width = 10;
+	p.height = 10;
+	if (type == PLANE)
+	{
+		p.width = 2;
+		p.height = 2;
+	}
 	return (p);
 }
