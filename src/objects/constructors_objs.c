@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 14:29:12 by dximenes          #+#    #+#             */
-/*   Updated: 2026/02/01 14:29:12 by dximenes         ###   ########.fr       */
+/*   Updated: 2026/02/01 18:51:06 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_material	material(t_tuple color)
 {
-	return ((t_material) {
+	return ((t_material){
 		.color	= color,
 		.ambient = 0.1f,
 		.difuse = 0.9f,

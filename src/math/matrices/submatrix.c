@@ -6,13 +6,14 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 14:30:10 by dximenes          #+#    #+#             */
-/*   Updated: 2026/02/01 14:30:11 by dximenes         ###   ########.fr       */
+/*   Updated: 2026/02/01 18:51:06 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "head.h"
 
-static void	alloc_values(t_matrix matrix_org, t_matrix *sub_m, unsigned int row, unsigned int col)
+static void	alloc_values(t_matrix matrix_org, t_matrix *sub_m,
+		unsigned int row, unsigned int col)
 {
 	unsigned int	i;
 	unsigned int	j;
@@ -46,7 +47,7 @@ t_matrix	submatrix(t_matrix matrix_org, unsigned int row, unsigned int col)
 
 	if (row > matrix_org.size || col > matrix_org.size)
 		return (matrix_org);
-	sub_m = (t_matrix) {};
+	sub_m = (t_matrix){};
 	sub_m.size = matrix_org.size - 1;
 	alloc_values(matrix_org, &sub_m, row, col);
 	return (sub_m);

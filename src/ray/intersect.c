@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 14:33:07 by dximenes          #+#    #+#             */
-/*   Updated: 2026/02/01 17:57:54 by dximenes         ###   ########.fr       */
+/*   Updated: 2026/02/01 18:51:06 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ t_intersections	intersect(t_object *object, t_ray r)
 
 	r = transform_ray(r, (object->transform));
 	sphe_to_array = subtract_tuples(r.origin, point(0, 0, 0));
-	inter = (t_intersections) {};
+	inter = (t_intersections){};
 
 	if (object->type != SPHERE)
 		return (local_intersect(object, r));
