@@ -24,24 +24,24 @@ t_tuple	cylindrical_map(t_tuple p)
 	t_tuple	new_p;
 
 	p.w = 1;
-	theta = atan2f(p.x, p.z);
+	theta = atan2(p.x, p.z);
 	new_p = (t_tuple) {
-		.x = 1 - ((theta / (2 * PI)) + 0.5f),
-		.y = p.y - floorf(p.y)
+		.x = 1 - ((theta / (2.0f * PI)) + 0.5f),
+		.y = fmod(p.y, 1)
 	};
 	return (new_p);
 }
 
 t_tuple planar_map(t_tuple p)
 {
-    return (vector(p.x, p.z, 0));
+    return (vector(fmod(p.x, 1), fmod(p.z, 1), 0));
 }
 
 t_tuple	converter_map(t_tuple p, enum object_type t)
 {
 	if (t == PLANE)
 		return (planar_map(p));
-	if (t == CYLINDER)
+	if (t == CYLINDER || t == CONE)
 		return (cylindrical_map(p));
 	return (spherical_map(p));
 }

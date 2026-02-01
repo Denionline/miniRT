@@ -54,7 +54,7 @@ void	check_params(t_scene *scene, char *s, int nparams, int exists)
 	if (exists)
 		end(scene, ERR_DUPLICATE, s, TRUE);
 	count = countwords(s);
-	if (!(count != nparams || count != nparams - 1))
+	if (!(count != nparams || count != nparams + 1))
 		end(scene, ERR_OUT_OF_RANGE, s, TRUE);
 	i = 0;
 	while (ft_isspace(s[i]))

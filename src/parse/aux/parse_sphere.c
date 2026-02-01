@@ -9,7 +9,41 @@ static int	error_check(t_object *sphere)
 	return (0);
 }
 
-static void	fill_values(t_object *new_sphere, char *line)
+static t_pattern	check_pattern(char *line)
+{
+	if (line[0] == 'c' && line[1] == 'k')
+		return (checkboard_pattern(color_float(1, 1, 1), color_float(0, 0, 0), SPHERE));
+	return ((t_pattern){});
+}
+
+static int	check_cond(size_t *paramc, t_object *new_sphere, char *line)
+{
+	if ((*paramc) == 0 && *line == 's')
+		line += 2;
+	else if ((*paramc) == 0 && ++(*paramc))
+		new_sphere->position = string_to_tuple(line, POINT);
+	else if ((*paramc) == 1 && ++(*paramc))
+		new_sphere->diameter = ft_atof(line);
+	else if ((*paramc) == 2 && ++(*paramc))
+		new_sphere->material = material(
+			multiply_tuple(
+				string_to_tuple(line, COLOR),
+				1.0f / 255.0f
+			)
+		);
+	else if ((*paramc) == 3 && ++(*paramc))
+	{
+		if(*line != '\n')
+		{
+			new_sphere->material.pattern = check_pattern(line);
+			if (!new_sphere->material.pattern.has_pattern)
+				return (0);
+		}
+	}
+	return (1);
+}
+
+static int	fill_values(t_object *new_sphere, char *line)
 {
 	size_t	paramc;
 
@@ -18,22 +52,12 @@ static void	fill_values(t_object *new_sphere, char *line)
 	{
 		while (ft_isspace(*line))
 			line++;
-		if (paramc == 0 && *line == 's')
-			line += 2;
-		else if (paramc == 0 && ++paramc)
-			new_sphere->position = string_to_tuple(line, POINT);
-		else if (paramc == 1 && ++paramc)
-			new_sphere->diameter = ft_atof(line);
-		else if (paramc == 2 && ++paramc)
-			new_sphere->material = material(
-				multiply_tuple(
-					string_to_tuple(line, COLOR),
-					1.0f / 255.0f
-				)
-			);
+		if (!check_cond(&paramc, new_sphere, line))
+			return (0);
 		while (*line && !ft_isspace(*(line++)))
 			;
 	}
+	return (1);
 }
 
 t_object	*parse_sphere(t_scene *scene, char *line)
@@ -45,7 +69,8 @@ t_object	*parse_sphere(t_scene *scene, char *line)
 	check_params(scene, line, NPARAM_SPHERE, 0);
 	new_sphere = saffe_calloc(scene, line, 1, sizeof(t_object));
 	new_sphere->type = SPHERE;
-	fill_values(new_sphere, line);
+	if (!fill_values(new_sphere, line))
+		end(scene, ERR_INVALID_CHAR, line, TRUE);
 	error_code = error_check(new_sphere);
 	if (error_code)
 		end(scene, error_code, line, TRUE);

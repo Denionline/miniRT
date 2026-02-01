@@ -41,10 +41,12 @@ static t_tuple	gradient_color(t_pattern pat, t_tuple p)
 
 static t_tuple	checkboard_color(t_pattern pat, t_tuple p)
 {
-	int check;
+	float	p1;
+	float	p2;
 
-	check = (int)floorf(p.x) + (int)floorf(p.y);
-	if (check % 2 == 0) 
+	p1 = floor(p.x * pat.with);
+	p2 = floor(p.y * pat.height); 
+	if (fmod(p1 + p2, 2) == 0)
 		return (pat.a);
 	return (pat.b);
 }
