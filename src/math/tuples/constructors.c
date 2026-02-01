@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 14:29:20 by dximenes          #+#    #+#             */
-/*   Updated: 2026/02/01 14:29:24 by dximenes         ###   ########.fr       */
+/*   Updated: 2026/02/01 18:42:45 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 t_tuple	tuple(float x, float y, float z, float w)
 {
-	return ((t_tuple) {.x = x, .y = y, .z = z, .w = w});
+	return ((t_tuple){.x = x, .y = y, .z = z, .w = w});
 }
 
 t_tuple	vector(float x, float y, float z)
 {
-	return ((t_tuple) {.x = x, .y = y, .z = z, .w = VECTOR});
+	return ((t_tuple){.x = x, .y = y, .z = z, .w = VECTOR});
 }
 
 t_tuple	point(float x, float y, float z)
 {
-	return ((t_tuple) {.x = x, .y = y, .z = z, .w = POINT});
+	return ((t_tuple){.x = x, .y = y, .z = z, .w = POINT});
 }
 
 t_tuple	color(t_tuple color_f)
@@ -41,10 +41,14 @@ t_tuple	color(t_tuple color_f)
 		color_f.z = 1;
 	if (color_f.z < 0)
 		color_f.z = 0;
-	return ((t_tuple) {.r = color_f.x * 255, .g = color_f.y * 255, .b = color_f.z * 255});
+	return ((t_tuple){
+		.r = color_f.x * 255,
+		.g = color_f.y * 255,
+		.b = color_f.z * 255
+	});
 }
 
 t_tuple	color_float(float x, float y, float z)
 {
-	return ((t_tuple) {.x = x, .y = y, .z = z, .w = COLOR});
+	return ((t_tuple){.x = x, .y = y, .z = z, .w = COLOR});
 }
