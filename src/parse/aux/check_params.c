@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 14:27:14 by dximenes          #+#    #+#             */
-/*   Updated: 2026/02/01 14:27:15 by dximenes         ###   ########.fr       */
+/*   Updated: 2026/02/01 18:59:05 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,10 +83,8 @@ void	check_params(t_scene *scene, char *s, int nparams, int exists)
 	while (s && s[i])
 	{
 		if (!ft_isdigit(s[i]) && !ft_isspace(s[i]))
-		{
 			if (s[i] != '.' && s[i] != ',' && s[i] != '+' && s[i] != '-')
 				break ;
-		}
 		i++;
 	}
 	if (s[i] && !is_pattern(s + i))
