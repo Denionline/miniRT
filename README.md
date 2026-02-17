@@ -37,6 +37,175 @@ make fclean
 make re
 ```
 
+
+## Scene files (`.rt`)
+
+# miniRT --- Scene files (`.rt`)
+
+This project is executed with a **scene file** (`.rt`) describing the ambient light, camera, light, and a list of objects.
+
+## Run
+```sh
+./miniRT path/to/scene.rt
+```
+
+If you run with no arguments, this repo launches an interactive selector and runs a `.rt` from `scenes/`:
+```sh
+./miniRT
+```
+
+# Scene files (.rt) 
+
+### General syntax rules
+- **One element per line**.
+- Empty or Commented lines are ignored.
+- Parameters are separated by spaces and/or tabs.
+- **Vectors** are written as: `x,y,z`
+- **Colors** are written as: `R,G,B` (integers `0..255`)
+- Object lines may optionally end with **one pattern keyword** (`ck`, `st`, `rg`, `gr`).
+
+### Required arguments (limits)
+A valid scene must contain:
+- Exactly **one** `A` (ambient light)
+- Exactly **one** `C` (camera)
+- Exactly **one** `L` (light)
+- Objects (**no min or max**): `sp`, `pl`, `cy`, `co`
+
+## Elements detailed
+
+### `A` --- Ambient light
+
+**Format**
+```text
+A <ratio> <R,G,B>
+```
+
+**Params**
+1. `ratio` (float): ambient intensity ratio `0.0 .. 1.0`
+2. `R,G,B` (color): ambient color  
+
+### `C` --- Camera
+**Format**
+```text
+C <x,y,z> <x,y,z> <fov>
+```
+
+**Params**
+1. `x,y,z` (vector): camera position in world space
+2. `x,y,z` (vector): camera orientation (view direction) `[-1,1]`
+3. `fov` field of view as integer `0 .. 180`
+
+### `L` --- Light
+**Format**
+```text
+L <x,y,z> <brightness> <R,G,B>
+```
+
+**Params**
+1. `x,y,z` (vector): light position in world space
+2. `brightness` (float): light intensity ratio  
+   - **Limit**: `0.0 .. 1.0`
+3. `R,G,B` (color): light color  
+   - **Limit**: each channel `0 .. 255`
+
+## Objects
+
+### `sp` --- Sphere
+**Format**
+```text
+sp <x,y,z> <diameter> <R,G,B> [pattern]
+```
+
+**Params**
+1. `x,y,z`: center position
+2. `diameter` (float)
+   - **Limit**: `> 0`
+3. `R,G,B`: base object color (`0..255` each)
+4. `pattern` (optional): one of `ck`, `st`, `rg`, `gr`
+
+
+### `pl` --- Plane
+**Format**
+```text
+pl <x,y,z> <x,y,z> <R,G,B> [pattern]
+```
+
+**Params**
+1. `x,y,z`: a point on the plane
+2. `x,y,z`: plane normal direction
+   - **Limit**: must be a valid direction (commonly normalized / components within `[-1,1]` depending on your checks)
+3. `R,G,B`: base object color (`0..255` each)
+4. `pattern` (optional): one of `ck`, `st`, `rg`, `gr`
+
+### `cy` --- Cylinder
+**Format**
+```text
+cy <x,y,z> <x,y,z> <diameter> <height> <R,G,B> [pattern]
+```
+
+**Params**
+1. `x,y,z`: cylinder position (center/reference point as defined by your implementation)
+2. `x,y,z`: cylinder axis direction `[-1,1]`
+3. `diameter` (float)
+   - **Limit**: `> 0`
+4. `height` (float)
+   - **Limit**: `> 0`
+5. `R,G,B`: base object color (`0..255` each)
+6. `pattern` (optional): one of `ck`, `st`, `rg`, `gr`
+
+### `co` --- Cone
+**Format**
+```text
+co <x,y,z> <x,y,z> <diameter> <height> <R,G,B> [pattern]
+```
+
+**Params**
+1. `x,y,z`: cone position (center/reference point as defined by your implementation)
+2. `x,y,z`: cone axis direction
+   - **Limit**: must be a valid direction (commonly normalized / components within `[-1,1]`)
+3. `diameter` (float)
+   - **Limit**: `> 0`
+4. `height` (float)
+   - **Limit**: `> 0`
+5. `R,G,B`: base object color (`0..255` each)
+6. `pattern` (optional): one of `ck`, `st`, `rg`, `gr`
+
+## Patterns (as implemented in this repo)
+
+### How to write it
+Append the keyword as the **last token** of an object line:
+```text
+<object ...> <pattern_keyword>
+```
+
+### Supported pattern keywords
+| Keyword | Pattern type |
+|--------:|--------------|
+| `ck` | checkerboard |
+| `st` | stripes |
+| `rg` | rings |
+| `gr` | gradient |
+
+### Limits / behavior
+- Patterns are **optional**.
+- Patterns in this repo **do not accept extra parameters** in the `.rt` file.
+- Pattern colors are currently **hardcoded in code** (the keyword chooses a fixed pair of colors).
+- If an extra token is present and it’s not one of the 4 keywords above, the parser treats the line as invalid.
+
+---
+
+## Full example scene
+```text
+A 0.2 255,255,255
+C 0,0,0 0,0,1 70
+L 10,10,10 0.7 255,255,255
+
+sp 0,0,20 10 255,0,0 ck
+pl 0,-5,0 0,1,0 200,200,200 st
+cy 5,0,25 0,1,0 4 12 0,0,255 rg
+co -5,0,25 0,1,0 6 10 255,255,255 gr
+```
+
 ### Run
 Typical usage:
 ```sh
@@ -47,24 +216,14 @@ If your project supports options (bonus features, save-to-file, etc.), document 
 ```sh
 ./miniRT <scene.rt>
 ```
-
-### Scene files (`.rt`)
-- Ensure your scene file follows the miniRT subject format (identifiers, vectors, RGB ranges, required elements, etc.).
-- If your parser is strict (recommended), invalid or missing elements should produce an error and exit cleanly.
-
 ## Resources
 
 ### Ray Tracing References
-- Scratchapixel (excellent ray tracing lessons): https://www.scratchapixel.com/
-- Ray Tracing in One Weekend (intro series): https://raytracing.github.io/
-- Wikipedia — Ray tracing: https://en.wikipedia.org/wiki/Ray_tracing_(graphics)
-- Phong reflection model (common for miniRT shading): https://en.wikipedia.org/wiki/Phong_reflection_model
-- MiniLibX (general 42 reference, varies by campus):  
-  - https://harm-smits.github.io/42docs/libs/minilibx
+- Book **The Ray Tracer Challenge** by Jamis Buck: http://raytracerchallenge.com/
 
 ### How AI Was Used
 AI (ChatGPT) was used to assist with:
 - Drafting this README structure to match the **42 miniRT** requirements (sections and wording).
 - Creating a checklist of what a miniRT README should explain (build/run steps, scene format, and references).
 
-AI was **not** used to generate or copy any external copyrighted code into the project. All implementation decisions and code were written and validated by the project author(s).
+AI was **not** used to generate or copy ay external copyrighted code into the project. All implementation decisions and code were written and validated by the project author(s).
