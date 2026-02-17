@@ -12,6 +12,8 @@
 
 #include "head.h"
 
+static int	check_height(t_ray r, float t);
+
 // q[0]=a, q[1]=b, q[2]=c, q[3]=delta -> Bhaskara
 static t_intersections	intersect_cyl(t_object *cyl, t_ray r,
 		t_intersection *xs)
