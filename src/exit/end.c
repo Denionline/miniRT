@@ -6,11 +6,20 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 14:31:24 by dximenes          #+#    #+#             */
-/*   Updated: 2026/02/01 14:31:25 by dximenes         ###   ########.fr       */
+/*   Updated: 2026/02/17 16:49:14 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "head.h"
+
+static void	close_fds(void)
+{
+	int	fd;
+
+	fd = 3;
+	while(fd < 100)
+		close(fd++);
+}
 
 static void	scene_cleaner(t_scene *scene)
 {
@@ -44,5 +53,6 @@ void	end(t_scene *scene, int status_code, char *description, int to_free)
 		print_error(status_code);
 	if (to_free)
 		free(description);
+	close_fds();
 	exit(status_code);
 }
