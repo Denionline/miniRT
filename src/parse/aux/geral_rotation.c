@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 14:28:35 by dximenes          #+#    #+#             */
-/*   Updated: 2026/02/01 14:28:36 by dximenes         ###   ########.fr       */
+/*   Updated: 2026/02/17 14:39:58 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,5 @@ t_matrix	geral_rotation(t_tuple	vec_norm)
 	}
 	vec_axis = normalize(cross(vec_d, vec_norm));
 	angle = acos(dot(vec_d, vec_norm));
-	return (rodrigues_rotation(vec_axis, angle));
+	return (inverse(rodrigues_rotation(vec_axis, angle)));
 }
