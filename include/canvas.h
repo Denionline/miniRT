@@ -15,6 +15,8 @@
 
 # define ESC_KEY 65307
 
+typedef struct s_canvas	t_canvas;
+
 typedef struct s_hook_ctx
 {
 	t_canvas	*canvas;
