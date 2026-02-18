@@ -17,7 +17,7 @@ static void	close_fds(void)
 	int	fd;
 
 	fd = 3;
-	while(fd < 100)
+	while (fd < 100)
 		close(fd++);
 }
 

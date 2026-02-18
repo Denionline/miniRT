@@ -115,8 +115,8 @@ t_object	*parse_cylinder(t_scene *scene, char *line)
 	p = new_cylinder->position;
 	radius = new_cylinder->diameter * 0.5f;
 	new_cylinder->transform = multiply_matrix(translation(p.x, p.y, p.z), \
-		multiply_matrix(geral_rotation(new_cylinder->normal),\
-		scaling(radius, new_cylinder->height, radius)));
+multiply_matrix(geral_rotation(new_cylinder->normal), \
+scaling(radius, new_cylinder->height, radius)));
 	new_cylinder->transform = inverse(new_cylinder->transform);
 	return (new_cylinder);
 }

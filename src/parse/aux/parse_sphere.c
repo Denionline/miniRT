@@ -100,8 +100,8 @@ t_object	*parse_sphere(t_scene *scene, char *line)
 	}
 	radius = new_sphere->diameter * 0.5f;
 	new_sphere->transform = multiply_matrix(translation(new_sphere->position.x, \
-		new_sphere->position.y, new_sphere->position.z), \
-		scaling(radius, radius, radius));
+new_sphere->position.y, new_sphere->position.z), \
+scaling(radius, radius, radius));
 	new_sphere->transform = inverse(new_sphere->transform);
 	return (new_sphere);
 }

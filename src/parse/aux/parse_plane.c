@@ -100,7 +100,7 @@ t_object	*parse_plane(t_scene *scene, char *line)
 		end(scene, error_code, line, TRUE);
 	p = new_plane->position;
 	new_plane->transform = multiply_matrix(translation(p.x, p.y, p.z), \
-		geral_rotation(new_plane->normal));
+geral_rotation(new_plane->normal));
 	new_plane->transform = inverse(new_plane->transform);
 	new_plane->material.pattern.transform = new_plane->transform;
 	return (new_plane);

@@ -105,8 +105,8 @@ t_object	*parse_cone(t_scene *scene, char *line)
 	p = new_cone->position;
 	radius = new_cone->diameter * 0.5f;
 	new_cone->transform = multiply_matrix(translation(p.x, p.y, p.z), \
-		multiply_matrix(geral_rotation(new_cone->normal),\
-		scaling(radius, new_cone->height, radius)));
+multiply_matrix(geral_rotation(new_cone->normal), \
+scaling(radius, new_cone->height, radius)));
 	new_cone->transform = inverse(new_cone->transform);
 	return (new_cone);
 }
