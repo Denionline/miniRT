@@ -6,17 +6,18 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 19:05:06 by dximenes          #+#    #+#             */
-/*   Updated: 2026/02/01 19:05:24 by dximenes         ###   ########.fr       */
+/*   Updated: 2026/02/18 10:22:43 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "head.h"
 
-static int	error_check(t_amblight *amblight)
+static int	error_check(t_amblight *amblight, int *error_code)
 {
+	*error_code = 0;
 	if (amblight->color.error_code)
-		return (amblight->color.error_code);
-	return (0);
+		*error_code = (amblight->color.error_code);
+	return (*error_code);
 }
 
 static void	fill_values(t_amblight *amblight, char *line)
@@ -48,9 +49,8 @@ void	parse_amblight(t_scene *scene, t_amblight **amblight, char *line)
 	check_params(scene, line, NPARAM_AMBLIGHT, (*amblight) != NULL);
 	*amblight = saffe_calloc(scene, line, 1, sizeof(t_amblight));
 	fill_values(*amblight, line);
-	if ((*amblight)->ratio < 0.00f || (*amblight)->ratio > 1.00f)
-		end(scene, ERR_OUT_OF_RANGE, line, TRUE);
-	error_code = error_check(*amblight);
-	if (error_code)
+	error_code = ERR_OUT_OF_RANGE;
+	if ((*amblight)->ratio < 0.00f || (*amblight)->ratio > 1.00f ||
+		error_check(*amblight, &error_code))
 		end(scene, error_code, line, TRUE);
 }
