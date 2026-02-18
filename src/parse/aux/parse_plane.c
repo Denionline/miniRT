@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 18:59:49 by dximenes          #+#    #+#             */
-/*   Updated: 2026/02/17 17:40:12 by dximenes         ###   ########.fr       */
+/*   Updated: 2026/02/18 10:21:31 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@ static int	error_check(t_object *plane, int *error_code)
 {
 	*error_code = 0;
 	if (plane->position.error_code)
-		error_code = plane->position.error_code;
+		*error_code = plane->position.error_code;
 	else if (plane->normal.error_code)
-		error_code = plane->normal.error_code;
+		*error_code = plane->normal.error_code;
 	else if (plane->material.color.error_code)
-		error_code = plane->material.color.error_code;
-	return (error_code);
+		*error_code = plane->material.color.error_code;
+	return (*error_code);
 }
 
 static t_pattern	check_pattern(char *line)
