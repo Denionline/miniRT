@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 18:55:52 by dximenes          #+#    #+#             */
-/*   Updated: 2026/02/01 18:58:42 by dximenes         ###   ########.fr       */
+/*   Updated: 2026/02/18 11:58:20 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,13 +114,9 @@ t_object	*parse_cylinder(t_scene *scene, char *line)
 		end(scene, error_code, line, TRUE);
 	p = new_cylinder->position;
 	radius = new_cylinder->diameter * 0.5f;
-	new_cylinder->transform = geral_rotation(new_cylinder->normal);
-	new_cylinder->transform = multiply_matrix(
-			scaling(radius, new_cylinder->height, radius),
-			new_cylinder->transform);
-	new_cylinder->transform = multiply_matrix(
-			translation(p.x, p.y, p.z),
-			new_cylinder->transform);
+	new_cylinder->transform = multiply_matrix(translation(p.x, p.y, p.z), \
+		multiply_matrix(geral_rotation(new_cylinder->normal),\
+		scaling(radius, new_cylinder->height, radius)));
 	new_cylinder->transform = inverse(new_cylinder->transform);
 	return (new_cylinder);
 }

@@ -16,6 +16,8 @@ LIBFT			= $(LIBFT_PATH)libft.a
 MLX				= $(MLX_PATH)libmlx.a
 GNL				= $(GNL_PATH)get_next_line.a
 
+VALGRINGSUPP	= valgrind.supp
+
 # **************************************************************************** #
 #                                   Path's                                     #
 # **************************************************************************** #
@@ -176,7 +178,7 @@ MLX_URL			= https://github.com/42paris/minilibx-linux.git
 # **************************************************************************** #
 
 CC				= cc
-CFLAGS			= -Werror -Wextra -Wall -g -03
+CFLAGS			= -Werror -Wextra -Wall -g -O3
 MLXFLAGS		= -L$(MLX_PATH) -lmlx_Linux -L/usr/lib -I$(MLX_PATH) -lXext -lX11 -lm -lz
 MAKE			= make --no-print-directory
 MAKERE			= make re --no-print-directory
@@ -187,7 +189,7 @@ LIBS			= $(LIBFT) $(GNL)
 #                                  Commands                                    #
 # **************************************************************************** #
 
-all: start verify_libs $(NAME)
+all: start verify_libs $(VALGRINGSUPP) $(NAME)
 	@printf "\r$(C_YELLOW)[%s] Files compiled $(C_STD)%-30s\n" $$(echo $(OBJS) | wc -w) " "
 	@printf "$(C_MAGENTA)✔ Build finished: $(NAME)$(C_STD)\n"
 
@@ -204,8 +206,21 @@ $(BUILD_PATH)%.o: %.c
 $(BUILD_PATH):
 	@mkdir -p $(BUILD_PATH)
 
+$(VALGRINGSUPP):
+	@echo "\
+	{\n\
+	minilibx_x11_writev_uninit\n\
+	Memcheck:Param\n\
+	writev(vector[0])\n\
+	fun:writev\n\
+	...\n\
+	fun:mlx_int_wait_first_expose\n\
+	fun:mlx_new_window\n\
+	}" > $(VALGRINGSUPP)
+
 clean:
 	@$(RM) $(BUILD_PATH)
+	@$(RM) $(VALGRINGSUPP)
 
 fclean: clean
 	@$(RM) $(NAME)

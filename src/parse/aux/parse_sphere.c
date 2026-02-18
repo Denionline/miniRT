@@ -6,19 +6,20 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 19:02:13 by dximenes          #+#    #+#             */
-/*   Updated: 2026/02/01 19:03:49 by dximenes         ###   ########.fr       */
+/*   Updated: 2026/02/18 10:46:01 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "head.h"
 
-static int	error_check(t_object *sphere)
+static int	error_check(t_object *sphere, int *error_code)
 {
+	*error_code = 0;
 	if (sphere->position.error_code)
-		return (sphere->position.error_code);
+		*error_code = sphere->position.error_code;
 	if (sphere->material.color.error_code)
-		return (sphere->material.color.error_code);
-	return (0);
+		*error_code = sphere->material.color.error_code;
+	return (*error_code);
 }
 
 static t_pattern	check_pattern(char *line)
@@ -91,11 +92,12 @@ t_object	*parse_sphere(t_scene *scene, char *line)
 	check_params(scene, line, NPARAM_SPHERE, 0);
 	new_sphere = saffe_calloc(scene, line, 1, sizeof(t_object));
 	new_sphere->type = SPHERE;
-	if (!fill_values(new_sphere, line))
-		end(scene, ERR_INVALID_CHAR, line, TRUE);
-	error_code = error_check(new_sphere);
-	if (error_code)
+	error_code = ERR_INVALID_CHAR;
+	if (!fill_values(new_sphere, line) || error_check(new_sphere, &error_code))
+	{
+		free(new_sphere);
 		end(scene, error_code, line, TRUE);
+	}
 	radius = new_sphere->diameter * 0.5f;
 	new_sphere->transform = scaling(radius, radius, radius);
 	new_sphere->transform = multiply_matrix(

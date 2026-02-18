@@ -6,21 +6,22 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 18:59:49 by dximenes          #+#    #+#             */
-/*   Updated: 2026/02/01 19:01:19 by dximenes         ###   ########.fr       */
+/*   Updated: 2026/02/18 10:21:31 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "head.h"
 
-static int	error_check(t_object *plane)
+static int	error_check(t_object *plane, int *error_code)
 {
+	*error_code = 0;
 	if (plane->position.error_code)
-		return (plane->position.error_code);
-	if (plane->normal.error_code)
-		return (plane->normal.error_code);
-	if (plane->material.color.error_code)
-		return (plane->material.color.error_code);
-	return (0);
+		*error_code = plane->position.error_code;
+	else if (plane->normal.error_code)
+		*error_code = plane->normal.error_code;
+	else if (plane->material.color.error_code)
+		*error_code = plane->material.color.error_code;
+	return (*error_code);
 }
 
 static t_pattern	check_pattern(char *line)
@@ -94,10 +95,8 @@ t_object	*parse_plane(t_scene *scene, char *line)
 	check_params(scene, line, NPARAM_PLANE, 0);
 	new_plane = saffe_calloc(scene, line, 1, sizeof(t_object));
 	new_plane->type = PLANE;
-	if (!fill_values(new_plane, line))
-		end(scene, ERR_INVALID_CHAR, line, TRUE);
-	error_code = error_check(new_plane);
-	if (error_code)
+	error_code = ERR_INVALID_CHAR;
+	if (!fill_values(new_plane, line) || error_check(new_plane, &error_code))
 		end(scene, error_code, line, TRUE);
 	p = new_plane->position;
 	new_plane->transform = geral_rotation(new_plane->normal);
