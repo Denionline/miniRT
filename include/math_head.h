@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 14:42:24 by dximenes          #+#    #+#             */
-/*   Updated: 2026/02/01 19:21:27 by dximenes         ###   ########.fr       */
+/*   Updated: 2026/02/18 14:25:14 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <stdint.h>
 
-# define NARUTO 0.001
+# define NARUTO 0.01
 # define PI 3.14159
 
 enum e_TUPLE_TYPES
