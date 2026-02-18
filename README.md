@@ -19,41 +19,33 @@ Key ideas typically covered by miniRT:
 ## Instructions
 
 ### Requirements
-- A Unix-like environment (Linux or macOS)
+- A Unix-like environment.
 - `make`
 - A C compiler (`cc`, `clang`, or `gcc`)
-- **MiniLibX** available/installed (exact setup depends on your 42 campus / OS)
+- **MiniLibX** available/installed.
 
-### Build
+# Build
 From the repository root:
 ```sh
 make
 ```
 
-Common extra rules (if provided in your project):
+Common extra rules:
 ```sh
-make clean
-make fclean
-make re
+make fclean // clear
+make re // re-build
 ```
 
+# Run
 
-## Scene files (`.rt`)
-
-# miniRT --- Scene files (`.rt`)
-
-This project is executed with a **scene file** (`.rt`) describing the ambient light, camera, light, and a list of objects.
-
-## Run
-```sh
-./miniRT path/to/scene.rt
-```
-
-If you run with no arguments, this repo launches an interactive selector and runs a `.rt` from `scenes/`:
-```sh
-./miniRT
-```
-
+To run the program you have to execute in shell the main file **`miniRT`**, with a scene as argument, the scene must have the extension `.rt`.
+````
+./miniRT <scene.rt>
+````
+You can start running the example:
+````
+./miniRT scenes/default.rt
+````
 # Scene files (.rt) 
 
 ### General syntax rules
@@ -61,7 +53,7 @@ If you run with no arguments, this repo launches an interactive selector and run
 - Empty or Commented lines are ignored.
 - Parameters are separated by spaces and/or tabs.
 - **Vectors** are written as: `x,y,z`
-- **Colors** are written as: `R,G,B` (integers `0..255`)
+- **Colors** are written as: `R,G,B` (integers `[0..255`)
 - Object lines may optionally end with **one pattern keyword** (`ck`, `st`, `rg`, `gr`).
 
 ### Required arguments (limits)
@@ -81,8 +73,8 @@ A <ratio> <R,G,B>
 ```
 
 **Params**
-1. `ratio` (float): ambient intensity ratio `0.0 .. 1.0`
-2. `R,G,B` (color): ambient color  
+1. `ratio` (float): ambient intensity ratio `0.0..1.0`
+2. `R,G,B` (color): ambient color (`[0..255`])
 
 ### `C` --- Camera
 **Format**
@@ -91,9 +83,9 @@ C <x,y,z> <x,y,z> <fov>
 ```
 
 **Params**
-1. `x,y,z` (vector): camera position in world space
+1. `x,y,z` (vector): camera position in world space `[0..100]`
 2. `x,y,z` (vector): camera orientation (view direction) `[-1,1]`
-3. `fov` field of view as integer `0 .. 180`
+3. `fov` field of view as integer `0..180`
 
 ### `L` --- Light
 **Format**
@@ -102,11 +94,9 @@ L <x,y,z> <brightness> <R,G,B>
 ```
 
 **Params**
-1. `x,y,z` (vector): light position in world space
-2. `brightness` (float): light intensity ratio  
-   - **Limit**: `0.0 .. 1.0`
-3. `R,G,B` (color): light color  
-   - **Limit**: each channel `0 .. 255`
+1. `x,y,z` (vector): light position in world space `[0..100]`
+2. `brightness` (float): light intensity ratio `[0.0..1.0]`
+3. `R,G,B` (color): light color `[0..255]`
 
 ## Objects
 
@@ -117,12 +107,9 @@ sp <x,y,z> <diameter> <R,G,B> [pattern]
 ```
 
 **Params**
-1. `x,y,z`: center position
-2. `diameter` (float)
-   - **Limit**: `> 0`
-3. `R,G,B`: base object color (`0..255` each)
-4. `pattern` (optional): one of `ck`, `st`, `rg`, `gr`
-
+1. `x,y,z`: (vector) center position `[0..100]`
+2. `diameter` (positive float) `[0..100]`
+3. `R,G,B`: base object color `[0..255]`
 
 ### `pl` --- Plane
 **Format**
@@ -131,11 +118,9 @@ pl <x,y,z> <x,y,z> <R,G,B> [pattern]
 ```
 
 **Params**
-1. `x,y,z`: a point on the plane
-2. `x,y,z`: plane normal direction
-   - **Limit**: must be a valid direction (commonly normalized / components within `[-1,1]` depending on your checks)
-3. `R,G,B`: base object color (`0..255` each)
-4. `pattern` (optional): one of `ck`, `st`, `rg`, `gr`
+1. `x,y,z`: a point on the plane `[0..100]`
+2. `x,y,z`: plane normal direction `[-1.0..1.0]`
+3. `R,G,B`: base object color `[0..255]`
 
 ### `cy` --- Cylinder
 **Format**
@@ -144,14 +129,11 @@ cy <x,y,z> <x,y,z> <diameter> <height> <R,G,B> [pattern]
 ```
 
 **Params**
-1. `x,y,z`: cylinder position (center/reference point as defined by your implementation)
-2. `x,y,z`: cylinder axis direction `[-1,1]`
-3. `diameter` (float)
-   - **Limit**: `> 0`
-4. `height` (float)
-   - **Limit**: `> 0`
-5. `R,G,B`: base object color (`0..255` each)
-6. `pattern` (optional): one of `ck`, `st`, `rg`, `gr`
+1. `x,y,z`: (vector) cylinder position `[0..100]`
+2. `x,y,z`: (vector) cylinder axis direction `[-1,1]`
+3. `diameter` (positive float) `[0..100]`
+4. `height` (positive float) `[0..100]`
+5. `R,G,B`: base object color `[0..255]`
 
 ### `co` --- Cone
 **Format**
@@ -160,17 +142,13 @@ co <x,y,z> <x,y,z> <diameter> <height> <R,G,B> [pattern]
 ```
 
 **Params**
-1. `x,y,z`: cone position (center/reference point as defined by your implementation)
-2. `x,y,z`: cone axis direction
-   - **Limit**: must be a valid direction (commonly normalized / components within `[-1,1]`)
-3. `diameter` (float)
-   - **Limit**: `> 0`
-4. `height` (float)
-   - **Limit**: `> 0`
-5. `R,G,B`: base object color (`0..255` each)
-6. `pattern` (optional): one of `ck`, `st`, `rg`, `gr`
+1. `x,y,z`: (vector) cone position `[0..100]`
+2. `x,y,z`: (vector) cone axis direction `[0..100]`
+3. `diameter` (float) `[0..100]`
+4. `height` (float) `[0..100]`
+5. `R,G,B`: base object color `[0..255]`
 
-## Patterns (as implemented in this repo)
+## Patterns (optional)
 
 ### How to write it
 Append the keyword as the **last token** of an object line:
@@ -192,7 +170,6 @@ Append the keyword as the **last token** of an object line:
 - Pattern colors are currently **hardcoded in code** (the keyword chooses a fixed pair of colors).
 - If an extra token is present and it’s not one of the 4 keywords above, the parser treats the line as invalid.
 
----
 
 ## Full example scene
 ```text
@@ -205,18 +182,7 @@ pl 0,-5,0 0,1,0 200,200,200 st
 cy 5,0,25 0,1,0 4 12 0,0,255 rg
 co -5,0,25 0,1,0 6 10 255,255,255 gr
 ```
-
-### Run
-Typical usage:
-```sh
-./miniRT scenes/example.rt
-```
-
-If your project supports options (bonus features, save-to-file, etc.), document them here, for example:
-```sh
-./miniRT <scene.rt>
-```
-## Resources
+# Resources
 
 ### Ray Tracing References
 - Book **The Ray Tracer Challenge** by Jamis Buck: http://raytracerchallenge.com/
