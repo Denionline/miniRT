@@ -6,21 +6,22 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 19:06:54 by dximenes          #+#    #+#             */
-/*   Updated: 2026/02/01 19:08:09 by dximenes         ###   ########.fr       */
+/*   Updated: 2026/02/18 10:39:19 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "head.h"
 
-static int	error_check(t_object *cylinder)
+static int	error_check(t_object *cylinder, int *error_code)
 {
+	*error_code = 0;
 	if (cylinder->position.error_code)
-		return (cylinder->position.error_code);
+		*error_code = cylinder->position.error_code;
 	if (cylinder->normal.error_code)
-		return (cylinder->normal.error_code);
+		*error_code = cylinder->normal.error_code;
 	if (cylinder->material.color.error_code)
-		return (cylinder->material.color.error_code);
-	return (0);
+		*error_code = cylinder->material.color.error_code;
+	return (*error_code);
 }
 
 static t_pattern	check_pattern(char *line)
@@ -95,11 +96,12 @@ t_object	*parse_cone(t_scene *scene, char *line)
 	check_params(scene, line, NPARAM_CONE, 0);
 	new_cone = saffe_calloc(scene, line, 1, sizeof(t_object));
 	new_cone->type = CONE;
-	if (!fill_values(new_cone, line))
-		end(scene, ERR_INVALID_CHAR, line, TRUE);
-	error_code = error_check(new_cone);
-	if (error_code)
+	error_code = ERR_INVALID_CHAR;
+	if (!fill_values(new_cone, line) || error_check(new_cone, &error_code))
+	{
+		free(new_cone);
 		end(scene, error_code, line, TRUE);
+	}
 	p = new_cone->position;
 	radius = new_cone->diameter * 0.5f;
 	new_cone->transform = geral_rotation(new_cone->normal);
