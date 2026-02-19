@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 14:32:48 by dximenes          #+#    #+#             */
-/*   Updated: 2026/02/19 13:20:19 by dximenes         ###   ########.fr       */
+/*   Updated: 2026/02/19 16:22:23 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,14 @@ static void	parse_line(t_scene *scene, char *line)
 	end(scene, ERR_UNKNOWN_IDENTIFIER, line, TRUE);
 }
 
+static void	fill_ambient(t_world *w, t_amblight *a)
+{
+	if (a)
+		w->amblight_color = multiply_tuple(a->color, a->ratio);
+	else
+		w->amblight_color = multiply_tuple(color_float(255, 255, 255), 0.1);
+}
+
 void	parse_scene(t_scene **scene, char *file)
 {
 	const int	file_fd = open(file, O_RDONLY);
@@ -60,4 +68,5 @@ void	parse_scene(t_scene **scene, char *file)
 	}
 	if (!(*scene)->camera)
 		end(*scene, ERR_MISSING, NULL, FALSE);
+	fill_ambient((*scene)->world, (*scene)->amblight);
 }

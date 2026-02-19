@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 14:42:12 by dximenes          #+#    #+#             */
-/*   Updated: 2026/02/01 19:19:59 by dximenes         ###   ########.fr       */
+/*   Updated: 2026/02/19 16:17:52 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct s_light
 
 typedef struct s_phong_vec
 {
+	t_tuple		amblight_color;
 	t_tuple		eyev;
 	t_tuple		normalv;
 	int			in_shadow;

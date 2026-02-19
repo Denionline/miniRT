@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 14:44:02 by dximenes          #+#    #+#             */
-/*   Updated: 2026/02/01 19:20:28 by dximenes         ###   ########.fr       */
+/*   Updated: 2026/02/19 16:18:16 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct s_computations
 
 typedef struct s_world
 {
+	t_tuple			amblight_color;
 	t_light			light;
 	t_object		**objects;
 	unsigned int	n_objs;

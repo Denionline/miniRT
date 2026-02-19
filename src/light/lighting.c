@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 14:31:00 by dximenes          #+#    #+#             */
-/*   Updated: 2026/02/01 15:35:45 by dximenes         ###   ########.fr       */
+/*   Updated: 2026/02/19 16:18:46 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_tuple	lighting(t_material m, t_light l, t_tuple p, t_phong_vec pv)
 		m.color = pattern_at_obj(m.pattern, *pv.object, p);
 	colors.effective = multiply_tuple_tuple(m.color, l.intensity);
 	vetor_light = normalize(subtract_tuples(l.position, p));
-	colors.ambient = multiply_tuple(colors.effective, m.ambient);
+	colors.ambient = pv.amblight_color;
 	ab_cos = dot(vetor_light, pv.normalv);
 	if (ab_cos < 0 || pv.in_shadow)
 		set_color_empty(&colors.difuse, &colors.specular);
