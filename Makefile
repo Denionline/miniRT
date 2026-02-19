@@ -16,7 +16,8 @@ LIBFT			= $(LIBFT_PATH)libft.a
 MLX				= $(MLX_PATH)libmlx.a
 GNL				= $(GNL_PATH)get_next_line.a
 
-VALGRINGSUPP	= valgrind.supp
+VALGRINDRC		= ~/.valgrindrc
+VALGRINGSUPP	= ~/.valgrind.supp
 
 # **************************************************************************** #
 #                                   Path's                                     #
@@ -181,7 +182,7 @@ LIBS			= $(LIBFT) $(GNL)
 #                                  Commands                                    #
 # **************************************************************************** #
 
-all: start verify_libs $(VALGRINGSUPP) $(NAME)
+all: start verify_libs $(VALGRINDRC) $(NAME)
 	@printf "\r$(C_YELLOW)[%s] Files compiled $(C_STD)%-30s\n" $$(echo $(OBJS) | wc -w) " "
 	@printf "$(C_MAGENTA)✔ Build finished: $(NAME)$(C_STD)\n"
 
@@ -197,6 +198,9 @@ $(BUILD_PATH)%.o: %.c
 
 $(BUILD_PATH):
 	@mkdir -p $(BUILD_PATH)
+
+$(VALGRINDRC): $(VALGRINGSUPP)
+	@echo "--suppressions=$(HOME)/.valgrind.supp" > $(VALGRINDRC)
 
 $(VALGRINGSUPP):
 	@echo "\
@@ -214,7 +218,6 @@ clean:
 	@$(RM) $(BUILD_PATH)
 	@$(RM) $(LIBFT_PATH).build
 	@$(RM) $(GNL_PATH).build
-	@$(RM) $(VALGRINGSUPP)
 
 fclean: clean
 	@$(RM) $(NAME)
