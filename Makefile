@@ -166,14 +166,6 @@ SRCS			= $(addprefix ./, $(addsuffix .c, $(FILES)))
 OBJS			= $(addprefix $(BUILD_PATH), $(addsuffix .o, $(FILES)))
 
 # **************************************************************************** #
-#                                    Git                                       #
-# **************************************************************************** #
-
-LIBFT_URL		= https://github.com/Denionline/libft.git
-GNL_URL			= https://github.com/Denionline/get_next_line.git
-MLX_URL			= https://github.com/42paris/minilibx-linux.git
-
-# **************************************************************************** #
 #                                  Compiler                                    #
 # **************************************************************************** #
 
@@ -220,23 +212,27 @@ $(VALGRINGSUPP):
 
 clean:
 	@$(RM) $(BUILD_PATH)
+	@$(RM) $(LIBFT_PATH).build
+	@$(RM) $(GNL_PATH).build
 	@$(RM) $(VALGRINGSUPP)
 
 fclean: clean
 	@$(RM) $(NAME)
+	@$(RM) $(GNL)
+	@$(RM) $(LIBFT)
 
 re: fclean all
 
 verify_libs: verify_libft verify_gnl verify_mlx
 
 verify_libft:
-	@if test ! -d "$(LIBFT_PATH)"; then $(MAKE) -C $(LIBFT_PATH); \
+	@if test ! -d "$(LIBFT)"; then $(MAKE) -C $(LIBFT_PATH); \
 		else printf "libft: $(C_GREEN)✅$(C_STD)\n"; fi
 
 verify_gnl:
-	@if test ! -d "$(GNL_PATH)"; then $(MAKE) -C $(GNL_PATH); \
+	@if test ! -d "$(GNL)"; then $(MAKE) -C $(GNL_PATH); \
 		else printf "get_next_line: $(C_GREEN)✅$(C_STD)\n"; fi
 
 verify_mlx:
-	@if test ! -d "$(MLX_PATH)"; then $(MAKE) -C $(MLX_PATH); \
+	@if test ! -d "$(MLX)"; then $(MAKE) -C $(MLX_PATH); \
 		else printf "minilibx: $(C_GREEN)✅$(C_STD)\n"; fi
