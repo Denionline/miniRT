@@ -2,7 +2,4 @@
 .build/
 .o
 miniRT
-libft/
-get_next_line/
-minilibx-linux/
 valgrind.supp

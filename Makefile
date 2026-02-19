@@ -230,31 +230,13 @@ re: fclean all
 verify_libs: verify_libft verify_gnl verify_mlx
 
 verify_libft:
-	@if test ! -d "$(LIBFT_PATH)"; then $(MAKE) get_libft; \
+	@if test ! -d "$(LIBFT_PATH)"; then $(MAKE) -C $(LIBFT_PATH); \
 		else printf "libft: $(C_GREEN)✅$(C_STD)\n"; fi
 
-get_libft:
-	@echo "Cloning Libft"
-	@git clone $(LIBFT_URL) $(LIBFT_PATH)
-	@printf "$(C_GREEN)libft$(C_STD) successfully downloaded\n"
-	@$(MAKE) -C $(LIBFT_PATH)
-
 verify_gnl:
-	@if test ! -d "$(GNL_PATH)"; then $(MAKE) get_gnl; \
+	@if test ! -d "$(GNL_PATH)"; then $(MAKE) -C $(GNL_PATH); \
 		else printf "get_next_line: $(C_GREEN)✅$(C_STD)\n"; fi
 
-get_gnl:
-	@echo "Cloning get_next_line"
-	@git clone $(GNL_URL) $(GNL_PATH)
-	@printf "$(C_GREEN)get_next_line$(C_STD) successfully downloaded\n"
-	@$(MAKE) -C $(GNL_PATH)
-
 verify_mlx:
-	@if test ! -d "$(MLX_PATH)"; then $(MAKE) get_mlx; \
+	@if test ! -d "$(MLX_PATH)"; then $(MAKE) -C $(MLX_PATH); \
 		else printf "minilibx: $(C_GREEN)✅$(C_STD)\n"; fi
-
-get_mlx:
-	@printf "Cloning MLX\n"
-	@git clone $(MLX_URL) $(MLX_PATH)
-	@printf "\n$(C_GREEN)minilibx$(C_STD) successfully downloaded\n"
-	@$(MAKE) -C $(MLX_PATH)
