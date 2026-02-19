@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 18:59:49 by dximenes          #+#    #+#             */
-/*   Updated: 2026/02/18 10:21:31 by dximenes         ###   ########.fr       */
+/*   Updated: 2026/02/19 12:28:10 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ static int	fill_values(t_object *new_plane, char *line)
 	size_t		paramc;
 
 	paramc = 0;
-	while (line && *line && paramc < NPARAM_PLANE)
+	while (line && *line && paramc < NPARAM_PLANE - 1)
 	{
 		while (ft_isspace(*line))
 			line++;

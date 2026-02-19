@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 14:42:54 by dximenes          #+#    #+#             */
-/*   Updated: 2026/02/01 19:18:56 by dximenes         ###   ########.fr       */
+/*   Updated: 2026/02/19 12:22:21 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ enum e_N_PARAMS
 	NPARAM_AMBLIGHT = 3,
 	NPARAM_CAMERA = 4,
 	NPARAM_LIGHT = 4,
-	NPARAM_SPHERE = 4,
-	NPARAM_PLANE = 4,
-	NPARAM_CYLINDER = 6,
-	NPARAM_CONE = 6,
+	NPARAM_SPHERE = 5,
+	NPARAM_PLANE = 5,
+	NPARAM_CYLINDER = 7,
+	NPARAM_CONE = 7,
 };
 
 void		parse_scene(t_scene **scene, char *file);

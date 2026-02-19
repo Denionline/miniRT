@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 18:55:52 by dximenes          #+#    #+#             */
-/*   Updated: 2026/02/18 11:58:20 by dximenes         ###   ########.fr       */
+/*   Updated: 2026/02/19 12:29:43 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ static int	fill_values(t_object *new_cylinder, char *line)
 	size_t		paramc;
 
 	paramc = 0;
-	while (line && *line && paramc < NPARAM_CYLINDER)
+	while (line && *line && paramc < NPARAM_CYLINDER - 1)
 	{
 		while (ft_isspace(*line))
 			line++;

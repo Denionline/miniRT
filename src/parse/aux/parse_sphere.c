@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 19:02:13 by dximenes          #+#    #+#             */
-/*   Updated: 2026/02/18 10:46:01 by dximenes         ###   ########.fr       */
+/*   Updated: 2026/02/19 12:28:02 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ static int	fill_values(t_object *new_sphere, char *line)
 	size_t	paramc;
 
 	paramc = 0;
-	while (line && *line && paramc < NPARAM_SPHERE)
+	while (line && *line && paramc < NPARAM_SPHERE - 1)
 	{
 		while (ft_isspace(*line))
 			line++;
