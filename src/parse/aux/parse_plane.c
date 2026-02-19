@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 18:59:49 by dximenes          #+#    #+#             */
-/*   Updated: 2026/02/19 12:28:10 by dximenes         ###   ########.fr       */
+/*   Updated: 2026/02/19 12:44:20 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,10 @@ t_object	*parse_plane(t_scene *scene, char *line)
 	new_plane->type = PLANE;
 	error_code = ERR_INVALID_CHAR;
 	if (!fill_values(new_plane, line) || error_check(new_plane, &error_code))
+	{
+		free(new_plane);
 		end(scene, error_code, line, TRUE);
+	}
 	p = new_plane->position;
 	new_plane->transform = multiply_matrix(translation(p.x, p.y, p.z), \
 geral_rotation(new_plane->normal));

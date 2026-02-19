@@ -6,21 +6,22 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 18:55:52 by dximenes          #+#    #+#             */
-/*   Updated: 2026/02/19 12:29:43 by dximenes         ###   ########.fr       */
+/*   Updated: 2026/02/19 12:46:39 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "head.h"
 
-static int	error_check(t_object *cylinder)
+static int	error_check(t_object *cylinder, int *error_code)
 {
+	*error_code = 0;
 	if (cylinder->position.error_code)
-		return (cylinder->position.error_code);
+		*error_code = cylinder->position.error_code;
 	if (cylinder->normal.error_code)
-		return (cylinder->normal.error_code);
+		*error_code = cylinder->normal.error_code;
 	if (cylinder->material.color.error_code)
-		return (cylinder->material.color.error_code);
-	return (0);
+		*error_code = cylinder->material.color.error_code;
+	return (*error_code);
 }
 
 static t_pattern	check_pattern(char *line)
@@ -107,11 +108,13 @@ t_object	*parse_cylinder(t_scene *scene, char *line)
 	check_params(scene, line, NPARAM_CYLINDER, 0);
 	new_cylinder = saffe_calloc(scene, line, 1, sizeof(t_object));
 	new_cylinder->type = CYLINDER;
-	if (!fill_values(new_cylinder, line))
-		end(scene, ERR_INVALID_CHAR, line, TRUE);
-	error_code = error_check(new_cylinder);
-	if (error_code)
+	error_code = ERR_INVALID_CHAR;
+	if (!fill_values(new_cylinder, line)
+		|| error_check(new_cylinder, &error_code))
+	{
+		free(new_cylinder);
 		end(scene, error_code, line, TRUE);
+	}
 	p = new_cylinder->position;
 	radius = new_cylinder->diameter * 0.5f;
 	new_cylinder->transform = multiply_matrix(translation(p.x, p.y, p.z), \

@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 14:27:14 by dximenes          #+#    #+#             */
-/*   Updated: 2026/02/19 12:32:50 by dximenes         ###   ########.fr       */
+/*   Updated: 2026/02/19 12:37:31 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,8 @@ void	check_params(t_scene *scene, char *s, int nparams, int exists)
 	if (exists)
 		end(scene, ERR_DUPLICATE, s, TRUE);
 	count = countwords(s);
-	if ((nparams > 4 && (count != nparams && count != nparams - 1)) ||
-		(nparams <= 4 && nparams != count))
+	if ((nparams > 4 && (count != nparams && count != nparams - 1))
+		|| (nparams <= 4 && nparams != count))
 		end(scene, ERR_OUT_OF_RANGE, s, TRUE);
 	i = 0;
 	while (ft_isspace(s[i]))
