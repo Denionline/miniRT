@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 14:32:48 by dximenes          #+#    #+#             */
-/*   Updated: 2026/02/01 14:32:49 by dximenes         ###   ########.fr       */
+/*   Updated: 2026/02/19 10:13:00 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,14 @@ static void	parse_line(t_scene *scene, char *line)
 void	parse_scene(t_scene **scene, char *file)
 {
 	const int	file_fd = open(file, O_RDONLY);
+	const int	len = ft_strlen(file) - 1;
 	char		*line;
 
-	*scene = saffe_calloc(*scene, NULL, 1, sizeof(t_scene));
 	if (file_fd < 0 || !file)
 		end(*scene, ERR_OPEN_FILE, file, FALSE);
+	if (!(file[len - 2] == '.' && file[len - 1] == 'r' && file[len] == 't'))
+		end(*scene, ERR_INVALID_FILE, file, FALSE);
+	*scene = saffe_calloc(*scene, NULL, 1, sizeof(t_scene));
 	(*scene)->world = saffe_calloc(*scene, NULL, 1, sizeof(t_world));
 	while (TRUE)
 	{

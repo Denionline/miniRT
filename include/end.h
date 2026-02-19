@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 14:41:41 by dximenes          #+#    #+#             */
-/*   Updated: 2026/02/01 15:01:38 by dximenes         ###   ########.fr       */
+/*   Updated: 2026/02/19 10:08:58 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ enum e_ERROR_CODE
 	ERR_UNKNOWN_IDENTIFIER,
 	ERR_DUPLICATE,
 	ERR_MISSING,
+	ERR_INVALID_FILE,
 };
 
 void	end(t_scene *scene, int status_code, char *description, int to_free);
