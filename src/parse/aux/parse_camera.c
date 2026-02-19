@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 18:53:24 by dximenes          #+#    #+#             */
-/*   Updated: 2026/02/01 18:54:28 by dximenes         ###   ########.fr       */
+/*   Updated: 2026/02/19 15:23:06 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,11 @@ void	parse_camera(t_scene *scene, t_camera **c, char *line)
 	position = (*c)->position;
 	direction = (*c)->direction;
 	**c = camera(640, 480, fov * PI / 180.0f);
-	(*c)->transform = inverse(
-			view_transform(
-				position,
-				sum_tuples(position, direction),
-				vector(0, 1, 0)
-				));
+	if (fabs(direction.y) > 0.999f)
+		(*c)->transform = inverse(view_transform(position,
+					sum_tuples(position, direction),vector(0, 0, 1)));
+	else
+		(*c)->transform = inverse(view_transform(position,
+					sum_tuples(position, direction),vector(0, 1, 0)));
+
 }
