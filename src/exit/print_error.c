@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 14:31:26 by dximenes          #+#    #+#             */
-/*   Updated: 2026/02/19 10:16:09 by dximenes         ###   ########.fr       */
+/*   Updated: 2026/02/19 13:21:07 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	print_error(enum e_ERROR_CODE e_ERROR_CODE)
 	else if (e_ERROR_CODE == ERR_DUPLICATE)
 		printf("There is some unique rule duplicated\n");
 	else if (e_ERROR_CODE == ERR_MISSING)
-		printf("There is some mandatory rule missing\n");
+		printf("Camera is missing :'(\n");
 	else if (e_ERROR_CODE == ERR_INVALID_FILE)
 		printf("Invalid extension of file\n");
 	else

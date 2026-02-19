@@ -6,22 +6,11 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 14:32:48 by dximenes          #+#    #+#             */
-/*   Updated: 2026/02/19 10:18:27 by dximenes         ###   ########.fr       */
+/*   Updated: 2026/02/19 13:20:19 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "head.h"
-
-static int	is_missing_rule(t_scene *scene)
-{
-	if (!scene->amblight)
-		return (TRUE);
-	if (!scene->camera)
-		return (TRUE);
-	if (!scene->world->light.exists)
-		return (TRUE);
-	return (FALSE);
-}
 
 static void	parse_line(t_scene *scene, char *line)
 {
@@ -69,6 +58,6 @@ void	parse_scene(t_scene **scene, char *file)
 		parse_line(*scene, line);
 		free(line);
 	}
-	if (is_missing_rule(*scene))
+	if (!(*scene)->camera)
 		end(*scene, ERR_MISSING, NULL, FALSE);
 }
