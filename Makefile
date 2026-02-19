@@ -226,13 +226,13 @@ re: fclean all
 verify_libs: verify_libft verify_gnl verify_mlx
 
 verify_libft:
-	@if test ! -d "$(LIBFT)"; then $(MAKE) -C $(LIBFT_PATH); \
+	@if test ! -f "$(LIBFT)"; then $(MAKE) -C $(LIBFT_PATH); \
 		else printf "libft: $(C_GREEN)✅$(C_STD)\n"; fi
 
 verify_gnl:
-	@if test ! -d "$(GNL)"; then $(MAKE) -C $(GNL_PATH); \
+	@if test ! -f "$(GNL)"; then $(MAKE) -C $(GNL_PATH); \
 		else printf "get_next_line: $(C_GREEN)✅$(C_STD)\n"; fi
 
 verify_mlx:
-	@if test ! -d "$(MLX)"; then $(MAKE) -C $(MLX_PATH); \
+	@if test ! -f "$(MLX)"; then $(MAKE) -C $(MLX_PATH); \
 		else printf "minilibx: $(C_GREEN)✅$(C_STD)\n"; fi
